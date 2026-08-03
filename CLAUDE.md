@@ -3,6 +3,10 @@
 > ไฟล์นี้ sync ผ่าน OneDrive — Claude Code ทุกเครื่องอ่านอัตโนมัติตอนเปิด session ใหม่
 > อัปเดตล่าสุด: 04 ส.ค. 2569 (ตี 2)
 
+## Git repos (ตั้งค่า 04/08/2569)
+- `origin` = **github.com/thananant/mix888-ops (Private)** — repo ของโฟลเดอร์นี้ ใช้เปิด cloud session/ทำงานข้ามเครื่อง · จบงานสำคัญให้ commit+push เสมอ
+- `pages` = **github.com/thananant/Mix888 (Public — GitHub Pages เว็บหลังบ้านตัวจริง)** — ⚠️ ห้าม push ไฟล์ ops ไป repo นี้เด็ดขาด (ทุกไฟล์ในนั้นเผยแพร่สาธารณะ) ใช้เฉพาะตอนแก้ไฟล์เว็บ (wnqz-6e9u-j4ym.html ฯลฯ)
+
 ## สถาปัตยกรรม
 - **หน้าเว็บหลังบ้าน**: `wnqz-6e9u-j4ym.html` บน GitHub Pages (ไฟล์เวอร์ชันต่าง ๆ อยู่ใน Downloads ของเครื่องบ้าน) — build marker มุมซ้ายบน **ต้อง bump ทุกครั้งที่แก้**
 - **Supabase** `eqbzpgynzgdwvouuzfwt` — DB + Storage (bucket `bills`) + edge function `daily-summary`
