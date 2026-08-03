@@ -1,0 +1,16 @@
+{
+  "name": "mix888-nas-bill-renderer",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Mix888 NAS worker: renders queued bills (image_url IS NULL) with headless Chromium and uploads them to Supabase storage",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node nas-worker.js"
+  },
+  "dependencies": {
+    "playwright": "1.49.0"
+  }
+}

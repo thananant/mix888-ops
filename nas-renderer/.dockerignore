@@ -1,0 +1,5 @@
+# ห้าม COPY . . ลากไฟล์เหล่านี้เข้าอิมเมจ — โดยเฉพาะ .env ที่มี service_role key
+.env
+node_modules
+.git
+*.md

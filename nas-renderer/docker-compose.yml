@@ -1,0 +1,11 @@
+services:
+  mix888-renderer:
+    build: .
+    env_file: .env
+    restart: unless-stopped
+    init: true
+    shm_size: 1gb
+    environment:
+      # วันที่บนบิลวาดตามเวลาเครื่อง — ต้องเป็นเวลาไทย ไม่งั้นบิลที่วาดช่วง 00:00-07:00 ลงวันที่ผิดวัน
+      - TZ=Asia/Bangkok
+    # no ports — the worker only makes outbound HTTPS calls to Supabase

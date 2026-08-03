@@ -1,0 +1,7 @@
+# ความลับ — ห้ามขึ้น GitHub เด็ดขาด
+.env
+*.env
+!.env.example
+# ขยะ/ของหนัก
+node_modules/
+*.log
