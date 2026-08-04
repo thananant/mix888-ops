@@ -37,11 +37,13 @@
 ## ไฟล์ในโฟลเดอร์นี้
 - `daily-summary.cron41-47.ts` — ประวัติเวอร์ชัน edge (47 = ล่าสุด)
 - `line-push.merged-10.ts` — edge function LINE webhook/บอทไลน์ + ตรวจสลิป SlipOK (merged-10 = ตัวที่ deploy อยู่ เก็บเข้า repo 04/08/2569)
+- `wnqz-6e9u-j4ym.html` — สำเนาเว็บหลังบ้าน (ตัวจริง deploy อยู่ที่ repo `Mix888`/GitHub Pages) — **build 04/08-A**: แก้ Excel บัญชีแถวหายจากเพดาน PostgREST 1,000 แถว (`exportMonthExcel`/`exportAccountXlsx` เปลี่ยนเป็นแบ่งถาม+ไล่หน้า) + ใบโอน/ใบสั่งซื้อแบ่งชื่อยาว 2 บรรทัดด้วย `tfWrap2` เลิกตัด "…" (ตามที่ทีมแพ็คขอ ให้ตรงกับ edge cron-46)
 - `nas-renderer/` — ตัววาดบน NAS (SETUP-NAS.md = คู่มือติดตั้ง)
 - `claim_dedup.sql` `watchdog_cron.sql` `nas_mode.sql` `requeue_png_bills.sql` — รันไปแล้ว
 - `move_customers_template.sql` — **ยังไม่ได้ใช้** รอมีเซลล์ลาออก (ย้ายลูกค้า+เปลี่ยนรหัส 3 ตัวหน้า — อ่านหมายเหตุในไฟล์: ปิดงวดคอมมิชชั่นก่อน + แก้ autobill_skip)
 
 ## งานค้าง
+- **Deploy เว็บ build 04/08-A** — เอา `wnqz-6e9u-j4ym.html` ใน repo นี้ไปวางทับใน repo `Mix888` (ตอนนี้ production ยังเป็น 27/07-S ซึ่งมีบั๊ก Excel สรุปกำไรแถวหาย)
 - คนสั่งออเดอร์ผ่านบอทไลน์ — ✅ ได้โค้ด webhook แล้ว (`line-push.merged-10.ts` 04/08/2569) เหลือดูว่าจะต่อยอดสั่งออเดอร์ผ่านแชทไหม (ตอนนี้บอทส่งลิงก์เว็บสั่งซื้อ+PIN ให้แทน)
 - ปริ้นเตอร์ L3250 ส่งเมลอัตโนมัติ (รอ Brevo API key + อีเมลเครื่อง)
 - ข้อเสนอ Supabase Pro (~$25/ด.) — ยังไม่ตัดสินใจ (ความจำเป็นลดลงมากหลังมี NAS)
