@@ -1,7 +1,7 @@
 # Mix888 (Mix Fresh 168) — ระบบสั่งสินค้า B2B
 
 > ไฟล์นี้ sync ผ่าน OneDrive — Claude Code ทุกเครื่องอ่านอัตโนมัติตอนเปิด session ใหม่
-> อัปเดตล่าสุด: 04 ส.ค. 2569 (ตี 2)
+> อัปเดตล่าสุด: 04 ส.ค. 2569 (บ่าย — เพิ่มข้อมูล line-push/SlipOK)
 
 ## Git repos (ตั้งค่า 04/08/2569)
 - `origin` = **github.com/thananant/mix888-ops (Private)** — repo ของโฟลเดอร์นี้ ใช้เปิด cloud session/ทำงานข้ามเครื่อง · จบงานสำคัญให้ commit+push เสมอ
@@ -9,8 +9,10 @@
 
 ## สถาปัตยกรรม
 - **หน้าเว็บหลังบ้าน**: `wnqz-6e9u-j4ym.html` บน GitHub Pages (ไฟล์เวอร์ชันต่าง ๆ อยู่ใน Downloads ของเครื่องบ้าน) — build marker มุมซ้ายบน **ต้อง bump ทุกครั้งที่แก้**
-- **Supabase** `eqbzpgynzgdwvouuzfwt` — DB + Storage (bucket `bills`) + edge function `daily-summary`
-- **Edge ปัจจุบัน: cron-47** (ไฟล์เต็มล่าสุดในโฟลเดอร์นี้ `daily-summary.cron47.ts`) — เช็คด้วย `?health=1`
+- **Supabase** `eqbzpgynzgdwvouuzfwt` — DB + Storage (bucket `bills`, `slips`) + edge functions `daily-summary`, `line-push`
+- **Edge daily-summary ปัจจุบัน: cron-47** (ไฟล์เต็มล่าสุดในโฟลเดอร์นี้ `daily-summary.cron47.ts`) — เช็คด้วย `?health=1`
+- **Edge line-push ปัจจุบัน: merged-10** (ไฟล์เต็ม `line-push.merged-10.ts`) — LINE webhook + push จากหน้าเว็บ + **ตรวจสลิปอัตโนมัติผ่าน SlipOK**: ลูกค้าส่งรูปสลิปเข้ากลุ่มที่ผูกร้าน → ตรวจกับธนาคาร → กันสลิปซ้ำ (`slip_log.trans_ref`) → ยอดตรงบิลเดียว/ตรงผลรวมทุกบิล = ตัดปิดอัตโนมัติ · หลายบิลไม่ตรงเป๊ะ = ปุ่ม quick reply ให้ลูกค้าเลือกบิล · ทุกการตัดแจ้งกลุ่มไลน์กลาง (`settings.line_central_group`) · Secrets: `SLIPOK_API_KEY` `SLIPOK_BRANCH_ID` · เช็คเวอร์ชันด้วย GET เปล่า
+- **คำสั่งพิมพ์ในกลุ่มไลน์** (line-push): `ผูกกลุ่ม <รหัส>…` / `ปลดกลุ่ม <รหัส>` / `ยกเลิกผูกกลุ่ม` (เปล่า = ถอดทุกร้าน) / `เช็คกลุ่ม` / `id` / `บิลค้าง` / เลข 6 หลัก หรือ `รหัส 123456` = ตั้ง PIN ครั้งแรก / `เปลี่ยน 654321` = เปลี่ยน PIN / `รหัส` = ดูสถานะ PIN / `ขอลิงก์` = ลิงก์สั่งซื้อ+PIN / แอดมิน: `ตั้งกลุ่มสรุป` `ตั้งกลุ่มแพ็คของ` `ตั้งกลุ่มเรียกของ`
 - **NAS DS925+** container `mix888-renderer` (โฟลเดอร์ `nas-renderer/` + บน NAS ที่ `Mix888/mix888-renderer`) — วาดรูปบิลเทมเพลต 2 (บาร์โค้ด/ลายเซ็น) ~1.4 วิ/ใบ; edge เป็น fallback วาดเทมเพลตเรียบง่ายเมื่อบิลค้างเกิน 10 นาที (สวิตช์ `nas_mode` ใน settings)
 
 ## รอบงานอัตโนมัติ
@@ -34,12 +36,13 @@
 
 ## ไฟล์ในโฟลเดอร์นี้
 - `daily-summary.cron41-47.ts` — ประวัติเวอร์ชัน edge (47 = ล่าสุด)
+- `line-push.merged-10.ts` — edge function LINE webhook/บอทไลน์ + ตรวจสลิป SlipOK (merged-10 = ตัวที่ deploy อยู่ เก็บเข้า repo 04/08/2569)
 - `nas-renderer/` — ตัววาดบน NAS (SETUP-NAS.md = คู่มือติดตั้ง)
 - `claim_dedup.sql` `watchdog_cron.sql` `nas_mode.sql` `requeue_png_bills.sql` — รันไปแล้ว
 - `move_customers_template.sql` — **ยังไม่ได้ใช้** รอมีเซลล์ลาออก (ย้ายลูกค้า+เปลี่ยนรหัส 3 ตัวหน้า — อ่านหมายเหตุในไฟล์: ปิดงวดคอมมิชชั่นก่อน + แก้ autobill_skip)
 
 ## งานค้าง
-- คนสั่งออเดอร์ผ่านบอทไลน์ (รอ user ก๊อปโค้ด webhook มาให้)
+- คนสั่งออเดอร์ผ่านบอทไลน์ — ✅ ได้โค้ด webhook แล้ว (`line-push.merged-10.ts` 04/08/2569) เหลือดูว่าจะต่อยอดสั่งออเดอร์ผ่านแชทไหม (ตอนนี้บอทส่งลิงก์เว็บสั่งซื้อ+PIN ให้แทน)
 - ปริ้นเตอร์ L3250 ส่งเมลอัตโนมัติ (รอ Brevo API key + อีเมลเครื่อง)
 - ข้อเสนอ Supabase Pro (~$25/ด.) — ยังไม่ตัดสินใจ (ความจำเป็นลดลงมากหลังมี NAS)
 - เปลี่ยน secret key ของ NAS (`nas-renderer/.env`) ตัวใหม่เมื่อสะดวก (ตัวเก่าเคยโผล่ในแชท)
