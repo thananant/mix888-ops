@@ -1,0 +1,1023 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>คู่มือการใช้งานระบบสั่งสินค้า Mix Fresh 168</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#C0201F; --deep:#7A1412; --ink:#2B1614; --body:#3B2C29; --mute:#7C6663;
+  --orange:#E5732F; --green:#0F7A5C; --gold:#F0B429; --line:#E6D6D0; --tint:#FBF3EF;
+}
+@page{ size:A4; margin:20mm 17mm 18mm 17mm; }
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:'Sarabun',sans-serif;font-size:10.6pt;line-height:1.62;color:var(--body);
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+h1,h2,h3,h4{color:var(--deep);line-height:1.32;margin:0}
+p{margin:0 0 .55em}
+code,.mono{font-family:'IBM Plex Mono',monospace;font-size:.88em;background:#F4EEEB;
+  padding:1px 5px;border-radius:4px;color:var(--deep)}
+b,strong{font-weight:700;color:var(--ink)}
+
+/* ---------- ปก ---------- */
+.cover{page-break-after:always;position:relative;height:247mm;background:var(--deep);
+  color:#fff;margin:-20mm -17mm 0 -17mm;padding:34mm 20mm 0 20mm;height:257mm}
+.cover .kicker{font-size:13pt;color:var(--gold);letter-spacing:1px;margin-bottom:6mm}
+.cover h1{font-size:33pt;color:#fff;font-weight:700;line-height:1.22;margin-bottom:5mm}
+.cover .sub{font-size:13pt;color:#F0D6D2;line-height:1.7;max-width:130mm}
+.cover .meta{position:absolute;bottom:26mm;left:20mm;font-size:10pt;color:#C9A19C;line-height:1.8}
+.cover .logo{width:30mm;height:30mm;border-radius:9mm;margin-bottom:10mm}
+.cover .band{position:absolute;right:-30mm;top:-40mm;width:150mm;height:150mm;
+  border-radius:50%;background:#5C0F0E}
+.cover .band2{position:absolute;right:10mm;bottom:-40mm;width:90mm;height:90mm;
+  border-radius:50%;background:#6B1110}
+.cover .inner{position:relative;z-index:2}
+
+/* ---------- สารบัญ ---------- */
+.toc{page-break-after:always}
+.toc h1{font-size:23pt;margin-bottom:2mm}
+.toc .lead{color:var(--mute);font-size:10pt;margin-bottom:7mm}
+.toc ol{list-style:none;margin:0;padding:0}
+.toc .t1{display:flex;align-items:baseline;gap:6px;margin-top:4.2mm;font-weight:700;
+  font-size:11.4pt;color:var(--deep)}
+.toc .t2{display:flex;align-items:baseline;gap:6px;margin-top:1.1mm;padding-left:9mm;
+  font-size:10pt;color:var(--body)}
+.toc .dots{flex:1;border-bottom:1.2px dotted #CDBAB4;transform:translateY(-3px)}
+.toc .pg{font-variant-numeric:tabular-nums;color:var(--mute);min-width:7mm;text-align:right}
+.toc .t1 .pg{color:var(--deep)}
+
+/* ---------- โครงบท ---------- */
+h1.ch{page-break-before:always;font-size:24pt;margin:0 0 1mm;padding-top:2mm}
+h1.ch .num{display:block;font-size:11pt;color:var(--red);letter-spacing:2px;
+  font-weight:600;margin-bottom:2mm}
+.chlead{color:var(--mute);font-size:10.4pt;margin:0 0 7mm;padding-bottom:4mm;
+  border-bottom:2px solid var(--line)}
+h2{font-size:14.5pt;margin:8mm 0 2.5mm;page-break-after:avoid}
+h3{font-size:11.8pt;margin:5.5mm 0 1.8mm;color:var(--ink);page-break-after:avoid}
+.appx h1.ch .num{color:var(--green)}
+
+/* ---------- ขั้นตอนจับมือทำ ---------- */
+ol.steps{counter-reset:st;list-style:none;margin:2mm 0 4mm;padding:0}
+ol.steps>li{counter-increment:st;position:relative;padding:0 0 2.6mm 10mm;margin-bottom:1.4mm;
+  page-break-inside:avoid}
+ol.steps>li::before{content:counter(st);position:absolute;left:0;top:.3mm;width:6.6mm;height:6.6mm;
+  border-radius:50%;background:var(--red);color:#fff;font-size:9pt;font-weight:700;
+  display:flex;align-items:center;justify-content:center}
+ol.steps ul{margin:1mm 0 0;padding-left:5mm}
+ol.steps li li{margin-bottom:.6mm}
+ul.plain{margin:1mm 0 3mm;padding-left:5.5mm}
+ul.plain li{margin-bottom:1.1mm}
+
+/* ---------- กล่องข้อความ ---------- */
+.box{border-radius:3mm;padding:3.4mm 4.4mm;margin:3mm 0 4mm;page-break-inside:avoid;
+  font-size:10pt;line-height:1.6}
+.box .bt{font-weight:700;display:block;margin-bottom:1mm}
+.tip{background:#ECF5F1;color:#0B5B44} .tip .bt{color:var(--green)}
+.warn{background:#FDF1E8;color:#7A3E10} .warn .bt{color:#B85C10}
+.stop{background:#FBECEB;color:#7E1B1A} .stop .bt{color:var(--red)}
+.note{background:var(--tint);color:var(--body)} .note .bt{color:var(--deep)}
+
+/* ---------- รูป ---------- */
+figure{margin:4mm 0 5mm;page-break-inside:avoid}
+figure img{width:100%;border:1px solid var(--line);border-radius:2.4mm;display:block}
+figure img.phone{width:52mm;margin:0 auto}
+figure.two{display:flex;gap:5mm}
+figure.two img.phone{width:100%}
+figure.two>div{flex:1}
+figcaption{font-size:8.8pt;color:var(--mute);margin-top:1.6mm;text-align:center;font-style:italic}
+
+/* ---------- ตาราง ---------- */
+table{width:100%;border-collapse:collapse;margin:2.5mm 0 5mm;font-size:9.6pt}
+thead{display:table-header-group}
+tr{page-break-inside:avoid}
+th{background:var(--deep);color:#fff;text-align:left;padding:2mm 2.6mm;font-weight:600;
+  font-size:9.4pt}
+td{padding:1.9mm 2.6mm;border-bottom:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:#FBF7F5}
+td.k{font-weight:600;color:var(--ink);white-space:nowrap}
+table.small{font-size:9pt}
+
+/* ---------- อื่น ๆ ---------- */
+.kbd{display:inline-block;background:#fff;border:1px solid #D6C3BD;border-bottom-width:2px;
+  border-radius:3px;padding:0 5px;font-size:.88em;color:var(--ink);font-weight:600}
+.ui{color:var(--red);font-weight:600}
+.grid2{display:flex;gap:5mm;margin:3mm 0 4mm}
+.grid2>div{flex:1;background:var(--tint);border-radius:3mm;padding:3.4mm 4mm;font-size:9.8pt}
+.grid2 h4{font-size:10.6pt;margin-bottom:1.6mm}
+.flow{display:flex;gap:2mm;margin:4mm 0 5mm;page-break-inside:avoid}
+.flow>div{flex:1;background:var(--tint);border-radius:2.6mm;padding:3mm 2.6mm;text-align:center;
+  font-size:8.9pt;line-height:1.45}
+.flow .n{width:6.4mm;height:6.4mm;border-radius:50%;background:var(--red);color:#fff;
+  font-weight:700;font-size:9pt;display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1.8mm}
+.flow b{display:block;font-size:9.6pt;margin-bottom:.8mm}
+.lead-in{font-size:10.8pt;color:var(--ink);margin-bottom:4mm}
+</style>
+</head>
+<body>
+
+<!-- ============================= ปก ============================= -->
+<div class="cover">
+  <div class="band"></div><div class="band2"></div>
+  <div class="inner">
+    <img class="logo" src="LOGO_SRC" alt="">
+    <div class="kicker">คู่มือการใช้งานฉบับละเอียด</div>
+    <h1>ระบบสั่งสินค้า B2B<br>Mix Fresh 168</h1>
+    <div class="sub">คู่มือแบบจับมือทำทีละขั้น พร้อมภาพหน้าจอจริงทุกหน้างาน —
+      ตั้งแต่เข้าสู่ระบบครั้งแรก จนถึงปิดยอดและวางแผนสั่งซื้อ</div>
+  </div>
+  <div class="meta">
+    เวอร์ชันหน้าเว็บ build 25/08-A<br>
+    ปรับปรุงล่าสุด สิงหาคม 2569<br>
+    สำหรับพนักงาน Mix Fresh 168 (ใช้ภายใน)
+  </div>
+</div>
+
+<!-- ============================= สารบัญ ============================= -->
+<div class="toc">
+<h1>สารบัญ</h1>
+<div class="lead">กดที่ชื่อบทเพื่อกระโดดไปหน้านั้นได้ (เมื่อเปิดจากไฟล์ PDF)</div>
+TOC_HERE
+</div>
+
+<!-- ============================= บทที่ 1 ============================= -->
+<h1 class="ch" id="ch1"><span class="num">บทที่ 1</span>รู้จักระบบก่อนเริ่มใช้</h1>
+<p class="chlead">ถ้าคุณเพิ่งเข้ามาทำงาน อ่านบทนี้บทเดียวก็พอจะเห็นภาพว่าระบบทำอะไรให้เราบ้าง แล้วเราต้องทำอะไรเอง</p>
+
+<h2 id="s1-1">1.1 ระบบนี้ทำอะไรได้บ้าง</h2>
+<p class="lead-in">ระบบสั่งสินค้า Mix Fresh 168 เป็นเว็บแอปที่เขียนขึ้นเองสำหรับธุรกิจขายส่งวัตถุดิบหม้อไฟ/หม่าล่าโดยเฉพาะ
+ทำงานครบตั้งแต่ลูกค้ากดสั่งของ จนถึงเงินเข้าและปิดยอด ในระบบเดียว</p>
+<table>
+  <tr><th style="width:38mm">ทำแทนเราได้</th><th>รายละเอียด</th></tr>
+  <tr><td class="k">รับออเดอร์จากลูกค้า</td><td>ลูกค้าแต่ละร้านมีลิงก์สั่งของของตัวเอง เปิดจากมือถือได้ทันที เห็นเฉพาะสินค้าและราคาที่เราจัดให้ร้านนั้น</td></tr>
+  <tr><td class="k">ออกบิล</td><td>กดปุ่มเดียว ระบบออกเลขบิล ตัดสต๊อกแบบ FIFO วาดรูปบิล และส่งเข้ากลุ่มไลน์ของร้านให้เอง</td></tr>
+  <tr><td class="k">คุมสต๊อก</td><td>รับของเข้า โอนระหว่างคลัง นับสต๊อก และคิดต้นทุนจริงแบบเข้าก่อนออกก่อน</td></tr>
+  <tr><td class="k">ตามหนี้</td><td>รู้ว่าบิลไหนค้าง ค้างมานานเท่าไหร่ ใครเป็นคนรับยอด และสลิปใบไหนยังไม่จับคู่บิล</td></tr>
+  <tr><td class="k">วางแผนสั่งซื้อ</td><td>คำนวณจากยอดขายจริงย้อนหลังว่ารอบหน้าต้องสั่งอะไรกี่ชิ้น</td></tr>
+  <tr><td class="k">ดูแลลูกค้า</td><td>บอกว่าร้านไหนใกล้ถึงรอบสั่ง ร้านไหนหายไปนาน และส่งข้อความ/โปรโมชั่นหาหลายร้านพร้อมกันได้</td></tr>
+  <tr><td class="k">ทำงานอัตโนมัติ</td><td>ออกบิลอัตโนมัติทุก 3 นาที และส่งสรุปออเดอร์เข้ากลุ่มกลางทุกเช้า 06:00 น. แม้ไม่มีใครเปิดคอม</td></tr>
+</table>
+
+<h2 id="s1-2">1.2 ระบบประกอบด้วยอะไรบ้าง</h2>
+<p>ระบบมี 5 ส่วน แต่ทุกส่วนใช้ฐานข้อมูลชุดเดียวกัน ตัวเลขจึงตรงกันเสมอ</p>
+<table>
+  <tr><th style="width:44mm">ส่วนประกอบ</th><th>หน้าที่</th></tr>
+  <tr><td class="k">หน้าสั่งของของลูกค้า</td><td>เว็บหน้าเดียวบนมือถือ ลูกค้าเปิดจากลิงก์เฉพาะร้าน ไม่ต้องโหลดแอป ไม่ต้องสมัครสมาชิก</td></tr>
+  <tr><td class="k">หน้าหลังบ้าน</td><td>หน้าเว็บที่พนักงานใช้ทำงาน มี 22 หน้างาน แบ่งเป็น 8 กลุ่มเมนู</td></tr>
+  <tr><td class="k">ฐานข้อมูลบนคลาวด์</td><td>เก็บข้อมูลทุกตาราง เก็บไฟล์รูปบิลและสลิป และคิดสต๊อก FIFO ให้ฝั่งเซิร์ฟเวอร์</td></tr>
+  <tr><td class="k">รอบงานอัตโนมัติ</td><td>ตัวตั้งเวลาบนคลาวด์ที่คอยออกบิลและส่งสรุปให้เอง</td></tr>
+  <tr><td class="k">ตัววาดบิลบน NAS</td><td>เครื่อง NAS ในออฟฟิศ ทำหน้าที่วาดรูปบิลเต็มรูปแบบ (มีบาร์โค้ดและลายเซ็น) ประมาณ 1.4 วินาทีต่อใบ</td></tr>
+</table>
+<div class="box note"><span class="bt">ถ้า NAS ล่มจะเป็นยังไง</span>
+บิลใบไหนค้างเกิน 10 นาที ระบบบนคลาวด์จะเข้ามาวาดแทนด้วยเทมเพลตเรียบง่ายให้อัตโนมัติ ลูกค้ายังได้บิลตามปกติ แค่หน้าตาเรียบกว่าเดิม</div>
+
+<h2 id="s1-3">1.3 คำศัพท์ที่ต้องรู้ก่อน</h2>
+<p>คำพวกนี้จะโผล่ทั่วทั้งระบบ ถ้าเข้าใจตั้งแต่ต้นจะอ่านหน้าจอออกทันที</p>
+<table>
+  <tr><th style="width:34mm">คำ</th><th>หมายความว่า</th></tr>
+  <tr><td class="k">ออเดอร์ (SO)</td><td>รายการที่ลูกค้าสั่งเข้ามา ยังไม่ใช่บิล ยังแก้ได้ ยกเลิกได้ และ<b>ยังไม่ตัดสต๊อกจริง</b> (แค่จองไว้)</td></tr>
+  <tr><td class="k">บิล (MF…)</td><td>เอกสารเรียกเก็บเงินที่ออกจากออเดอร์ ตอนออกบิลระบบจะตัดสต๊อกจริงและกินเลขบิลไป 1 เลข</td></tr>
+  <tr><td class="k">รอบตัดบิล</td><td>เวลาที่ใช้แบ่งว่า "ออเดอร์วันไหน" เช่น ตั้ง 18:00 น. แปลว่ารอบคือเมื่อวาน 18:00 ถึงวันนี้ 18:00</td></tr>
+  <tr><td class="k">FIFO</td><td>วิธีคิดต้นทุน "เข้าก่อนออกก่อน" — ของที่รับเข้ามาก่อนจะถูกตัดขายก่อน ต้นทุนจึงเป็นราคาจริงของล็อตนั้น</td></tr>
+  <tr><td class="k">ล็อต</td><td>ของชุดหนึ่งที่รับเข้ามาพร้อมกัน มีราคาทุนของตัวเอง</td></tr>
+  <tr><td class="k">ยอดจอง</td><td>ของที่ลูกค้าสั่งแล้วแต่ยังไม่ออกบิล กันไว้ไม่ให้ขายซ้ำ</td></tr>
+  <tr><td class="k">โกดัง / คลัง</td><td>ที่เก็บของ แยกยอดคงเหลือกันได้ เช่น โกดังลาดพร้าว กับหน้าร้าน</td></tr>
+  <tr><td class="k">เซลล์</td><td>พนักงานขายที่ดูแลร้าน มีรหัส 3 ตัวอักษร ใช้เป็นตัวนำหน้ารหัสลูกค้า</td></tr>
+  <tr><td class="k">กลุ่มไลน์ของร้าน</td><td>กลุ่มไลน์ที่มีลูกค้าร้านนั้นอยู่ ระบบส่งบิลเข้ากลุ่มนี้</td></tr>
+  <tr><td class="k">กลุ่มกลาง</td><td>กลุ่มไลน์ของทีมเราเอง ใช้รับแจ้งออเดอร์ใหม่และสรุปประจำวัน</td></tr>
+  <tr><td class="k">PIN 6 หลัก</td><td>รหัสที่ลูกค้าต้องใส่ก่อนกดยืนยันสั่งของ กันคนอื่นสั่งแทนร้าน</td></tr>
+</table>
+
+<h2 id="s1-4">1.4 ใครทำอะไรได้บ้าง</h2>
+<table>
+  <tr><th style="width:26mm">บทบาท</th><th>ทำได้</th><th style="width:52mm">ทำไม่ได้</th></tr>
+  <tr><td class="k">admin</td><td>ทุกอย่าง รวมถึงเพิ่ม/แก้ผู้ใช้ ตั้งค่าระบบ และอนุมัติคำขอแก้บิลที่ส่งของแล้ว</td><td>—</td></tr>
+  <tr><td class="k">staff</td><td>งานประจำวันทั้งหมด: รับออเดอร์ ออกบิล รับยอด จัดการสต๊อก ลูกค้า สินค้า</td><td>เข้าหน้า "ผู้ใช้ระบบ" ไม่ได้ · แก้บิลที่ส่งของแล้วหรือรับยอดแล้วต้องส่งคำขอให้ admin อนุมัติ</td></tr>
+</table>
+<div class="box tip"><span class="bt">หน้าต้นทุนสินค้าล็อกแยกอีกชั้น</span>
+ไม่ว่าจะเป็น admin หรือ staff ถ้าจะเปิดดูต้นทุนและกำไร ต้องใส่รหัสตัวเลข 6 หลักของหน้านั้นอีกครั้ง</div>
+
+<!-- ============================= บทที่ 2 ============================= -->
+<h1 class="ch" id="ch2"><span class="num">บทที่ 2</span>เริ่มใช้งานครั้งแรก</h1>
+<p class="chlead">บทนี้พาเปิดหน้าเว็บ เข้าสู่ระบบ และทำความรู้จักหน้าจอทีละส่วน</p>
+
+<h2 id="s2-1">2.1 เข้าสู่ระบบ</h2>
+<ol class="steps">
+  <li>เปิดเบราว์เซอร์ (แนะนำ Google Chrome) แล้วเข้าลิงก์หน้าหลังบ้านที่หัวหน้างานให้ไว้
+    <ul><li>แนะนำให้กด <span class="ui">บุ๊กมาร์ก</span> ไว้ครั้งเดียว จะได้ไม่ต้องพิมพ์ใหม่ทุกวัน</li></ul></li>
+  <li>จะเจอหน้าเข้าสู่ระบบตามภาพด้านล่าง</li>
+  <li>กรอก <span class="ui">ชื่อผู้ใช้</span> — เป็นตัวอักษรอังกฤษพิมพ์เล็ก เช่น <code>somchai</code></li>
+  <li>กรอก <span class="ui">รหัสผ่าน</span> ที่ได้รับมา</li>
+  <li>กดปุ่ม <span class="ui">เข้าสู่ระบบ</span></li>
+</ol>
+<figure>
+  <img src="img/small/01-login.png" alt="หน้าเข้าสู่ระบบ">
+  <figcaption>ภาพ 2.1 — หน้าเข้าสู่ระบบ</figcaption>
+</figure>
+<div class="box warn"><span class="bt">ถ้าขึ้นว่า "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง"</span>
+เช็ค 3 อย่างตามลำดับ: (1) พิมพ์ชื่อผู้ใช้เป็นตัวเล็กทั้งหมดหรือยัง (2) ปุ่ม Caps Lock ค้างอยู่ไหม
+(3) แป้นพิมพ์เป็นภาษาไทยอยู่หรือเปล่า — ถ้ายังเข้าไม่ได้ ให้ admin ตั้งรหัสผ่านใหม่ให้ในหน้า "ผู้ใช้ระบบ"</div>
+<div class="box tip"><span class="bt">ระบบจำการเข้าสู่ระบบให้</span>
+เข้าครั้งเดียวแล้วปิดแท็บไป เปิดใหม่ในเครื่องเดิมมักจะเข้าได้เลยโดยไม่ต้องกรอกซ้ำ
+ถ้าใช้เครื่องที่คนอื่นใช้ด้วย ให้กด <span class="ui">ออกจากระบบ</span> มุมล่างซ้ายทุกครั้ง</div>
+
+<h2 id="s2-2">2.2 ทำความรู้จักหน้าจอ</h2>
+<p>เมื่อเข้าระบบได้ จะเจอหน้า <span class="ui">ภาพรวม</span> เป็นหน้าแรกเสมอ</p>
+<figure>
+  <img src="img/small/02-dashboard.png" alt="หน้าภาพรวม">
+  <figcaption>ภาพ 2.2 — หน้าภาพรวม (ตัวเลขในภาพเป็นข้อมูลตัวอย่าง)</figcaption>
+</figure>
+<table>
+  <tr><th style="width:38mm">ส่วนของหน้าจอ</th><th>คืออะไร</th></tr>
+  <tr><td class="k">แถบซ้ายมือ (สีแดง)</td><td>เมนูทั้งหมด กดหัวข้อเพื่อกางเมนูย่อย · ล่างสุดบอกว่าตอนนี้ใครเข้าระบบอยู่ และมีปุ่มออกจากระบบ</td></tr>
+  <tr><td class="k">ใต้โลโก้</td><td>ตัวเลขเวอร์ชันหน้าเว็บ เช่น <code>build 25/08-A</code> — เวลาแจ้งปัญหาให้บอกเลขนี้ด้วยเสมอ</td></tr>
+  <tr><td class="k">ปุ่มช่วงเวลามุมขวาบน</td><td><span class="ui">วันนี้ · 7 วัน · เดือนนี้</span> หรือเลือกเดือน/ช่วงวันที่เอง — การ์ดและกราฟทั้งหน้าจะเปลี่ยนตาม</td></tr>
+  <tr><td class="k">การ์ดสรุป 8 ใบ</td><td>ยอดขาย กำไร ออเดอร์ค้าง ยอดค้างจ่าย มูลค่าสต๊อก ของเสีย และลูกค้าใหม่ (บางใบกดเข้าไปดูรายละเอียดได้)</td></tr>
+  <tr><td class="k">กราฟและตารางด้านล่าง</td><td>ยอดขายรายวัน สินค้าขายดี ยอดต่อเซลล์ ลูกหนี้ตามอายุหนี้ และสินค้าใกล้หมด</td></tr>
+</table>
+
+<h2 id="s2-3">2.3 เมนูมีอะไรบ้าง</h2>
+<table class="small">
+  <tr><th style="width:30mm">กลุ่มเมนู</th><th style="width:38mm">หน้างาน</th><th>ใช้ทำอะไร</th></tr>
+  <tr><td class="k">ภาพรวม</td><td>ภาพรวม</td><td>ดูสรุปทั้งร้าน</td></tr>
+  <tr><td class="k" rowspan="2">งานขาย</td><td>ทำบิล</td><td>ออกบิลจากออเดอร์ที่ลูกค้าสั่งเข้ามา</td></tr>
+  <tr><td>ใบเสนอราคา</td><td>ทำใบเสนอราคาส่งลูกค้า</td></tr>
+  <tr><td class="k" rowspan="2">บัญชี</td><td>บัญชี</td><td>ตามหนี้ รับยอด แนบสลิป ออก Excel</td></tr>
+  <tr><td>รายจ่าย (Petty Cash)</td><td>บันทึกรายจ่ายย่อยพร้อมรูปใบเสร็จ</td></tr>
+  <tr><td class="k">แพลนสั่งซื้อ</td><td>แพลนสั่งซื้อ</td><td>คำนวณว่ารอบหน้าต้องสั่งอะไรเท่าไหร่</td></tr>
+  <tr><td class="k" rowspan="2">จัดซื้อ</td><td>รายการสั่งซื้อ</td><td>ดูของที่ต้องซื้อและส่งข้อความสั่งซัพพลายเออร์</td></tr>
+  <tr><td>ซัพพลายเออร์</td><td>ทะเบียนผู้ขาย</td></tr>
+  <tr><td class="k" rowspan="6">สินค้า</td><td>สินค้า</td><td>เพิ่ม/แก้สินค้า ราคา รูป และสต๊อก</td></tr>
+  <tr><td>เดินรายการสินค้า</td><td>ไล่ดูว่าของเข้า-ออกจากไหนบ้าง</td></tr>
+  <tr><td>โอนโกดัง</td><td>เรียกของจากโกดังมาหน้าร้าน</td></tr>
+  <tr><td>รับสินค้า</td><td>บันทึกของที่รับเข้ามาใหม่</td></tr>
+  <tr><td>คลังสินค้า</td><td>ดูยอดคงเหลือแยกคลัง และเพิ่มคลังใหม่</td></tr>
+  <tr><td>นับ/ปรับสต๊อก</td><td>นับของจริงแล้วปรับให้ตรงระบบ</td></tr>
+  <tr><td class="k" rowspan="6">ลูกค้า</td><td>ลูกค้า</td><td>เพิ่ม/แก้ข้อมูลร้าน ที่อยู่ ลิงก์สั่งของ PIN</td></tr>
+  <tr><td>จัดสินค้า</td><td>เลือกว่าร้านไหนเห็นสินค้าอะไร ราคาเท่าไหร่</td></tr>
+  <tr><td>คำนวณค่าส่ง</td><td>คิดค่าส่ง BI ตามจำนวนลัง</td></tr>
+  <tr><td>ลูกค้า CRM</td><td>ดูร้านที่ใกล้ถึงรอบสั่ง และร้านที่หายไปนาน</td></tr>
+  <tr><td>ประวัติสั่งซื้อ</td><td>ดูว่าร้านหนึ่งเคยสั่งอะไรไปบ้าง</td></tr>
+  <tr><td>แผนที่ลูกค้า</td><td>ดูตำแหน่งร้านบนแผนที่ ขนาดหมุดตามยอดขาย</td></tr>
+  <tr><td class="k">เซลล์</td><td>เซลล์</td><td>เพิ่ม/แก้พนักงานขายและรหัส 3 ตัว</td></tr>
+  <tr><td class="k" rowspan="2">โปรโมชั่น</td><td>ส่งข้อความบรอดแคสต์</td><td>ส่งข้อความ/รูป/โปรหาหลายร้านพร้อมกัน</td></tr>
+  <tr><td>รายละเอียดการลดราคา</td><td>ดูผลของโปรที่ตั้งไว้</td></tr>
+  <tr><td class="k" rowspan="2">ผู้ใช้</td><td>ผู้ใช้ระบบ <i>(admin)</i></td><td>ตั้งค่าระบบ เพิ่มผู้ใช้ วันหยุด สำรองข้อมูล</td></tr>
+  <tr><td>ต้นทุนสินค้า</td><td>ดู/แก้ต้นทุน (ต้องใส่รหัส 6 หลัก)</td></tr>
+</table>
+
+<h2 id="s2-4">2.4 ออกจากระบบ</h2>
+<ol class="steps">
+  <li>มองมุมล่างซ้ายของแถบเมนู จะเห็นชื่อตัวเองอยู่</li>
+  <li>กดปุ่ม <span class="ui">ออกจากระบบ</span> ใต้ชื่อ</li>
+  <li>ระบบจะกลับไปหน้าเข้าสู่ระบบ</li>
+</ol>
+
+<!-- ============================= บทที่ 3 ============================= -->
+<h1 class="ch" id="ch3"><span class="num">บทที่ 3</span>ตั้งค่าระบบครั้งแรก <small style="font-size:11pt;color:var(--mute)">(สำหรับ admin)</small></h1>
+<p class="chlead">ทำครั้งเดียวตอนเริ่มต้น แล้วแทบไม่ต้องกลับมาแก้อีก — ถ้าคุณเป็น staff ข้ามไปบทที่ 4 ได้เลย</p>
+
+<h2 id="s3-1">3.1 เข้าหน้าตั้งค่า</h2>
+<ol class="steps">
+  <li>ที่เมนูซ้ายมือ กด <span class="ui">ผู้ใช้</span> เพื่อกางเมนูย่อย</li>
+  <li>กด <span class="ui">ผู้ใช้</span> อีกครั้ง (เมนูย่อยอันบน)</li>
+</ol>
+<figure>
+  <img src="img/small/21-users.png" alt="หน้าผู้ใช้ระบบและตั้งค่า">
+  <figcaption>ภาพ 3.1 — หน้าผู้ใช้ระบบ ด้านบนเป็นส่วนตั้งค่าระบบ</figcaption>
+</figure>
+
+<h2 id="s3-2">3.2 ตั้งกลุ่มไลน์กลาง</h2>
+<p>กลุ่มกลางคือกลุ่มไลน์ของทีมเราเอง ใช้รับแจ้งออเดอร์ใหม่และสรุปประจำวัน</p>
+<ol class="steps">
+  <li>เชิญบอทของระบบเข้ากลุ่มไลน์ของทีม</li>
+  <li>พิมพ์ <code>id</code> ในกลุ่มนั้น บอทจะตอบรหัสกลุ่มกลับมา (ขึ้นต้นด้วยตัว C)</li>
+  <li>คัดลอกรหัสนั้นมาวางในช่อง <span class="ui">LINE Group ID กลุ่มกลาง</span></li>
+  <li>กด <span class="ui">บันทึกตั้งค่า</span></li>
+</ol>
+
+<h2 id="s3-3">3.3 กรอกข้อมูลบริษัทและหัวบิล</h2>
+<ol class="steps">
+  <li>ในหัวข้อ <span class="ui">🏢 ข้อมูลบริษัท</span> กรอกชื่อบริษัท เลขผู้เสียภาษี 13 หลัก ที่อยู่ เบอร์ และอีเมล</li>
+  <li>กด <span class="ui">บันทึกข้อมูลบริษัท</span></li>
+  <li>เลื่อนลงไปหัวข้อ <span class="ui">🧾 ข้อมูลบนหัวบิล</span> กรอกเบอร์กลางและอีเมลกลางไว้เป็นค่าสำรอง</li>
+  <li>กด <span class="ui">บันทึกข้อมูลบิล</span></li>
+</ol>
+<div class="box note"><span class="bt">ค่าสำรองใช้เมื่อไหร่</span>
+เบอร์และอีเมลบนหัวบิลจะดึงจาก<b>เซลล์ที่ดูแลร้านนั้น</b>ก่อนเสมอ ถ้าร้านไหนยังไม่มีเซลล์ ระบบจึงจะใช้ค่ากลางที่ตั้งไว้</div>
+
+<h2 id="s3-4">3.4 ใส่วันหยุดพิเศษ</h2>
+<p>วันหยุดที่ใส่ไว้ ระบบจะไม่ส่งสรุปออเดอร์ตอนเช้า และจะยกออเดอร์ไปรวมในรอบของวันเปิดถัดไปให้</p>
+<ol class="steps">
+  <li>ที่หัวข้อ <span class="ui">📅 วันหยุดพิเศษ</span> เลือกวันที่</li>
+  <li>ใส่หมายเหตุ เช่น "วันสงกรานต์"</li>
+  <li>กด <span class="ui">+ เพิ่มวันหยุด</span></li>
+</ol>
+<div class="box tip"><span class="bt">ไม่ต้องใส่วันอาทิตย์</span>ระบบข้ามวันอาทิตย์ให้อัตโนมัติอยู่แล้ว</div>
+
+<h2 id="s3-5">3.5 เพิ่มผู้ใช้ใหม่</h2>
+<ol class="steps">
+  <li>เลื่อนลงมาที่การ์ด <span class="ui">เพิ่มผู้ใช้</span></li>
+  <li>กรอก <span class="ui">ชื่อผู้ใช้</span> เป็นภาษาอังกฤษตัวเล็ก (ระบบบังคับให้เป็นตัวเล็กอยู่แล้ว)</li>
+  <li>กรอก <span class="ui">ชื่อที่แสดง</span> เป็นภาษาไทยได้ เช่น "สมชาย" — ชื่อนี้จะไปโผล่ในช่อง "คนออกบิล" "คนรับยอด" ฯลฯ</li>
+  <li>เลือก <span class="ui">บทบาท</span>: <code>staff</code> สำหรับพนักงานทั่วไป หรือ <code>admin</code> สำหรับคนที่ต้องจัดการผู้ใช้ได้</li>
+  <li>ตั้ง <span class="ui">รหัสผ่าน</span></li>
+  <li>กด <span class="ui">บันทึก</span></li>
+</ol>
+<div class="box warn"><span class="bt">เวลาแก้ผู้ใช้เดิม</span>
+ถ้าไม่ต้องการเปลี่ยนรหัสผ่าน ให้<b>เว้นช่องรหัสผ่านว่างไว้</b> ถ้าพิมพ์อะไรลงไปจะกลายเป็นรหัสใหม่ทันที</div>
+
+<h2 id="s3-6">3.6 สำรองข้อมูล</h2>
+<ol class="steps">
+  <li>ที่หัวข้อ <span class="ui">💾 สำรองข้อมูล</span> กด <span class="ui">⬇️ ดาวน์โหลดไฟล์สำรอง</span></li>
+  <li>รอจนขึ้นว่าเสร็จ แล้วเก็บไฟล์ไว้ในไดรฟ์หรือฮาร์ดดิสก์สำรอง</li>
+</ol>
+<div class="box stop"><span class="bt">ทำอย่างน้อยสัปดาห์ละครั้ง</span>
+ไฟล์สำรองเก็บข้อมูลทุกตาราง แต่<b>ไม่รวมรูปภาพ</b>ที่อยู่ในที่เก็บไฟล์ ถือเป็นตาข่ายกันพลาดชั้นสุดท้ายของร้าน</div>
+
+<!-- ============================= บทที่ 4 ============================= -->
+<h1 class="ch" id="ch4"><span class="num">บทที่ 4</span>ตั้งต้นข้อมูลหลัก: เซลล์ · สินค้า · ลูกค้า</h1>
+<p class="chlead">สามอย่างนี้ต้องทำ<b>ตามลำดับ</b> เพราะรหัสลูกค้าวิ่งต่อจากรหัสเซลล์ และลูกค้าจะสั่งของได้ก็ต่อเมื่อมีสินค้าจัดให้แล้ว</p>
+
+<div class="flow">
+  <div><div class="n">1</div><b>เพิ่มเซลล์</b>ตั้งรหัส 3 ตัวอักษร</div>
+  <div><div class="n">2</div><b>เพิ่มสินค้า</b>ตั้ง SKU ราคา หน่วย</div>
+  <div><div class="n">3</div><b>เพิ่มลูกค้า</b>เลือกเซลล์ก่อนเสมอ</div>
+  <div><div class="n">4</div><b>จัดสินค้า</b>เลือกของ + ราคาเฉพาะร้าน</div>
+  <div><div class="n">5</div><b>ส่งลิงก์</b>ผูกกลุ่มไลน์ + ตั้ง PIN</div>
+</div>
+
+<h2 id="s4-1">4.1 เพิ่มเซลล์</h2>
+<ol class="steps">
+  <li>เมนูซ้าย → <span class="ui">เซลล์</span> → <span class="ui">เซลล์</span></li>
+  <li>กรอก <span class="ui">รหัสเซลล์</span> เป็นตัวอักษรอังกฤษพิมพ์ใหญ่ <b>3 ตัวพอดี</b> เช่น <code>SMC</code></li>
+  <li>กรอก <span class="ui">ชื่อเซลล์</span>, <span class="ui">เบอร์โทร 10 หลัก</span> และ <span class="ui">อีเมล</span></li>
+  <li>กด <span class="ui">บันทึก</span></li>
+</ol>
+<figure>
+  <img src="img/small/22-sales.png" alt="หน้าเซลล์">
+  <figcaption>ภาพ 4.1 — หน้าเซลล์</figcaption>
+</figure>
+<div class="box warn"><span class="bt">รหัสเซลล์สำคัญมาก</span>
+รหัสนี้จะกลายเป็น 3 ตัวหน้าของรหัสลูกค้าทุกร้านที่เขาดูแล เช่น เซลล์ <code>SMC</code> → ลูกค้าได้รหัส <code>SMC00001</code>, <code>SMC00002</code> ไล่ไปเรื่อย ๆ
+<b>ตั้งแล้วไม่ควรเปลี่ยน</b> เพราะต้องไล่แก้รหัสลูกค้าทั้งหมดตาม · เบอร์และอีเมลของเซลล์จะขึ้นบนหัวบิลของร้านที่เขาดูแล</div>
+<div class="box note"><span class="bt">ลบเซลล์ไม่ได้</span>
+เซลล์ที่ยังมีลูกค้าดูแลอยู่จะลบไม่ได้ ต้องย้ายลูกค้าไปเซลล์คนอื่นให้หมดก่อน</div>
+
+<h2 id="s4-2">4.2 เพิ่มสินค้า</h2>
+<ol class="steps">
+  <li>เมนูซ้าย → <span class="ui">สินค้า</span> → <span class="ui">สินค้า</span></li>
+  <li>ที่การ์ด <span class="ui">เพิ่มสินค้า</span> เลือก <span class="ui">หมวดสินค้า</span> ก่อน — ระบบจะรันรหัส SKU ให้อัตโนมัติตามหมวด
+    <ul><li>ถ้ายังไม่มีหมวดที่ต้องการ กดลิงก์ <span class="ui">จัดการหมวด</span> เพื่อเพิ่มหมวดใหม่</li></ul></li>
+  <li>กรอก <span class="ui">ชื่อสินค้า</span> ให้เป็นชื่อที่ลูกค้าอ่านแล้วเข้าใจ เพราะชื่อนี้จะไปขึ้นบนหน้าสั่งของและบนบิล</li>
+  <li>กรอก <span class="ui">หน่วยขาย</span> เช่น ลัง / ถุง / แพ็ค / ขวด</li>
+  <li>กรอก <span class="ui">ราคากลาง</span> — ใช้เป็นราคาตั้งต้นสำหรับร้านที่ยังไม่ได้ตั้งราคาเฉพาะ</li>
+  <li>กรอกตัวเลขคุมสต๊อก
+    <ul>
+      <li><span class="ui">เตือนใกล้หมด</span> — เหลือน้อยกว่านี้จะขึ้นเตือนในหน้าภาพรวม</li>
+      <li><span class="ui">Safety Stock</span> — ระดับที่ควรมีติดคลังไว้เสมอ ใช้คำนวณใบโอนและแผนสั่งซื้อ</li>
+      <li><span class="ui">Max Stock</span> — เพดานที่ไม่ควรเกิน ใช้คำนวณจำนวนที่ควรเรียกของ</li>
+    </ul></li>
+  <li>ถ้ามี ให้ติ๊ก <span class="ui">ซัพพลายเออร์</span> ที่ขายสินค้าตัวนี้ (ติ๊กได้หลายราย)</li>
+  <li>กด <span class="ui">📷 เลือกรูป</span> เพื่อใส่รูปสินค้า (ไม่บังคับ แต่ช่วยให้ลูกค้าสั่งถูกตัวมาก)</li>
+  <li>กด <span class="ui">บันทึก</span></li>
+</ol>
+<figure>
+  <img src="img/small/09-products.png" alt="หน้าสินค้า">
+  <figcaption>ภาพ 4.2 — หน้าสินค้า พร้อมฟอร์มเพิ่มสินค้า</figcaption>
+</figure>
+<div class="box tip"><span class="bt">มีสินค้าเยอะมาก</span>
+ใช้ปุ่ม <span class="ui">นำเข้า CSV</span> เพื่ออัปทีเดียวหลายรายการ และ <span class="ui">ส่งออก CSV</span> เพื่อดึงรายการปัจจุบันออกมาแก้ใน Excel ได้</div>
+<div class="box warn"><span class="bt">อย่ากรอกสต๊อกเริ่มต้นถ้าจะรับของเข้าอยู่แล้ว</span>
+ช่อง <span class="ui">สต๊อกเริ่มต้น</span> มีไว้ตอนย้ายข้อมูลเข้าระบบครั้งแรกเท่านั้น
+ของที่รับเข้ามาจริงควรบันทึกผ่านหน้า <span class="ui">รับสินค้า</span> เสมอ เพื่อให้ระบบสร้างล็อตและรู้ต้นทุน FIFO</div>
+
+<h2 id="s4-3">4.3 เพิ่มลูกค้าใหม่</h2>
+<ol class="steps">
+  <li>เมนูซ้าย → <span class="ui">ลูกค้า</span> → <span class="ui">ลูกค้า</span></li>
+  <li><b>เลือก <span class="ui">เซลล์ที่ดูแล</span> ก่อนเป็นอันดับแรก</b> — รหัสลูกค้าจะรันต่อจากรหัสเซลล์ให้อัตโนมัติ</li>
+  <li>กรอก <span class="ui">ชื่อร้าน</span></li>
+  <li>ส่วน <span class="ui">🧾 ข้อมูลออกบิล</span> — ข้อมูลชุดนี้จะไปขึ้นบนบิล
+    <ul>
+      <li><span class="ui">ชื่อลูกค้า (ผู้ติดต่อ)</span> — ชื่อคนที่เราคุยด้วย</li>
+      <li><span class="ui">เบอร์โทร</span> — ต้องเป็นตัวเลข <b>10 หลักพอดี</b></li>
+      <li><span class="ui">เลขผู้เสียภาษี</span> — 13 หลัก ถ้าไม่มีเว้นว่างได้</li>
+      <li><span class="ui">ที่อยู่</span> — พิมพ์<b>รหัสไปรษณีย์ 5 หลักก่อน</b> ระบบจะเติมจังหวัด/อำเภอให้ แล้วค่อยเลือกตำบล</li>
+    </ul></li>
+  <li>ส่วน <span class="ui">🚚 ข้อมูลจัดส่ง</span> — ถ้าที่อยู่ส่งของเหมือนที่อยู่บิล กดปุ่ม <span class="ui">คัดลอกจากข้อมูลบิล</span> ได้เลย
+    <ul>
+      <li><span class="ui">ชื่อผู้รับของ</span> และ <span class="ui">เบอร์ผู้รับ</span> — ใช้ตอนเรียกรถส่งของ</li>
+      <li><span class="ui">Google Map Link</span> — วางลิงก์แผนที่ ช่วยคนส่งของหาไม่หลง และใช้ปักหมุดในหน้าแผนที่ลูกค้า</li>
+      <li><span class="ui">เวลารับของ</span> — ช่วงเวลาที่ร้านสะดวกรับ</li>
+      <li><span class="ui">วิธีจัดส่ง</span> — Lalamove / BI / แพ็คของ / มารับเอง (ใช้จัดกลุ่มในสรุปประจำวัน)</li>
+    </ul></li>
+  <li>เลือก <span class="ui">ประเภทบิล</span> ที่ร้านนี้ต้องการ (บิลเงินสด หรือบิลเต็มรูปแบบ)</li>
+  <li>ถ้าร้านนี้ไม่ควรเห็นราคา ให้ติ๊ก <span class="ui">🙈 ซ่อนราคาจากหน้าสั่งของ</span>
+    (ใช้กรณีเจ้าของร้านให้ลูกน้องเป็นคนกดสั่ง)</li>
+  <li>กด <span class="ui">บันทึก</span></li>
+</ol>
+<figure>
+  <img src="img/small/08-customers.png" alt="ฟอร์มเพิ่มลูกค้า">
+  <figcaption>ภาพ 4.3 — ฟอร์มเพิ่มลูกค้า</figcaption>
+</figure>
+<div class="box tip"><span class="bt">ระบบเตือนข้อมูลซ้ำให้</span>
+ถ้าชื่อร้าน ชื่อผู้ติดต่อ เบอร์ หรือที่อยู่ ไปตรงกับลูกค้าของเซลล์คนอื่น ระบบจะเด้งเตือนพร้อมบอกว่าซ้ำกับร้านไหนของใคร
+ให้อ่านก่อนกดยืนยัน จะได้ไม่แย่งลูกค้ากันเองโดยไม่ตั้งใจ</div>
+<div class="box note"><span class="bt">ร้านที่มีหลายสาขา</span>
+ให้สร้างร้านหลักก่อน แล้วสร้างสาขาเป็นลูกค้าอีกราย โดยเลือกช่อง <span class="ui">เป็นสาขาของร้าน</span> ให้ชี้ไปที่ร้านหลัก</div>
+
+<h2 id="s4-4">4.4 จัดสินค้าให้ลูกค้า และตั้งราคาเฉพาะร้าน</h2>
+<p><b>ขั้นนี้ห้ามข้าม</b> — ถ้ายังไม่จัดสินค้า ลูกค้าเปิดลิงก์มาจะเห็นหน้าว่างเปล่า</p>
+<ol class="steps">
+  <li>เมนูซ้าย → <span class="ui">ลูกค้า</span> → <span class="ui">จัดสินค้า</span></li>
+  <li>ค้นหาและเลือกร้านที่ต้องการในช่องด้านบน</li>
+  <li>ติ๊กเครื่องหมาย ✓ หน้าสินค้าที่อยากให้ร้านนี้เห็นและสั่งได้
+    <ul><li>ใช้ปุ่ม <span class="ui">✓ เลือกที่แสดง</span> เพื่อติ๊กทั้งหมดที่กรองอยู่ทีเดียว</li></ul></li>
+  <li>ถ้าร้านนี้ได้ราคาพิเศษ ให้พิมพ์ราคาลงในช่องราคาของสินค้านั้น (เว้นว่าง = ใช้ราคากลาง)</li>
+  <li>กด <span class="ui">บันทึก</span></li>
+</ol>
+<figure>
+  <img src="img/small/10-pricing.png" alt="หน้าจัดสินค้าให้ลูกค้า">
+  <figcaption>ภาพ 4.4 — หน้าจัดสินค้าให้ลูกค้า</figcaption>
+</figure>
+<div class="box tip"><span class="bt">ร้านใหม่ที่คล้ายร้านเดิม</span>
+ใช้ <span class="ui">📋 คัดลอกการจัดสินค้าจากร้านอื่น</span> เลือกร้านต้นทาง แล้วกด <span class="ui">คัดลอกมาใส่ร้านนี้</span> — ประหยัดเวลาได้มาก</div>
+<div class="box note"><span class="bt">อยากรู้ว่าใครเปลี่ยนราคา</span>
+กด <span class="ui">🕘 ประวัติแก้ราคา</span> จะเห็นว่าใครแก้ราคาอะไร เมื่อไหร่</div>
+
+<h2 id="s4-5">4.5 สร้างลิงก์สั่งของ ผูกกลุ่มไลน์ และตั้ง PIN</h2>
+<ol class="steps">
+  <li>กลับไปหน้า <span class="ui">ลูกค้า</span> แล้วหาแถวของร้านนั้นในตารางด้านล่าง</li>
+  <li>กดปุ่มสร้าง/คัดลอกลิงก์สั่งของของร้าน แล้วส่งลิงก์นั้นให้ลูกค้า
+    <ul><li>แนะนำให้ลูกค้า<b>ปักหมุดลิงก์ไว้ในกลุ่มไลน์</b>ของร้าน จะได้ไม่หาย</li></ul></li>
+  <li>ผูกกลุ่มไลน์ของร้าน: เชิญบอทเข้ากลุ่มของร้านนั้น แล้วพิมพ์ <code>id</code> ในกลุ่ม
+    เอารหัสที่บอทตอบมาใส่ในช่อง <span class="ui">LINE Group ID</span> ของลูกค้ารายนั้น</li>
+  <li>ตั้ง <span class="ui">PIN 6 หลัก</span> ให้ร้าน แล้วบอกรหัสนี้กับเจ้าของร้าน</li>
+</ol>
+<div class="box warn"><span class="bt">ถ้ายังไม่ผูกกลุ่มไลน์</span>
+ตอนออกบิล ระบบจะบอกว่า "ลูกค้ายังไม่ผูกกลุ่ม LINE — บิลจะออกเป็นรูปให้เปิดดูแทน"
+บิลยังออกได้ตามปกติ แต่ต้องส่งให้ลูกค้าเอง</div>
+<div class="box tip"><span class="bt">ลูกค้าลืม PIN</span>
+ให้ลูกค้าพิมพ์ <code>เปลี่ยน 123456</code> (ตามด้วยรหัสใหม่ที่ต้องการ) ในกลุ่มไลน์ของร้าน ระบบจะตั้งรหัสใหม่ให้เอง</div>
+
+<!-- ============================= บทที่ 5 ============================= -->
+<h1 class="ch" id="ch5"><span class="num">บทที่ 5</span>ฝั่งลูกค้า: สั่งของยังไง</h1>
+<p class="chlead">บทนี้ไว้ใช้สอนลูกค้า หรือแคปหน้าจอส่งให้ลูกค้าดู — ทั้งหมดทำบนมือถือ ไม่ต้องโหลดแอป</p>
+
+<h2 id="s5-1">5.1 เปิดลิงก์และเลือกสินค้า</h2>
+<ol class="steps">
+  <li>ลูกค้ากดลิงก์ที่เราส่งให้ (หรือลิงก์ที่ปักหมุดไว้ในกลุ่ม)</li>
+  <li>ด้านบนจะขึ้นรหัสและชื่อร้านของตัวเอง ถ้าขึ้นชื่อร้านอื่นแปลว่าส่งลิงก์ผิด</li>
+  <li>เลื่อนหาสินค้า หรือพิมพ์ค้นหาในช่อง <span class="ui">🔍 ค้นหาสินค้า</span></li>
+  <li>กดปุ่ม <span class="kbd">+</span> เพื่อเพิ่มจำนวน หรือ <span class="kbd">−</span> เพื่อลด</li>
+  <li>แถบล่างสุดจะรวมยอดให้ตลอด เมื่อพร้อมแล้วกด <span class="ui">สั่งสินค้า</span></li>
+</ol>
+<figure class="two">
+  <div><img class="phone" src="img/small/30-shop-catalog.png" alt="หน้าเลือกสินค้า">
+    <figcaption>ภาพ 5.1 — หน้าเลือกสินค้า</figcaption></div>
+  <div><img class="phone" src="img/small/31-shop-confirm.png" alt="หน้ายืนยันรายการ">
+    <figcaption>ภาพ 5.2 — หน้ายืนยันรายการ</figcaption></div>
+</figure>
+<div class="box note"><span class="bt">ป้ายสถานะสินค้า</span>
+ลูกค้าจะเห็นแค่ <b>พร้อมจำหน่าย / สินค้าใกล้หมด / สินค้าหมด</b> ไม่เห็นตัวเลขคงเหลือจริงของเรา
+ส่วนสินค้าที่กำลังลดราคาจะมีป้าย 🔥 และถูกดันขึ้นไปอยู่บนสุด</div>
+
+<h2 id="s5-2">5.2 ยืนยันและใส่ PIN</h2>
+<ol class="steps">
+  <li>ตรวจรายการในหน้ายืนยัน ถ้าผิดกด <span class="ui">กลับไปแก้</span></li>
+  <li>กด <span class="ui">✓ ยืนยันสั่งสินค้า</span></li>
+  <li>ระบบจะขอ <span class="ui">รหัส 6 หลักของร้าน</span> — ใส่แล้วกด <span class="ui">✓ ยืนยัน</span>
+    <ul><li>กรอกครั้งเดียว เครื่องนั้นจะจำให้ ครั้งต่อไปไม่ต้องกรอกอีก</li></ul></li>
+  <li>เมื่อสำเร็จจะขึ้นเครื่องหมายถูกสีเขียวพร้อมเลขออเดอร์</li>
+</ol>
+<figure class="two">
+  <div><img class="phone" src="img/small/32-shop-pin.png" alt="หน้าใส่ PIN">
+    <figcaption>ภาพ 5.3 — หน้าใส่รหัส PIN</figcaption></div>
+  <div><img class="phone" src="img/small/33-shop-success.png" alt="หน้าสั่งสำเร็จ">
+    <figcaption>ภาพ 5.4 — สั่งสำเร็จ พร้อมเลขออเดอร์</figcaption></div>
+</figure>
+<div class="box tip"><span class="bt">ลูกค้าดูประวัติเองได้</span>
+แท็บ <span class="ui">📋 ประวัติการสั่ง</span> ด้านบน ให้ลูกค้าย้อนดูได้ว่าเคยสั่งอะไรไปบ้าง เลือกช่วง 7 / 30 / 90 วัน หรือกำหนดเอง</div>
+<div class="box warn"><span class="bt">สั่งแล้วยกเลิกเองไม่ได้</span>
+ถ้าลูกค้าสั่งผิด ให้แจ้งเซลล์ แล้วเราไปแก้หรือยกเลิกให้ในหน้า <span class="ui">ทำบิล</span> (ดูหัวข้อ 6.4)</div>
+
+<!-- ============================= บทที่ 6 ============================= -->
+<h1 class="ch" id="ch6"><span class="num">บทที่ 6</span>งานประจำวัน: จากออเดอร์เป็นบิล</h1>
+<p class="chlead">นี่คือหน้าที่ใช้บ่อยที่สุดในแต่ละวัน — อ่านบทนี้ให้จบก่อนลงมือจริง</p>
+
+<div class="flow">
+  <div><div class="n">1</div><b>ออเดอร์เข้า</b>ระบบจองสต๊อก + แจ้งกลุ่มกลาง</div>
+  <div><div class="n">2</div><b>ตรวจ + ใส่ค่าส่ง</b>ดูต้นทุน/กำไรก่อนตัดสินใจ</div>
+  <div><div class="n">3</div><b>ออกบิล</b>ตัดสต๊อกจริง + กินเลขบิล</div>
+  <div><div class="n">4</div><b>ส่งเข้าไลน์</b>วาดรูปบิลส่งกลุ่มร้าน</div>
+  <div><div class="n">5</div><b>ส่งของ + รับยอด</b>ต่อที่หน้าบัญชี</div>
+</div>
+
+<h2 id="s6-1">6.1 เปิดหน้าทำบิล</h2>
+<ol class="steps">
+  <li>เมนูซ้าย → <span class="ui">งานขาย</span> → <span class="ui">ทำบิล</span></li>
+  <li>ออเดอร์ที่ลูกค้าสั่งเข้ามาและยังไม่ออกบิล จะเรียงเป็นการ์ดอยู่ที่นี่</li>
+</ol>
+<figure>
+  <img src="img/small/06-orders.png" alt="หน้าทำบิล">
+  <figcaption>ภาพ 6.1 — หน้าทำบิล (1 การ์ด = 1 ออเดอร์ที่รอออกบิล)</figcaption>
+</figure>
+<p>ในการ์ดหนึ่งใบมีอะไรบ้าง</p>
+<table>
+  <tr><th style="width:38mm">ส่วนของการ์ด</th><th>ความหมาย</th></tr>
+  <tr><td class="k">หัวการ์ด</td><td>เลขออเดอร์ · รหัสและชื่อร้าน · วันเวลาที่สั่ง · ยอดรวม</td></tr>
+  <tr><td class="k">🙋 ชื่อคน / 🛒 ลูกค้าสั่งเอง</td><td>บอกว่าออเดอร์นี้พนักงานคนไหนเป็นคนคีย์ให้ หรือลูกค้ากดสั่งเองจากลิงก์</td></tr>
+  <tr><td class="k">💡 บรรทัดต้นทุน</td><td>ต้นทุน FIFO โดยประมาณ และกำไรขั้นต้นเป็นบาทและเปอร์เซ็นต์ — <b>เห็นเฉพาะหลังบ้าน ไม่ขึ้นบนบิล</b></td></tr>
+  <tr><td class="k">ตารางรายการ</td><td>สินค้า จำนวน ราคาต่อหน่วย และยอดรวมของแต่ละบรรทัด</td></tr>
+  <tr><td class="k">ค่าขนส่ง / ส่วนลด</td><td>ช่องกรอกตัวเลข ใส่แล้วยอดเรียกเก็บด้านขวาจะอัปเดตทันที</td></tr>
+</table>
+
+<h2 id="s6-2">6.2 ออกบิล</h2>
+<ol class="steps">
+  <li>อ่านรายการในการ์ดให้ครบก่อนว่าตรงกับที่ตกลงกับลูกค้าไหม</li>
+  <li>ถ้ามีค่าส่ง ใส่ตัวเลขในช่อง <span class="ui">ค่าขนส่ง (฿)</span>
+    <ul><li>ถ้าร้านนี้ส่งด้วย BI กด <span class="ui">🧮 ค่าส่ง BI</span> ระบบจะคำนวณตามเรทของร้านให้</li></ul></li>
+  <li>ถ้ามีส่วนลด ใส่ในช่อง <span class="ui">ส่วนลด (฿)</span></li>
+  <li>ตรวจ <span class="ui">ยอดเรียกเก็บ</span> อีกครั้ง</li>
+  <li>เลือกปุ่มที่จะกด
+    <ul>
+      <li><span class="ui">🧾 ออกบิล + ส่ง LINE</span> — ใช้เป็นปกติ ระบบออกบิล วาดรูป และส่งเข้ากลุ่มไลน์ของร้านให้เลย</li>
+      <li><span class="ui">ออกบิลเฉย ๆ</span> — ออกบิลแต่ยังไม่ส่ง เอาไว้ใช้ตอนอยากตรวจก่อน หรือร้านยังไม่ผูกกลุ่มไลน์</li>
+    </ul></li>
+  <li>รอจนขึ้นข้อความยืนยัน แล้วการ์ดนั้นจะหายไปจากหน้านี้ (ย้ายไปอยู่หน้าบัญชีแล้ว)</li>
+</ol>
+<div class="box stop"><span class="bt">ออกบิลแล้วเลขบิลจะถูกใช้ไปเลย</span>
+ต่อให้ยกเลิกทีหลัง เลขบิลนั้นก็จะไม่ถูกนำกลับมาใช้ซ้ำ ดังนั้น<b>ตรวจให้ครบก่อนกด</b>
+ถ้าต้องแก้ของในออเดอร์ ให้แก้ก่อนออกบิล (ข้อ 6.4) เพราะการแก้ตอนนั้นไม่กินเลขบิล</div>
+
+<h2 id="s6-3">6.3 ออกบิลอัตโนมัติ และรอบตัดบิล</h2>
+<p>ถ้าไม่มีใครกดออกบิลเอง ระบบจะออกให้เองทุก 3 นาที สำหรับออเดอร์ที่ถึงรอบแล้ว</p>
+<ol class="steps">
+  <li>ที่หัวหน้าทำบิล ดูช่อง <span class="ui">เวลาตัดรอบบิล</span></li>
+  <li>ปรับเวลาที่ต้องการ เช่น <code>18:00</code> แปลว่ารอบคือเมื่อวาน 18:00 ถึงวันนี้ 18:00</li>
+  <li>กด <span class="ui">บันทึกรอบ</span></li>
+</ol>
+<h3>ยกเว้นร้านที่ไม่อยากให้ออกบิลอัตโนมัติ</h3>
+<ol class="steps">
+  <li>กด <span class="ui">⛔ ยกเว้นร้าน (ออกบิลอัตโนมัติ)</span></li>
+  <li>เลือกร้านที่ต้องการยกเว้น เช่น ร้านทดสอบ หรือร้านที่ต้องคุยราคาก่อนทุกครั้ง</li>
+  <li>บันทึก — ออเดอร์ของร้านเหล่านี้จะรออยู่ในหน้าทำบิลจนกว่าเราจะกดออกเอง</li>
+</ol>
+
+<h2 id="s6-4">6.4 แก้ออเดอร์ หรือยกเลิกออเดอร์</h2>
+<ol class="steps">
+  <li>หาการ์ดออเดอร์ที่ต้องการในหน้า <span class="ui">ทำบิล</span></li>
+  <li>กด <span class="ui">✏️ แก้ออเดอร์</span> เพื่อเพิ่ม/ลบสินค้า หรือแก้จำนวน แล้วบันทึก
+    <ul><li>การแก้ตรงนี้<b>ไม่กินเลขบิล</b> เพราะยังไม่ได้ออกบิล</li></ul></li>
+  <li>ถ้าจะยกเลิกทั้งใบ กด <span class="ui">❌ ยกเลิก</span> — ระบบจะคืนยอดจองสต๊อกให้อัตโนมัติ</li>
+</ol>
+
+<h2 id="s6-5">6.5 ส่งสรุปออเดอร์เข้ากลุ่มกลาง</h2>
+<p>สรุปนี้คือรายการที่ทีมจัดส่งใช้จัดของ แยกตามวิธีขนส่ง พร้อมที่อยู่ เบอร์ และลิงก์แผนที่</p>
+<ol class="steps">
+  <li>ปกติระบบส่งให้เองทุกเช้า <b>06:00 น.</b> ไม่ต้องทำอะไร</li>
+  <li>ถ้าอยากส่งเดี๋ยวนี้ กด <span class="ui">📋 ส่งสรุปออเดอร์รอบนี้เข้าไลน์กลาง</span></li>
+  <li>ถ้าอยากส่งเฉพาะช่วงเวลาที่กำหนดเอง ใส่วันเวลาในช่อง <span class="ui">กำหนดเอง</span> ทั้งสองช่อง แล้วกด <span class="ui">📤 ส่งสรุปช่วงนี้</span></li>
+  <li>อยากดูก่อนว่าจะออกมาหน้าตาแบบไหน โดยยังไม่ส่งจริง กด <span class="ui">🔍 ทดลองสรุป (ไม่ส่งไลน์)</span></li>
+  <li>อยากรู้ว่าที่ผ่านมาส่งไปแล้วกี่รอบ กด <span class="ui">🕘 ประวัติการส่งสรุป</span></li>
+</ol>
+<div class="box note"><span class="bt">ระบบกันส่งซ้ำให้แล้ว</span>
+ต่อให้กดส่งพร้อมกันหลายคน หรือรอบอัตโนมัติวิ่งชนกัน สรุปรอบหนึ่งจะออกแค่ครั้งเดียวเสมอ</div>
+
+<!-- ============================= บทที่ 7 ============================= -->
+<h1 class="ch" id="ch7"><span class="num">บทที่ 7</span>บัญชี: ตามหนี้ รับยอด และรายจ่าย</h1>
+<p class="chlead">หน้าบัญชีคือศูนย์กลางของทุกบิลที่ออกไปแล้ว — ตั้งแต่ยังไม่ส่งของ จนถึงเก็บเงินครบ</p>
+
+<h2 id="s7-1">7.1 เปิดหน้าบัญชีและอ่านตาราง</h2>
+<ol class="steps">
+  <li>เมนูซ้าย → <span class="ui">บัญชี</span> → <span class="ui">บัญชี</span></li>
+  <li>ค่าเริ่มต้นจะกรองไว้ที่แท็บ <span class="ui">ค้างจ่าย</span></li>
+</ol>
+<figure>
+  <img src="img/small/07-account.png" alt="หน้าบัญชี">
+  <figcaption>ภาพ 7.1 — หน้าบัญชี</figcaption>
+</figure>
+<table class="small">
+  <tr><th style="width:30mm">คอลัมน์</th><th>อ่านยังไง</th></tr>
+  <tr><td class="k">เลขบิล / SO</td><td>เลขบิล และเลขออเดอร์ต้นทาง · ป้าย <code>v.2</code> แปลว่าบิลใบนี้เคยถูกแก้ · แถวที่ขึ้นป้าย "ยังไม่ออกบิล" คือออเดอร์ที่รออยู่</td></tr>
+  <tr><td class="k">ลูกค้า</td><td>รหัสและชื่อร้าน</td></tr>
+  <tr><td class="k">ยอด</td><td>ยอดเรียกเก็บทั้งใบ (รวมค่าส่ง หักส่วนลดแล้ว)</td></tr>
+  <tr><td class="k">ออกเมื่อ</td><td>วันเวลาที่ออกบิล · ✍️ = คนออกบิล · 🙋 = คนสั่งออเดอร์ · 🛒 = ลูกค้าสั่งเอง</td></tr>
+  <tr><td class="k">LINE</td><td>ส่งบิลเข้ากลุ่มไลน์แล้วหรือยัง</td></tr>
+  <tr><td class="k">ส่ง</td><td>รอส่ง / ส่งแล้ว / ยกเลิก</td></tr>
+  <tr><td class="k">ชำระ</td><td>ค้างจ่าย / จ่ายบางส่วน (บอกยอดค้างที่เหลือ) / ✓ จ่ายแล้ว</td></tr>
+  <tr><td class="k">รับยอดโดย</td><td>ใครกดรับยอด และเมื่อไหร่</td></tr>
+  <tr><td class="k">ขนส่ง · นัดส่ง · ค่าใช้จ่าย</td><td>วิธีส่ง วันนัดส่ง และค่าใช้จ่ายเพิ่มเติมของบิลนั้น</td></tr>
+</table>
+<h3>ตัวกรองที่ใช้บ่อย</h3>
+<ul class="plain">
+  <li><b>แท็บด้านบน</b> — ค้างจ่าย / จ่ายแล้ว / ยกเลิกบิล / ทั้งหมด / 🧾 มีสลิป</li>
+  <li><b>เซลล์ · ขนส่ง · สถานะส่ง</b> — เลือกซ้อนกันได้ เช่น "ของเซลล์ปรียา ที่ส่ง BI และยังรอส่ง"</li>
+  <li><b>ช่วงวันที่</b> — เลือกตั้งแต่/ถึง</li>
+  <li><b>ช่องค้นหา</b> — พิมพ์เลขบิล เลขออเดอร์ หรือชื่อร้าน</li>
+</ul>
+
+<h2 id="s7-2">7.2 รับยอด (บันทึกว่าเงินเข้าแล้ว)</h2>
+<ol class="steps">
+  <li>ใส่ชื่อตัวเองในช่อง <span class="ui">ผู้ตรวจ</span> ด้านบน (ปกติระบบเติมให้แล้ว)</li>
+  <li>หาแถวบิลที่ต้องการ</li>
+  <li>กดปุ่มรับยอดที่ท้ายแถว</li>
+  <li>ถ้าลูกค้าจ่ายครบ ให้ยืนยันยอดเต็ม · ถ้าจ่ายบางส่วน ให้ใส่จำนวนที่ได้รับจริง</li>
+  <li>ระบบจะบันทึกชื่อคนรับยอดและเวลาไว้ให้อัตโนมัติ</li>
+</ol>
+<div class="box tip"><span class="bt">รับยอดผิดใบ</span>
+กดปุ่มยกเลิกการรับยอดที่แถวเดิม ระบบจะคืนสถานะเป็นค้างจ่าย และเก็บประวัติไว้ให้ตรวจย้อนหลังได้</div>
+
+<h2 id="s7-3">7.3 สลิปโอนเงิน</h2>
+<ol class="steps">
+  <li>แนบรูปสลิปเข้ากับบิลที่ตรงกัน</li>
+  <li>ใช้แท็บ <span class="ui">🧾 มีสลิป</span> เพื่อดูเฉพาะบิลที่มีสลิปแล้ว</li>
+  <li>กด <span class="ui">🕵️ สลิปตกค้าง</span> เพื่อดูสลิปที่ยังจับคู่กับบิลไม่ได้ แล้วจับคู่ให้เรียบร้อย</li>
+</ol>
+
+<h2 id="s7-4">7.4 แก้บิล และยกเลิกบิล</h2>
+<ol class="steps">
+  <li>กดปุ่มแก้บิลที่ท้ายแถว</li>
+  <li>ถ้าบิลนั้น<b>ยังไม่ส่งของและยังไม่รับยอด</b> — แก้ได้เลย ระบบจะปรับสต๊อกและยอดให้ พร้อมเพิ่มเลขเวอร์ชันเป็น v.2</li>
+  <li>ถ้าบิลนั้น<b>ส่งของแล้วหรือรับยอดแล้ว</b> — ระบบจะสร้าง "คำขอแก้บิล" ส่งให้ admin
+    <ul><li>admin เข้าไปกด <span class="ui">🛎️ คำขอแก้บิล</span> เพื่ออนุมัติ</li>
+        <li>เมื่ออนุมัติแล้ว ระบบจะแก้บิล ปรับสต๊อกที่โกดัง และคิดสถานะจ่ายใหม่ให้ทันที</li></ul></li>
+  <li>ถ้าจะยกเลิกทั้งใบ กดปุ่มยกเลิกบิล — บิลที่ยกเลิกจะไม่ถูกนับเป็นหนี้ค้างและไม่นับเป็นรายรับ แต่ยังดูย้อนหลังได้ในแท็บ <span class="ui">ยกเลิกบิล</span></li>
+</ol>
+
+<h2 id="s7-5">7.5 ดึงรายงานเป็น Excel</h2>
+<ol class="steps">
+  <li>เลือกเดือนในช่อง <span class="ui">เดือน</span> แล้วกด <span class="ui">📊 Excel รายเดือน</span></li>
+  <li>หรือกรองรายการที่ต้องการไว้ก่อน แล้วกด <span class="ui">⬇️ Excel รายการนี้</span>
+    <ul><li>ไฟล์นี้มี 2 ชีต: สรุปรายบิล และรายการสินค้าพร้อมต้นทุน/กำไร</li></ul></li>
+</ol>
+
+<h2 id="s7-6">7.6 บันทึกรายจ่าย (Petty Cash)</h2>
+<ol class="steps">
+  <li>เมนูซ้าย → <span class="ui">บัญชี</span> → <span class="ui">รายจ่าย (Petty Cash)</span></li>
+  <li>เลือก <span class="ui">วันที่จ่าย</span> และ <span class="ui">หมวดค่าใช้จ่าย</span></li>
+  <li>กรอก <span class="ui">รายละเอียด</span> และ <span class="ui">จำนวนเงิน</span> (สองช่องนี้บังคับ)</li>
+  <li>เลือก <span class="ui">วิธีจ่าย</span> และใส่ <span class="ui">ผู้จ่าย/สำรองจ่าย</span></li>
+  <li>ถ่ายรูปใบเสร็จแนบในช่อง <span class="ui">ใบเสร็จ (รูป)</span></li>
+  <li>กด <span class="ui">💾 บันทึกรายจ่าย</span></li>
+</ol>
+<figure>
+  <img src="img/small/15-expense.png" alt="หน้ารายจ่าย">
+  <figcaption>ภาพ 7.2 — หน้ารายจ่าย (Petty Cash)</figcaption>
+</figure>
+
+<!-- ============================= บทที่ 8 ============================= -->
+<h1 class="ch" id="ch8"><span class="num">บทที่ 8</span>สต๊อกและคลังสินค้า</h1>
+<p class="chlead">หัวใจคือ "ของเข้าต้องบันทึก ของออกระบบตัดให้" ถ้าทำครบ ตัวเลขในระบบจะตรงกับของจริงเสมอ</p>
+
+<h2 id="s8-1">8.1 รับสินค้าเข้า</h2>
+<ol class="steps">
+  <li>เมนูซ้าย → <span class="ui">สินค้า</span> → <span class="ui">รับสินค้า</span></li>
+  <li>เลือก <span class="ui">รับเข้าคลัง</span> ว่าของกองนี้เข้าคลังไหน</li>
+  <li>ใส่ <span class="ui">ผู้ขาย / ที่มา</span> (ไม่บังคับ แต่ใส่ไว้จะไล่ที่มาของล็อตได้)</li>
+  <li>ใส่ชื่อ <span class="ui">ผู้รับของ</span></li>
+  <li>พิมพ์ชื่อสินค้าในช่องค้นหา แล้วกดเพิ่มเข้ารายการ</li>
+  <li>ใส่จำนวนและราคาทุนต่อหน่วยของล็อตนี้ ทำซ้ำจนครบทุกตัว</li>
+  <li>กด <span class="ui">✓ บันทึกรับเข้า</span></li>
+</ol>
+<figure>
+  <img src="img/small/11-receive.png" alt="หน้ารับสินค้าเข้า">
+  <figcaption>ภาพ 8.1 — หน้ารับสินค้าเข้า</figcaption>
+</figure>
+<div class="box stop"><span class="bt">ราคาทุนต้องใส่ให้ถูก</span>
+ตัวเลขนี้คือฐานของต้นทุน FIFO และกำไรทุกบิลที่ตัดจากล็อตนี้ ถ้าใส่ผิดจะทำให้กำไรทั้งเดือนเพี้ยน</div>
+<div class="box tip"><span class="bt">บันทึกแล้วเห็นผลทันที</span>
+สต๊อกเพิ่มทันที และหน้าสั่งของของลูกค้าจะเห็นตัวเลขใหม่แบบสด ๆ โดยไม่ต้องรีเฟรช</div>
+
+<h2 id="s8-2">8.2 โอนของจากโกดัง</h2>
+<ol class="steps">
+  <li>เมนูซ้าย → <span class="ui">สินค้า</span> → <span class="ui">โอนโกดัง</span></li>
+  <li>เลือก <span class="ui">จากโกดัง (ต้นทาง)</span> และ <span class="ui">ไปโกดัง (ปลายทาง)</span></li>
+  <li>กด <span class="ui">🧮 คำนวณแนะนำเรียกของ</span> ระบบจะเสนอจำนวนให้ตามสูตร
+    <ul><li>เรียก = (Max ถ้าตั้งไว้ ไม่งั้นใช้ Safety) + ยอดจองรอส่ง − ของคงเหลือปลายทาง</li></ul></li>
+  <li>ปรับจำนวนตามจริง หรือกด <span class="ui">+ เพิ่ม</span> เพื่อใส่สินค้าเอง</li>
+  <li>กด <span class="ui">💾 บันทึกใบโอน + แจ้ง LINE</span></li>
+  <li>เมื่อของถึงปลายทาง ให้ไปที่หน้า <span class="ui">รับสินค้า</span> หัวข้อ <span class="ui">🚛 รอรับเข้าจากโกดัง</span> แล้วกดยืนยันรับ</li>
+</ol>
+<figure>
+  <img src="img/small/12-transfer.png" alt="หน้าโอนโกดัง">
+  <figcaption>ภาพ 8.2 — หน้าโอนของจากโกดัง</figcaption>
+</figure>
+<div class="box tip"><span class="bt">อยากได้ใบเรียกของเป็นรูป</span>
+กด <span class="ui">🖼️ รูปสรุปโอนสินค้า</span> จะได้รูปที่ส่งให้ทีมโกดังหยิบของได้เลย ชื่อสินค้ายาวจะถูกแบ่งเป็น 2 บรรทัดให้อ่านง่าย</div>
+
+<h2 id="s8-3">8.3 นับ / ปรับสต๊อก</h2>
+<ol class="steps">
+  <li>เมนูซ้าย → <span class="ui">สินค้า</span> → <span class="ui">นับ/ปรับสต๊อก</span></li>
+  <li>เลือก <span class="ui">โกดัง</span> และ <span class="ui">ชุดสินค้า</span> ที่จะนับ</li>
+  <li>กด <span class="ui">📄 PDF ใบเช็คสต๊อก (นับมือ)</span> แล้วปริ้นไปนับที่คลัง</li>
+  <li>กลับมากรอกจำนวนที่นับได้จริงลงในตาราง
+    <ul><li>แถวที่ขึ้น<b>สีแดง</b> คือนับได้ไม่ตรงกับระบบ</li></ul></li>
+  <li>กด <span class="ui">✓ ยืนยันผลนับ + สรุปเดินสต๊อก</span></li>
+</ol>
+<figure>
+  <img src="img/small/14-stockops.png" alt="หน้านับปรับสต๊อก">
+  <figcaption>ภาพ 8.3 — หน้านับ / ปรับสต๊อก</figcaption>
+</figure>
+<div class="box note"><span class="bt">ดูย้อนหลังได้</span>
+แท็บด้านบนมี <span class="ui">ประวัติปรับสต๊อก</span>, <span class="ui">ประวัติแปลงสินค้า</span> และ <span class="ui">ประวัติการนับ</span> เก็บไว้ให้ตรวจสอบได้ทุกครั้ง</div>
+
+<h2 id="s8-4">8.4 ไล่ดูว่าของหายไปไหน</h2>
+<ol class="steps">
+  <li>เมนูซ้าย → <span class="ui">สินค้า</span> → <span class="ui">เดินรายการสินค้า</span></li>
+  <li>เลือกสินค้า ประเภทรายการ โกดัง และช่วงวันที่</li>
+  <li>กด <span class="ui">🔎 ดูรายการ</span> — จะเห็นทุกครั้งที่ของเข้าและออก พร้อมชื่อคนทำและเอกสารอ้างอิง</li>
+  <li>อยากเก็บไว้วิเคราะห์ต่อ กด <span class="ui">⬇️ CSV</span></li>
+</ol>
+<figure>
+  <img src="img/small/24-moves.png" alt="หน้าเดินรายการสินค้า">
+  <figcaption>ภาพ 8.4 — หน้าเดินรายการสินค้า</figcaption>
+</figure>
+
+<h2 id="s8-5">8.5 คลังสินค้า</h2>
+<ol class="steps">
+  <li>เมนูซ้าย → <span class="ui">สินค้า</span> → <span class="ui">คลังสินค้า</span></li>
+  <li>ดูยอดคงเหลือแยกตามคลังได้ที่ตารางด้านบน</li>
+  <li>ถ้าจะเพิ่มคลังใหม่ กรอกชื่อคลัง ผู้ติดต่อ เบอร์ และที่อยู่ แล้วกด <span class="ui">บันทึกคลัง</span>
+    <ul><li>พิมพ์รหัสไปรษณีย์ 5 หลัก ระบบจะเติมจังหวัด/อำเภอให้อัตโนมัติ</li></ul></li>
+</ol>
+<figure>
+  <img src="img/small/19-warehouse.png" alt="หน้าคลังสินค้า">
+  <figcaption>ภาพ 8.5 — หน้าคลังสินค้า</figcaption>
+</figure>
+
+<h2 id="s8-6">8.6 ดูต้นทุนสินค้า</h2>
+<ol class="steps">
+  <li>เมนูซ้าย → <span class="ui">ผู้ใช้</span> → <span class="ui">ต้นทุนสินค้า</span></li>
+  <li>ใส่ <span class="ui">รหัส 6 หลัก</span> ของหน้านี้ แล้วกด <span class="ui">ปลดล็อก</span>
+    <ul><li>ถ้ายังไม่เคยตั้ง ระบบจะให้ตั้งรหัสครั้งแรกตรงนี้</li></ul></li>
+  <li>ดูหรือแก้ต้นทุนได้ แล้วกด <span class="ui">💾 บันทึกที่แก้</span></li>
+  <li>ใช้เสร็จกด <span class="ui">🔒 ล็อก</span> ทุกครั้ง</li>
+</ol>
+<figure>
+  <img src="img/small/25-cost.png" alt="หน้าต้นทุนสินค้า">
+  <figcaption>ภาพ 8.6 — หน้าต้นทุนสินค้า (ล็อกด้วยรหัส 6 หลัก)</figcaption>
+</figure>
+
+<!-- ============================= บทที่ 9 ============================= -->
+<h1 class="ch" id="ch9"><span class="num">บทที่ 9</span>วางแผนและสั่งซื้อ</h1>
+<p class="chlead">แทนที่จะเดาว่าต้องสั่งเท่าไหร่ ให้ระบบคำนวณจากยอดขายจริงย้อนหลังให้</p>
+
+<h2 id="s9-1">9.1 แพลนการสั่งซื้อ</h2>
+<ol class="steps">
+  <li>เมนูซ้าย → <span class="ui">แพลนสั่งซื้อ</span></li>
+  <li>ตั้งค่าตัวเลข 4 ตัวด้านบน
+    <ul>
+      <li><span class="ui">ดูยอดขายย้อนหลัง</span> — แนะนำ 90 วัน (ยิ่งยาวยิ่งแม่น)</li>
+      <li><span class="ui">รอของ (วัน)</span> — สั่งแล้วกี่วันของถึง</li>
+      <li><span class="ui">รอบสั่งทุก (วัน)</span> — เราสั่งถี่แค่ไหน</li>
+      <li><span class="ui">เผื่อฉุกเฉิน (วัน)</span> — กันของขาดกรณีขายดีผิดปกติ</li>
+    </ul></li>
+  <li>เลือก <span class="ui">คาดการณ์ยอด</span> เป็น "ตามเทรนด์ (แนะนำ)"</li>
+  <li>ติ๊ก <span class="ui">เฉพาะที่ต้องสั่ง</span> เพื่อกรองเอาเฉพาะตัวที่ขาด</li>
+  <li>กด <span class="ui">🧮 คำนวณแผน</span></li>
+  <li>อ่านผลในตาราง แล้วเลือกทำต่อ
+    <ul>
+      <li><span class="ui">📋 คัดลอกใบสั่งซื้อ</span> — ได้ข้อความไปวางส่งซัพพลายเออร์</li>
+      <li><span class="ui">📦 บันทึกเป็นใบสั่งซื้อ</span> — เก็บไว้ในระบบ แล้วตัดยอดตอนของมาถึง</li>
+    </ul></li>
+</ol>
+<figure>
+  <img src="img/small/13-plan.png" alt="หน้าแพลนการสั่งซื้อ">
+  <figcaption>ภาพ 9.1 — หน้าแพลนการสั่งซื้อ</figcaption>
+</figure>
+<div class="grid2">
+  <div><h4>สูตรที่ระบบใช้</h4>
+    เป้าหมาย = ขาย/วัน × (รอของ + รอบสั่ง + เผื่อ)<br><br>
+    ต้องสั่ง = เป้าหมาย − (สต๊อก + ของกำลังมา − ยอดจอง)</div>
+  <div><h4>ข้อควรรู้</h4>
+    จำนวนที่ต้องสั่งจะถูกปัดขึ้นเป็นเลขลงท้าย 5 หรือ 0 · สินค้าที่ยังไม่มีประวัติขายจะใช้ค่า Max Stock แทน ·
+    ถ้ามีข้อมูลขายจริงน้อยกว่า 30 วัน ระบบจะขึ้นคำเตือนว่าตัวเลขยังแกว่ง</div>
+</div>
+
+<h2 id="s9-2">9.2 หน้าจัดซื้อ</h2>
+<ol class="steps">
+  <li>เมนูซ้าย → <span class="ui">จัดซื้อ</span> → <span class="ui">รายการสั่งซื้อ</span></li>
+  <li>เลือก <span class="ui">โกดังที่ต้องเติม</span> และ <span class="ui">ซัพพลายเออร์</span></li>
+  <li>กด <span class="ui">🧮 คำนวณรายการที่ต้องซื้อ</span></li>
+  <li>เลือกวิธีส่งต่อ: <span class="ui">📋 คัดลอกข้อความสั่งซื้อ</span> · <span class="ui">🖼️ รูปสรุปจัดซื้อ</span> · <span class="ui">📲 ส่งเข้ากลุ่มสรุป</span></li>
+</ol>
+<figure>
+  <img src="img/small/20-purchase.png" alt="หน้าจัดซื้อ">
+  <figcaption>ภาพ 9.2 — หน้าจัดซื้อ</figcaption>
+</figure>
+
+<h2 id="s9-3">9.3 ซัพพลายเออร์</h2>
+<ol class="steps">
+  <li>เมนูซ้าย → <span class="ui">จัดซื้อ</span> → <span class="ui">ซัพพลายเออร์</span></li>
+  <li>เพิ่มชื่อผู้ขาย ผู้ติดต่อ และเบอร์โทร แล้วบันทึก</li>
+  <li>กลับไปผูกซัพพลายเออร์กับสินค้าได้ที่หน้า <span class="ui">สินค้า</span> (ติ๊กได้หลายราย)</li>
+</ol>
+<figure>
+  <img src="img/small/27-suppliers.png" alt="หน้าซัพพลายเออร์">
+  <figcaption>ภาพ 9.3 — หน้าซัพพลายเออร์</figcaption>
+</figure>
+
+<!-- ============================= บทที่ 10 ============================= -->
+<h1 class="ch" id="ch10"><span class="num">บทที่ 10</span>ดูแลลูกค้าและการตลาด</h1>
+<p class="chlead">ระบบช่วยบอกว่าควรโทรหาใครก่อน และช่วยส่งโปรหาหลายร้านพร้อมกัน</p>
+
+<h2 id="s10-1">10.1 ลูกค้า CRM — ใครควรโทรหาวันนี้</h2>
+<ol class="steps">
+  <li>เมนูซ้าย → <span class="ui">ลูกค้า</span> → <span class="ui">ลูกค้า CRM</span></li>
+  <li>อ่านผลตาม 3 กลุ่ม
+    <ul>
+      <li><b>⏰ ใกล้ถึงรอบสั่งครั้งถัดไป</b> — ระบบคำนวณจากรอบสั่งเฉลี่ยของร้านนั้นเอง โทรตอนนี้มีโอกาสได้ออเดอร์สูงสุด</li>
+      <li><b>🟠 ขาดการซื้อ 1 เดือน (30–59 วัน)</b> — เริ่มห่าง ควรทักถาม</li>
+      <li><b>🔴 ขาดการซื้อ 2 เดือนขึ้นไป</b> — เสี่ยงเสียลูกค้า ควรรีบตาม</li>
+    </ul></li>
+  <li>ใส่โน้ตหรือติดสีให้ลูกค้าไว้ตามงานที่ทำไปแล้วได้</li>
+</ol>
+<figure>
+  <img src="img/small/18-crm.png" alt="หน้าลูกค้า CRM">
+  <figcaption>ภาพ 10.1 — หน้าลูกค้า CRM</figcaption>
+</figure>
+
+<h2 id="s10-2">10.2 ส่งข้อความบรอดแคสต์ และตั้งโปรลดราคา</h2>
+<ol class="steps">
+  <li>เมนูซ้าย → <span class="ui">โปรโมชั่น</span> → <span class="ui">ส่งข้อความบรอดแคสต์</span></li>
+  <li>เลือกโหมด
+    <ul>
+      <li><span class="ui">💬 ข้อความทั่วไป</span> — ส่งข้อความหรือรูป/วิดีโอหาหลายร้าน</li>
+      <li><span class="ui">🔥 โปรลดราคาสินค้า</span> — ตั้งราคาโปรพร้อมวันเวลาเริ่มและหมดเขต</li>
+    </ul></li>
+  <li>ถ้าเป็นโปร: เลือกสินค้า ใส่ <span class="ui">ราคาโปร</span> วันเวลาเริ่มและสิ้นสุด</li>
+  <li>ติ๊ก <span class="ui">💸 แก้ราคาจริงในระบบตามช่วงโปร</span> ถ้าต้องการให้ราคาเปลี่ยนจริงตามเวลา (ไม่ใช่แค่ประกาศ)</li>
+  <li>เลือกร้านที่จะส่ง — กด <span class="ui">🔎 ค้นหาร้านที่เข้าเกณฑ์</span> หรือ <span class="ui">☑ เลือกทั้งหมดที่แสดง</span></li>
+  <li>ตรวจข้อความอีกครั้ง แล้วกด <span class="ui">📣 ส่งข้อความ</span></li>
+</ol>
+<figure>
+  <img src="img/small/17-bcast.png" alt="หน้าบรอดแคสต์">
+  <figcaption>ภาพ 10.2 — หน้าส่งข้อความบรอดแคสต์</figcaption>
+</figure>
+<div class="box stop"><span class="bt">ส่งแล้วเรียกคืนไม่ได้</span>
+ข้อความเข้ากลุ่มไลน์ลูกค้าจริง ให้อ่านทวนและเช็ครายชื่อร้านที่เลือกไว้ก่อนกดส่งทุกครั้ง</div>
+<p>อยากดูผลของโปรที่ตั้งไว้ ไปที่ <span class="ui">โปรโมชั่น</span> → <span class="ui">รายละเอียดการลดราคา</span></p>
+
+<h2 id="s10-3">10.3 ใบเสนอราคา</h2>
+<ol class="steps">
+  <li>เมนูซ้าย → <span class="ui">งานขาย</span> → <span class="ui">ใบเสนอราคา</span></li>
+  <li>เลือกลูกค้าในระบบ หรือพิมพ์ชื่อร้านเองสำหรับลูกค้าใหม่ที่ยังไม่ได้เปิดรหัส</li>
+  <li>ใส่ <span class="ui">ยืนราคา (วัน)</span></li>
+  <li>เพิ่มสินค้าและจำนวนทีละรายการด้วยปุ่ม <span class="ui">+ เพิ่ม</span></li>
+  <li>เลือกวิธีส่ง: <span class="ui">🖼️ สร้างใบเสนอราคา (PNG)</span> · <span class="ui">📄 PDF</span> · <span class="ui">📲 สร้าง + ส่งเข้ากลุ่ม LINE</span></li>
+</ol>
+<figure>
+  <img src="img/small/16-quote.png" alt="หน้าใบเสนอราคา">
+  <figcaption>ภาพ 10.3 — หน้าใบเสนอราคา</figcaption>
+</figure>
+
+<h2 id="s10-4">10.4 คำนวณค่าส่ง BI</h2>
+<ol class="steps">
+  <li>เมนูซ้าย → <span class="ui">ลูกค้า</span> → <span class="ui">คำนวณค่าส่ง</span></li>
+  <li>เลือกลูกค้า — ระบบตั้งเรทค่าส่งของร้านนั้นให้อัตโนมัติ</li>
+  <li>เพิ่มสินค้าจริงเพื่อให้ระบบรู้ว่าลังไหนเป็นชิ้นใหญ่ หรือกรอกจำนวนลังเองแบบเร็ว ๆ</li>
+  <li>กด <span class="ui">📋 คัดลอกผล</span> เพื่อเอาไปวางในแชทหรือในช่องค่าส่งตอนออกบิล</li>
+</ol>
+<figure>
+  <img src="img/small/26-shipcalc.png" alt="หน้าคำนวณค่าส่ง">
+  <figcaption>ภาพ 10.4 — หน้าคำนวณค่าส่ง BI</figcaption>
+</figure>
+
+<h2 id="s10-5">10.5 ประวัติสั่งซื้อ และแผนที่ลูกค้า</h2>
+<ol class="steps">
+  <li><span class="ui">ลูกค้า</span> → <span class="ui">ประวัติสั่งซื้อ</span> — เลือกร้าน จะเห็นว่าสั่งไปกี่ออเดอร์ และสั่งอะไรบ้าง ใช้เตรียมตัวก่อนโทรหาลูกค้า</li>
+  <li><span class="ui">ลูกค้า</span> → <span class="ui">แผนที่ลูกค้า</span> — หมุดขนาดและสีตามยอดขาย คลิกหมุดดูรายละเอียดร้านได้</li>
+  <li>ร้านไหนยังไม่มีหมุด กด <span class="ui">📍 หาพิกัดร้านที่ยังไม่มี</span> ระบบจะหาพิกัดจากที่อยู่ให้</li>
+</ol>
+<figure class="two">
+  <div><img src="img/small/23-custhist.png" alt="หน้าประวัติสั่งซื้อ">
+    <figcaption>ภาพ 10.5 — ประวัติสั่งซื้อรายลูกค้า</figcaption></div>
+  <div><img src="img/small/28-custmap.png" alt="หน้าแผนที่ลูกค้า">
+    <figcaption>ภาพ 10.6 — แผนที่ลูกค้า</figcaption></div>
+</figure>
+
+<!-- ============================= บทที่ 11 ============================= -->
+<h1 class="ch" id="ch11"><span class="num">บทที่ 11</span>อ่านรายงานในหน้าภาพรวม</h1>
+<p class="chlead">การ์ดทุกใบในหน้าภาพรวมไม่ใช่แค่ตัวเลข — หลายใบกดเข้าไปดูรายละเอียดได้</p>
+
+<h2 id="s11-1">11.1 การ์ดสรุป 8 ใบ</h2>
+<table>
+  <tr><th style="width:44mm">การ์ด</th><th>บอกอะไร · กดได้ไหม</th></tr>
+  <tr><td class="k">💵 ยอดขายช่วงที่เลือก</td><td>ยอดขายตามช่วงเวลาที่กรองไว้ พร้อมยอดของวันนี้ด้านล่าง</td></tr>
+  <tr><td class="k">📈 ยอดขายเดือนนี้</td><td>ยอดของเดือนปัจจุบันเสมอ ไม่เปลี่ยนตามตัวกรอง</td></tr>
+  <tr><td class="k">🧾 ออเดอร์รอทำบิล</td><td>จำนวนออเดอร์ที่ยังไม่ได้ออกบิล</td></tr>
+  <tr><td class="k">⏳ ยอดค้างจ่าย</td><td><b>กดได้</b> — เข้าไปดูยอดค้างแยกรายเดือน แล้วเจาะต่อเป็นรายเซลล์และรายร้าน</td></tr>
+  <tr><td class="k">🏭 มูลค่าสต๊อกคงเหลือ</td><td>มูลค่ารวมของของที่ยังอยู่ในคลัง</td></tr>
+  <tr><td class="k">📈 กำไรขั้นต้น</td><td>ยอดขายหักต้นทุน FIFO ในช่วงที่เลือก</td></tr>
+  <tr><td class="k">🗑️ มูลค่าของเสีย</td><td>ของที่ถูกบันทึกเป็นของเสียในช่วงที่เลือก</td></tr>
+  <tr><td class="k">🤝 ลูกค้าใหม่</td><td><b>กดได้</b> — ดูรายวัน ดูว่าใครเป็นคนเพิ่ม และดูรายชื่อทั้งหมด (หัวข้อ 11.2)</td></tr>
+</table>
+
+<h2 id="s11-2">11.2 ลูกค้าใหม่รายวัน และใครเป็นคนเพิ่ม</h2>
+<p>ความสามารถนี้เพิ่มเข้ามาใน build 25/08-A</p>
+<ol class="steps">
+  <li>ที่หน้า <span class="ui">ภาพรวม</span> เลือกช่วงเวลาที่ต้องการก่อน (เช่น เดือนนี้)</li>
+  <li>กดการ์ด <span class="ui">🤝 ลูกค้าใหม่ (ช่วงที่เลือก)</span></li>
+  <li>เลือกมุมมองจากปุ่มด้านบนของหน้าต่างที่เด้งขึ้นมา</li>
+</ol>
+<figure>
+  <img src="img/small/03b-newcust-day-open.png" alt="มุมมองรายวัน">
+  <figcaption>ภาพ 11.1 — มุมมอง 📅 รายวัน (กดแถบวันเพื่อกางรายชื่อของวันนั้น)</figcaption>
+</figure>
+<table>
+  <tr><th style="width:34mm">มุมมอง</th><th>เห็นอะไร</th></tr>
+  <tr><td class="k">📅 รายวัน</td><td>บรรทัดสรุปด้านบนบอกว่าเพิ่มลูกค้าไปกี่วัน เฉลี่ยกี่รายต่อวัน และวันไหนเพิ่มมากสุด · แต่ละแถบวันมีแถบเทียบสัดส่วนและจำนวนราย · <b>กดแถบวันเพื่อกาง</b>ดูว่าวันนั้นใครเพิ่มบ้าง และรายชื่อร้านพร้อมยอดสั่งซื้อ</td></tr>
+  <tr><td class="k">🙋 คนเพิ่ม</td><td>ใครเพิ่มลูกค้าไปกี่ราย กระจายกี่วัน เฉลี่ยต่อวันเท่าไหร่ และยอดสั่งซื้อรวมที่ตามมา (คนที่เพิ่มมากสุดได้ 🥇)</td></tr>
+  <tr><td class="k">📋 รายชื่อทั้งหมด</td><td>รายชื่อร้านทั้งหมดในช่วง พร้อมคนเพิ่ม เซลล์ วันที่เข้ามา จำนวนออเดอร์ และยอดสั่งซื้อ</td></tr>
+</table>
+<figure class="two">
+  <div><img src="img/small/04-newcust-who.png" alt="มุมมองคนเพิ่ม">
+    <figcaption>ภาพ 11.2 — มุมมอง 🙋 คนเพิ่ม</figcaption></div>
+  <div><img src="img/small/05-newcust-all.png" alt="มุมมองรายชื่อทั้งหมด">
+    <figcaption>ภาพ 11.3 — มุมมอง 📋 รายชื่อทั้งหมด</figcaption></div>
+</figure>
+<div class="box warn"><span class="bt">เครื่องหมาย * ข้างชื่อคนเพิ่มแปลว่าอะไร</span>
+ลูกค้าที่ถูกเพิ่มไว้<b>ก่อน</b>ระบบเริ่มเก็บชื่อคนกดเพิ่ม จะไม่มีข้อมูลตรงนี้ ระบบจึงแสดงชื่อ<b>เซลล์เจ้าของรหัส</b>แทนพร้อมเครื่องหมาย *
+ส่วนลูกค้าที่เพิ่มใหม่ตั้งแต่ build 25/08-A เป็นต้นไป จะเก็บชื่อคนที่ล็อกอินกดเพิ่มจริง</div>
+
+<h2 id="s11-3">11.3 ทำเนียบแชมป์เซลล์</h2>
+<ol class="steps">
+  <li>ที่หน้าภาพรวม เลื่อนลงไปการ์ด <span class="ui">สรุปยอดต่อเซลล์</span></li>
+  <li>กดปุ่ม <span class="ui">🏆 ทำเนียบแชมป์</span></li>
+  <li>จะเห็นอันดับ 🥇🥈🥉 ของแต่ละเดือนย้อนหลัง 12 เดือน และนับให้ว่าใครได้ที่ 1 ไปกี่เดือน
+    <ul><li>เดือนปัจจุบันจะมีป้าย "ยังไม่จบ" กำกับไว้ และไม่ถูกนับเป็นแชมป์</li></ul></li>
+</ol>
+
+<!-- ============================= บทที่ 12 ============================= -->
+<h1 class="ch" id="ch12"><span class="num">บทที่ 12</span>ปัญหาที่พบบ่อยและวิธีแก้</h1>
+<p class="chlead">ลองไล่ตามตารางนี้ก่อนแจ้งคนดูแลระบบ — ส่วนใหญ่แก้เองได้</p>
+<table class="small">
+  <tr><th style="width:46mm">อาการ</th><th style="width:52mm">สาเหตุที่พบบ่อย</th><th>วิธีแก้</th></tr>
+  <tr><td class="k">ลูกค้าเปิดลิงก์แล้วเห็นหน้าว่าง ไม่มีสินค้า</td><td>ยังไม่ได้จัดสินค้าให้ร้านนั้น</td><td>ไปหน้า <span class="ui">จัดสินค้า</span> เลือกร้าน ติ๊กสินค้า แล้วบันทึก (หัวข้อ 4.4)</td></tr>
+  <tr><td class="k">ลูกค้าเปิดลิงก์แล้วขึ้น "เปิดหน้านี้ไม่ได้"</td><td>ลิงก์ผิด ลิงก์เก่า หรือร้านถูกปิดใช้งาน</td><td>สร้างลิงก์ใหม่จากหน้า <span class="ui">ลูกค้า</span> แล้วส่งให้ใหม่</td></tr>
+  <tr><td class="k">ออกบิลแล้วบิลไม่เข้ากลุ่มไลน์</td><td>ร้านยังไม่ได้ผูก LINE Group ID</td><td>ผูกกลุ่มตามหัวข้อ 4.5 · ระหว่างนี้ส่งรูปบิลให้ลูกค้าเองไปก่อน</td></tr>
+  <tr><td class="k">ยอดสต๊อกในระบบไม่ตรงของจริง</td><td>รับของเข้ามาแล้วไม่ได้บันทึก หรือมีของเสีย/แตกหักที่ยังไม่บันทึก</td><td>ใช้หน้า <span class="ui">นับ/ปรับสต๊อก</span> นับแล้วปรับ (หัวข้อ 8.3) จากนั้นไล่ดูที่หน้า <span class="ui">เดินรายการสินค้า</span></td></tr>
+  <tr><td class="k">กำไรในบิลดูผิดปกติ</td><td>ราคาทุนตอนรับของใส่ผิด</td><td>เปิดหน้า <span class="ui">ต้นทุนสินค้า</span> ตรวจล็อตนั้น แล้วแก้ให้ถูก</td></tr>
+  <tr><td class="k">แก้บิลไม่ได้ ขึ้นว่าต้องรออนุมัติ</td><td>บิลใบนั้นส่งของแล้วหรือรับยอดแล้ว</td><td>เป็นเรื่องปกติ — ให้ admin เข้าไปกด <span class="ui">🛎️ คำขอแก้บิล</span> อนุมัติให้</td></tr>
+  <tr><td class="k">สรุปออเดอร์เช้านี้ไม่เข้ากลุ่มกลาง</td><td>เป็นวันอาทิตย์หรือวันหยุดที่ตั้งไว้ หรือรอบนั้นไม่มีออเดอร์</td><td>กด <span class="ui">🕘 ประวัติการส่งสรุป</span> ดูว่ารอบนั้นถูกข้ามเพราะอะไร · ถ้าอยากส่งเดี๋ยวนี้ใช้ปุ่มส่งด้วยมือ (หัวข้อ 6.5)</td></tr>
+  <tr><td class="k">บิลออกแล้วแต่ยังไม่มีรูป</td><td>คิวการวาดรูปยังไม่ถึง หรือตัววาดบนเครื่องในออฟฟิศไม่ทำงาน</td><td>รอประมาณ 10 นาที ระบบสำรองจะวาดให้เอง · ถ้าเกินกว่านั้นให้แจ้งคนดูแลระบบ</td></tr>
+  <tr><td class="k">กดปุ่มแล้วไม่มีอะไรเกิดขึ้น</td><td>อินเทอร์เน็ตหลุด หรือหน้าเว็บค้างเพราะเปิดทิ้งไว้นาน</td><td>กด <span class="kbd">F5</span> เพื่อโหลดหน้าใหม่ แล้วลองอีกครั้ง</td></tr>
+  <tr><td class="k">ตัวเลขบนหน้าจอไม่อัปเดต</td><td>หน้าเว็บยังถือข้อมูลเก่าอยู่</td><td>กด <span class="kbd">Ctrl</span>+<span class="kbd">F5</span> เพื่อล้างแคชและโหลดใหม่</td></tr>
+  <tr><td class="k">ลืมรหัสผ่านเข้าระบบ</td><td>—</td><td>ให้ admin เข้าหน้า <span class="ui">ผู้ใช้ระบบ</span> กดแก้ไขผู้ใช้นั้น แล้วตั้งรหัสใหม่ให้</td></tr>
+  <tr><td class="k">ลูกค้าลืม PIN 6 หลัก</td><td>—</td><td>ให้ลูกค้าพิมพ์ <code>เปลี่ยน</code> ตามด้วยรหัสใหม่ 6 หลัก ในกลุ่มไลน์ของร้าน</td></tr>
+</table>
+<div class="box stop"><span class="bt">เวลาแจ้งปัญหา ให้บอก 4 อย่างนี้เสมอ</span>
+(1) เลข build ที่อยู่ใต้โลโก้มุมซ้ายบน (2) หน้าไหน (3) กดปุ่มอะไร (4) ข้อความที่ขึ้นบนจอ (แคปหน้าจอมาด้วยยิ่งดี)</div>
+
+<!-- ============================= ภาคผนวก ============================= -->
+<div class="appx">
+<h1 class="ch" id="apA"><span class="num">ภาคผนวก ก</span>ตารางเวลางานอัตโนมัติ</h1>
+<p class="chlead">รอบพวกนี้ทำงานบนคลาวด์ ไม่ต้องมีใครเปิดเครื่องรอ</p>
+<table>
+  <tr><th style="width:36mm">รอบงาน</th><th style="width:32mm">ความถี่</th><th>ทำอะไร</th></tr>
+  <tr><td class="k">ออกบิลอัตโนมัติ</td><td>ทุก 3 นาที</td><td>ออกบิลให้ออเดอร์ที่ถึงรอบตัดแล้ว และสั่งวาดรูปบิล (ข้ามร้านที่ตั้งยกเว้นไว้)</td></tr>
+  <tr><td class="k">สรุปออเดอร์ประจำวัน</td><td>ทุกวัน 06:00 น.</td><td>ส่งสรุปออเดอร์เป็นไฟล์ PDF เข้ากลุ่มกลาง แยกตามวิธีขนส่ง · ข้ามวันอาทิตย์และวันหยุดที่ตั้งไว้</td></tr>
+  <tr><td class="k">ยามตรวจซ้ำ</td><td>ทุก 15 นาที</td><td>ตรวจว่ารอบสรุปส่งไปแล้วจริงไหม ถ้าพลาดจะส่งแทนให้ภายใน 15 นาที · นอกช่วงหนึ่งชั่วโมงแรกหลังเวลาตัดรอบจะไม่ทำอะไร</td></tr>
+  <tr><td class="k">ตัววาดบิลบน NAS</td><td>ต่อเนื่อง</td><td>วาดรูปบิลเทมเพลตเต็มรูปแบบ ~1.4 วินาที/ใบ · ถ้าใบไหนค้างเกิน 10 นาที ระบบบนคลาวด์จะวาดแทนด้วยเทมเพลตเรียบง่าย</td></tr>
+</table>
+
+<h1 class="ch" id="apB"><span class="num">ภาคผนวก ข</span>สถานะต่าง ๆ ในระบบ</h1>
+<table>
+  <tr><th style="width:34mm">สถานะ</th><th>หมายความว่า</th></tr>
+  <tr><td class="k">ยังไม่ออกบิล</td><td>ออเดอร์ที่ลูกค้าสั่งแล้ว แต่ยังไม่ได้ออกบิล — สต๊อกถูกจองไว้แต่ยังไม่ถูกตัดจริง</td></tr>
+  <tr><td class="k">รอส่ง</td><td>ออกบิลแล้ว แต่ยังไม่ได้กดยืนยันส่งของ</td></tr>
+  <tr><td class="k">ส่งแล้ว</td><td>ยืนยันแล้วว่าของออกจากคลังไปถึงลูกค้า</td></tr>
+  <tr><td class="k">ยกเลิก</td><td>บิลถูกยกเลิก ไม่นับเป็นหนี้ค้างและไม่นับเป็นรายรับ</td></tr>
+  <tr><td class="k">ค้างจ่าย</td><td>ยังไม่ได้รับเงินเลย</td></tr>
+  <tr><td class="k">บางส่วน</td><td>ได้รับเงินมาแล้วบางส่วน ระบบแสดงยอดที่ยังค้างให้</td></tr>
+  <tr><td class="k">✓ จ่ายแล้ว</td><td>รับเงินครบแล้ว มีชื่อคนรับยอดและเวลากำกับ</td></tr>
+  <tr><td class="k">v.2 (หรือสูงกว่า)</td><td>บิลใบนี้ถูกแก้มาแล้ว ตัวเลขคือเวอร์ชันปัจจุบัน</td></tr>
+  <tr><td class="k">พร้อมจำหน่าย / ใกล้หมด / หมด</td><td>ป้ายสถานะสต๊อกที่ลูกค้าเห็นในหน้าสั่งของ (ไม่บอกจำนวนจริง)</td></tr>
+</table>
+
+<h1 class="ch" id="apC"><span class="num">ภาคผนวก ค</span>สิ่งที่ต้องทำก่อนใช้ความสามารถใหม่</h1>
+<p class="chlead">สำหรับคนดูแลระบบเท่านั้น</p>
+<h2>ค.1 เปิดใช้งาน "ลูกค้าใหม่รายวัน + ใครเป็นคนเพิ่ม"</h2>
+<ol class="steps">
+  <li>เปิดหน้าจัดการฐานข้อมูล แล้วเข้าส่วน SQL Editor</li>
+  <li>ล้างแท็บให้ว่างก่อน แล้ววางเนื้อหาไฟล์ <code>customers_created_by.sql</code> ทั้งไฟล์</li>
+  <li>กดรัน — คำสั่งนี้เพิ่มคอลัมน์ <code>created_by</code> ในตาราง <code>customers</code></li>
+  <li>อัปหน้าเว็บหลังบ้าน build 25/08-A ขึ้นแทนของเดิม</li>
+  <li>เปิดหน้าเว็บใหม่ แล้วตรวจว่าเลข build ใต้โลโก้เปลี่ยนเป็น <code>25/08-A</code></li>
+</ol>
+<div class="box note"><span class="bt">ข้อมูลเก่าย้อนหลังไม่ได้</span>
+ลูกค้าที่มีอยู่ก่อนหน้านี้จะไม่มีชื่อคนกดเพิ่ม เพราะระบบไม่เคยเก็บไว้ หน้าจอจะแสดงชื่อเซลล์เจ้าของรหัสแทนพร้อมเครื่องหมาย *
+ส่วนลูกค้าที่เพิ่มหลังจากนี้จะเก็บชื่อจริงของคนที่ล็อกอินกดเพิ่ม</div>
+<h2>ค.2 กติกาเวลาแก้หน้าเว็บ</h2>
+<ul class="plain">
+  <li>ทุกครั้งที่แก้หน้าเว็บ ต้องเปลี่ยนเลข build ใต้โลโก้ด้วยเสมอ จะได้รู้ว่าเครื่องไหนใช้เวอร์ชันอะไรอยู่</li>
+  <li>ก่อนแก้ ให้ดึงไฟล์ล่าสุดมาก่อน อย่าแก้ต่อจากสำเนาเก่า</li>
+  <li>แก้เสร็จให้ทดสอบหน้าที่แก้จริงก่อนเอาขึ้นใช้งาน</li>
+</ul>
+</div>
+
+</body>
+</html>
