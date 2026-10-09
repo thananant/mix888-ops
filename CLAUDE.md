@@ -11,7 +11,12 @@
 
 ## ข้อควรระวัง
 - repo นี้เป็น **Public** ทุกไฟล์ใน repo ใครก็เปิดดูได้ ห้ามใส่ key, password, token หรือข้อมูลลับลง repo
-- หน้าเว็บบน GitHub Pages ไม่มีฐานข้อมูลกลาง ข้อมูลที่ผู้ใช้กรอกต้องเก็บใน localStorage ของเบราว์เซอร์ (เครื่องใครเครื่องมัน)
+- `hotel-leads/` เป็นงานของ **keys** (ระบบสำหรับโรงแรมที่ใช้ Cloudbeds) **ไม่เกี่ยวกับ Mix888 หรือจริงใจหมูกระทะ** ห้ามใช้ Supabase/LINE ของ Mix888 กับงานนี้
+  - กำลังจะย้ายไป repo `thananant/keys-leads` (รอผู้ใช้สร้าง repo ตาม `hotel-leads/SETUP.md`)
+- Backend ของ keys: Supabase project **cloudbeds-rm** (`vauqbfjgkdhgrtycqhnd`)
+  - edge function `keys-crm` และตาราง `crm_*`
+  - รหัสทีมกับ cron key อยู่ใน `crm_settings` เท่านั้น ห้ามใส่ลง repo
+  - รายละเอียดอยู่ใน `hotel-leads/SETUP.md`
 
 ## งานใน repo
 - `hotel-leads/` — Cloudbeds Lead Finder: โรงแรมในกรุงเทพฯ ที่ใช้ Cloudbeds (52 แห่ง) แยกตามเขต ดาว รีวิว ราคา
