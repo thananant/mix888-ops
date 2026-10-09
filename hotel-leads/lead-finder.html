@@ -286,10 +286,16 @@ $("#reset").addEventListener("click",()=>{ preset=null; khetSel=null;
   $("#q").value=""; $("#type").value=""; $("#stars").value="0"; $("#rv").value="0"; $("#pmin").value=""; $("#pmax").value="";
   $("#fstatus").value=""; $("#known").checked=false; $("#sort").value="score"; render(); });
 
+const LS_KEY = "cloudbeds-leads-crm";
 async function save(id, patch){
   if (!db) return;
   const body = {...(crm[id]||{}), ...patch, updatedAt:new Date().toISOString()};
   crm[id] = body;
+  if (db === "local"){
+    try { localStorage.setItem(LS_KEY, JSON.stringify(crm)); $("#sync").textContent = "บันทึกในเบราว์เซอร์นี้แล้ว (เครื่องอื่นจะไม่เห็น)"; }
+    catch { $("#sync").textContent = "เบราว์เซอร์นี้ไม่ยอมให้บันทึก"; }
+    return;
+  }
   try { await db.collection("leads").doc(id).set(body); $("#sync").textContent = "บันทึกแล้ว · ทุกคนที่เปิดหน้านี้เห็นสถานะเดียวกัน"; }
   catch(e){ $("#sync").textContent = e?.code==="permission_denied" || e?.code==="not_granted" ? "คุณมีสิทธิ์ดูอย่างเดียว บันทึกสถานะไม่ได้" : "บันทึกไม่สำเร็จ ลองใหม่อีกครั้ง"; }
 }
@@ -303,7 +309,12 @@ render();
 
 (async()=>{
   try { db = await window.claude?.use?.("db"); } catch { db = null; }
-  if (!db){ $("#sync").textContent = "ดูได้อย่างเดียว ยังไม่ได้เชื่อมที่เก็บสถานะ (ต้องลงชื่อเข้า claude.ai)"; return; }
+  if (!db){
+    // Outside claude.ai (e.g. GitHub Pages): keep statuses in this browser only
+    try { Object.assign(crm, JSON.parse(localStorage.getItem(LS_KEY)||"{}")); db = "local"; } catch { db = null; }
+    $("#sync").textContent = db ? "สถานะและโน้ตบันทึกไว้ในเบราว์เซอร์นี้เท่านั้น" : "ดูได้อย่างเดียว เบราว์เซอร์นี้บันทึกสถานะไม่ได้";
+    render(); return;
+  }
   $("#sync").textContent = "เชื่อมแล้ว · เปลี่ยนสถานะ/โน้ตแล้วจะบันทึกอัตโนมัติ";
   db.collection("leads").onSnapshot(snap=>{
     snap.docs.forEach(d=>{ if (d.exists) crm[d.id] = d.data(); });
