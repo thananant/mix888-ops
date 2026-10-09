@@ -25,6 +25,38 @@ for h in hotels:
     c = contacts.get(h["id"], {})
     h["ph"], h["ph2"], h["em"], h["ln"], h["web"] = (c.get(k) for k in ("phone", "phone2", "email", "line", "website"))
 
+# --- why we recommend each hotel (shown on the page and in the spreadsheet)
+TOURIST = {"Phra Nakhon", "Watthana", "Khlong Toei", "Bang Rak", "Pathum Wan", "Ratchathewi", "Sathon", "Samphanthawong"}
+def fmt(n): return f"{n:,.0f}"
+def reasons(h):
+    out = ["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่"]
+    no = h.get("no") or ""
+    if "เครือ" in no or "เจ้าของเดียวกัน" in no:
+        out.append("มีหลายสาขาหรือมีโรงแรมพี่น้อง คุยครั้งเดียวมีโอกาสได้หลายแห่ง")
+    rm = h.get("rm")
+    if rm:
+        out.append(f"ขนาดใหญ่ {fmt(rm)} ห้อง งานหน้าบ้านและการจองเยอะ" if rm >= 50 else
+                   f"ขนาดกลาง {fmt(rm)} ห้อง กำลังโต" if rm >= 20 else
+                   f"ขนาดเล็ก {fmt(rm)} ห้อง คุยกับเจ้าของได้ตรง ตัดสินใจเร็ว")
+    if h.get("s") and h["s"] >= 4: out.append(f"ระดับ {h['s']:g} ดาว มีงบลงทุนระบบ")
+    rc, rv = h.get("rc"), h.get("rv")
+    if rc and rc >= 1000: out.append(f"รีวิว {fmt(rc)} รายการ แขกเข้าพักต่อเนื่อง ธุรกิจมีรายได้สม่ำเสมอ")
+    if rv is not None:
+        if rv >= 9: out.append(f"คะแนนรีวิว {rv:.1f} ดีเยี่ยม ใส่ใจคุณภาพ พร้อมลงทุนต่อ")
+        elif rv < 7.5: out.append(f"คะแนนรีวิว {rv:.1f} ค่อนข้างต่ำ มีจุดให้ช่วยปรับปรุงบริการ")
+    p = h.get("p")
+    if p:
+        if 800 <= p <= 2500: out.append(f"ราคา ~{fmt(p)} ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย")
+        elif p > 2500: out.append(f"ราคา ~{fmt(p)} ฿/คืน กลุ่มพรีเมียม รายได้ต่อห้องสูง")
+    if h["ken"] in TOURIST: out.append(f"อยู่ย่านท่องเที่ยวหลัก ({h['kth']}) แข่งขันสูง ต้องการเครื่องมือช่วยขาย")
+    elif h["ken"] == "Don Mueang": out.append("ใกล้สนามบินดอนเมือง แขกเข้าออกเร็ว ต้องจัดการห้องไว")
+    if h.get("web"): out.append("มีเว็บไซต์ของตัวเอง ให้ความสำคัญกับการจองตรง")
+    if h.get("ph") and h.get("em"): out.append("มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที")
+    elif h.get("ph"): out.append("มีเบอร์โทร ติดต่อได้ทันที")
+    return out
+for h in hotels:
+    h["why"] = reasons(h)
+
 # --- web pages
 data = json.dumps(hotels, ensure_ascii=False, separators=(",", ":"))
 page = open(P("lead-finder.template.html"), encoding="utf-8").read().replace("__DATA__", data)
@@ -49,9 +81,9 @@ def price_t(p):
 
 H = ["เขต", "ชื่อโรงแรม", "ประเภท", "เบอร์โทร", "เบอร์โทร 2", "อีเมล", "เว็บไซต์", "ดาว", "ระดับดาว",
      "คะแนนรีวิว (/10)", "จำนวนรีวิว", "แหล่งรีวิว", "ราคาเริ่มต้น/คืน (฿ ประมาณ)", "ช่วงราคา", "จำนวนห้อง",
-     "ที่อยู่", "ลิงก์จอง Cloudbeds", "หมายเหตุ"]
+     "ที่อยู่", "ลิงก์จอง Cloudbeds", "เหตุผลที่เสนอ", "หมายเหตุ"]
 rows = sorted(([h["kth"], h["n"], TYPE[h["t"]], h["ph"], h["ph2"], h["em"], h["web"], h["s"], star_t(h["s"]),
-                h["rv"], h["rc"], h["src"], h["p"], price_t(h["p"]), h["rm"], h["a"], h["u"], h["no"]] for h in hotels),
+                h["rv"], h["rc"], h["src"], h["p"], price_t(h["p"]), h["rm"], h["a"], h["u"], " / ".join(h["why"]), h["no"]] for h in hotels),
               key=lambda r: (r[0], -(r[9] or 0)))
 
 wb = Workbook()
@@ -64,7 +96,7 @@ def sheet(ws, head, data, widths):
     for i, w in enumerate(widths, 1): ws.column_dimensions[get_column_letter(i)].width = w
     ws.freeze_panes = "C2"; ws.auto_filter.ref = ws.dimensions
 ws = wb.active; ws.title = "รายชื่อทั้งหมด"
-sheet(ws, H, rows, [16, 34, 13, 14, 14, 30, 30, 7, 11, 10, 10, 14, 13, 12, 9, 45, 48, 45])
+sheet(ws, H, rows, [16, 34, 13, 14, 14, 30, 30, 7, 11, 10, 10, 14, 13, 12, 9, 45, 48, 70, 45])
 for row in ws.iter_rows(min_row=2):
     for c in (row[6], row[16]):
         if c.value: c.hyperlink, c.font = c.value, Font(color="2D45A0", underline="single")
