@@ -387,14 +387,69 @@ async function save(id){
   const body = {...lead(id), updatedAt:new Date().toISOString()};
   delete body.status; body.stage = stageOf(id);
   crm[id] = body;
+  try { localStorage.setItem(LS_KEY, JSON.stringify(crm)); } catch {}
   if (store === "local"){
-    try { localStorage.setItem(LS_KEY, JSON.stringify(crm)); flash("บันทึกในเครื่องนี้แล้ว"); } catch { flash("เบราว์เซอร์นี้บันทึกไม่ได้"); }
+    flash("บันทึกในเครื่องนี้แล้ว");
+  } else if (store === "api"){
+    try { await api("save", {id, data:{...body, name:BY_ID[id]?.n}}); flash("บันทึกแล้ว · ทีมเห็นทันที"); }
+    catch(e){ flash(e.message==="401" ? "รหัสทีมไม่ถูกต้อง" : "ยังไม่ได้ส่งขึ้นระบบ (เน็ตหลุด?) เก็บไว้ในเครื่องก่อน"); markDirty(id); }
   } else if (store){
     try { await store.collection("leads").doc(id).set(body); flash("บันทึกแล้ว"); }
     catch(e){ flash(e?.code==="permission_denied"||e?.code==="not_granted" ? "คุณมีสิทธิ์ดูอย่างเดียว บันทึกไม่ได้" : "บันทึกไม่สำเร็จ ลองใหม่อีกครั้ง"); }
   }
   renderAll();
 }
+// ---------- team backend (Supabase edge function keys-crm)
+const API = "https://vauqbfjgkdhgrtycqhnd.supabase.co/functions/v1/keys-crm";
+let teamCode = ""; try { teamCode = localStorage.getItem("keys-team")||""; } catch {}
+async function api(action, body){
+  const r = await fetch(API+"?action="+action, {method: body ? "POST" : "GET", headers: {"content-type":"application/json","x-team-code":teamCode}, body: body ? JSON.stringify(body) : undefined});
+  if (!r.ok) throw new Error(String(r.status));
+  return r.json();
+}
+function markDirty(id){ try { const d = new Set(JSON.parse(localStorage.getItem("keys-dirty")||"[]")); d.add(id); localStorage.setItem("keys-dirty", JSON.stringify([...d])); } catch {} }
+async function pushDirty(){
+  let d = []; try { d = JSON.parse(localStorage.getItem("keys-dirty")||"[]"); } catch {}
+  const left = [];
+  for (const id of d){ if (!crm[id]) continue; try { await api("save", {id, data:{...crm[id], name:BY_ID[id]?.n}}); } catch { left.push(id); } }
+  try { localStorage.setItem("keys-dirty", JSON.stringify(left)); } catch {}
+}
+async function pullServer(){
+  const res = await api("list");
+  const server = {}; for (const r of res.leads||[]) server[r.id] = r.data;
+  // keep local edits that the server has not seen yet (newer updatedAt, or missing on server)
+  for (const id in crm){ const l = crm[id], sv = server[id];
+    if (!sv || (l.updatedAt||"") > (sv.updatedAt||"")) { server[id] = l; markDirty(id); } }
+  for (const k in crm) delete crm[k]; Object.assign(crm, server);
+  try { localStorage.setItem(LS_KEY, JSON.stringify(crm)); } catch {}
+  await pushDirty();
+}
+function showLogin(msg){
+  $("#sync").innerHTML = `<form id="teamForm" style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><span>${msg||"ใส่รหัสทีมเพื่อให้ทุกคนเห็นข้อมูลเดียวกัน และส่งแจ้งเตือนนัดเข้า LINE"}</span><input id="teamIn" type="text" autocomplete="off" autocapitalize="characters" placeholder="KEYS-XXXXXX" style="background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:6px 8px;font:inherit;color:var(--ink);width:140px"><button class="primary" type="submit">เข้าระบบทีม</button></form>`;
+  $("#teamForm").addEventListener("submit", async e=>{ e.preventDefault(); teamCode = $("#teamIn").value.trim().toUpperCase(); await connectTeam(true); });
+}
+async function connectTeam(fromForm){
+  if (!teamCode){ showLogin(); return false; }
+  $("#sync").textContent = "กำลังเชื่อมระบบทีม…";
+  try {
+    await pullServer(); store = "api";
+    try { localStorage.setItem("keys-team", teamCode); } catch {}
+    $("#sync").innerHTML = `เชื่อมระบบทีมแล้ว · ข้อมูลเห็นตรงกันทุกเครื่อง · แจ้งเตือนนัดเข้า LINE 08:00/18:00 <button class="ghost" id="teamOut" style="padding:2px 8px;font-size:12px;margin-left:6px">ออกจากระบบ</button>`;
+    $("#teamOut").addEventListener("click",()=>{ try { localStorage.removeItem("keys-team"); } catch {} teamCode=""; store="local"; showLogin(); });
+    renderAll(); return true;
+  } catch(e){
+    if (e.message==="401"){ try { localStorage.removeItem("keys-team"); } catch {} teamCode=""; showLogin(fromForm ? "รหัสทีมไม่ถูกต้อง ลองอีกครั้ง" : ""); }
+    else { $("#sync").textContent = "ต่อระบบทีมไม่ได้ (เน็ตหลุด?) ตอนนี้บันทึกไว้ในเครื่องก่อน จะส่งขึ้นให้อัตโนมัติเมื่อกลับมาออนไลน์"; }
+    return false;
+  }
+}
+// pull fresh data when the app comes back to the foreground
+document.addEventListener("visibilitychange", async ()=>{
+  if (document.visibilityState!=="visible" || store!=="api") return;
+  const a = document.activeElement; if (a && /^(INPUT|TEXTAREA)$/.test(a.tagName)) return;
+  try { await pullServer(); renderAll(); } catch {}
+});
+window.addEventListener("online", ()=>{ if (teamCode) connectTeam(false); });
 function flash(t){ const el=$("#dSaved"); if(el){ el.textContent=t; setTimeout(()=>{ if(el.textContent===t) el.textContent=""; },2000);} }
 function patch(id, fields){ crm[id] = {...lead(id), ...fields}; return save(id); }
 
@@ -731,8 +786,9 @@ try { const o = sessionStorage.getItem("keys-open"); if (o && BY_ID[o]) openDraw
   let db = null; try { db = await window.claude?.use?.("db"); } catch {}
   if (!db){
     try { Object.assign(crm, JSON.parse(localStorage.getItem(LS_KEY)||"{}")); store = "local"; } catch { store = null; }
-    $("#sync").textContent = store ? "ข้อมูลลูกค้าบันทึกไว้ในเครื่องนี้ (ใช้เครื่องเดิมเปิดทุกครั้ง)" : "เบราว์เซอร์นี้บันทึกข้อมูลไม่ได้";
-    renderAll(); return;
+    renderAll();
+    if (!(await connectTeam(false)) && !teamCode) showLogin();
+    return;
   }
   store = db;
   $("#sync").textContent = "เชื่อมแล้ว · ทุกคนในทีมเห็นข้อมูลเดียวกัน";
