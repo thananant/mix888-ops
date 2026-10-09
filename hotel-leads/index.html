@@ -1,26 +1,29 @@
 <!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>body{margin:0;font-size:14px}[hidden]{display:none!important}</style></head><body>
 <title>Keys Lead Finder</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 80' fill='none' stroke-linecap='round' stroke-linejoin='round' stroke-width='10'%3E%3Cpath d='M8 38 L48 8' stroke='%234A63B5'/%3E%3Cpath d='M8 46 H24 L46 64' stroke='%232D45A0'/%3E%3Cpath d='M12 60 H22 L38 74' stroke='%231C2457'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 180' fill='none' stroke-linecap='round' stroke-linejoin='round' stroke-width='19'%3E%3Cpath d='M12 80 L84 14' stroke='%233d5cb8'/%3E%3Cpath d='M12 96 H30 Q36 96 41 100 L86 142' stroke='%232c48a4'/%3E%3Cpath d='M22 124 H32 Q38 124 43 128 L70 158' stroke='%231c2457'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: keys back-office CI. Navy brand bar with logo lockup, sticky filter bar, district bars as legend, leads as rows with a key-icon score tile. */
 :root{
   --bg:#f2f4fa; --surface:#ffffff; --ink:#1c2457; --muted:#646d96; --line:#dde2f0;
   --accent:#2d45a0; --accent-soft:#e6ebf8; --brass:#4a63b5; --brass-soft:#e9edf9;
   --brand-1:#2e4a9e; --brand-2:#1c2457; --brand-light:#9fb3e8; --brand-pale:#c9d3f2;
+  --logo-1:#3d5cb8; --logo-2:#2c48a4; --logo-3:#1c2457; --logo-word:#1c2457;
   --ok:#1f7a4d; --warn:#9a6a00; --bad:#b23a3a; --info:#4a63b5;
   --font-display:"Plus Jakarta Sans","IBM Plex Sans Thai",system-ui,sans-serif;
   --font-body:"IBM Plex Sans Thai","Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --logo-1:#7d97e3; --logo-2:#a9bbef; --logo-3:#e6eaf7; --logo-word:#ffffff;
   --bg:#0f1330; --surface:#171d42; --ink:#e6eaf7; --muted:#9aa3c8; --line:#2a3462;
   --accent:#9fb3e8; --accent-soft:#232d5e; --brass:#9fb3e8; --brass-soft:#232d5e;
   --brand-1:#2e4a9e; --brand-2:#1c2457; --brand-light:#9fb3e8; --brand-pale:#c9d3f2;
   --ok:#6cc98a; --warn:#e2b54b; --bad:#ef8a8a; --info:#9fb3e8; color-scheme:dark}}
 :root[data-theme="dark"]{
+  --logo-1:#7d97e3; --logo-2:#a9bbef; --logo-3:#e6eaf7; --logo-word:#ffffff;
   --bg:#0f1330; --surface:#171d42; --ink:#e6eaf7; --muted:#9aa3c8; --line:#2a3462;
   --accent:#9fb3e8; --accent-soft:#232d5e; --brass:#9fb3e8; --brass-soft:#232d5e;
   --brand-1:#2e4a9e; --brand-2:#1c2457; --brand-light:#9fb3e8; --brand-pale:#c9d3f2;
@@ -69,12 +72,12 @@ aside h2,.listhead h2{font-family:var(--font-display);font-size:15px;margin:0}
 .tag{width:48px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--brand-1),var(--brand-2));display:flex;flex-direction:column;align-items:center;justify-content:center}
 .tag b{font-family:var(--font-display);font-weight:800;font-size:18px;color:#fff;line-height:1}
 .tag span{font-size:9px;color:var(--brand-pale);letter-spacing:.6px;margin-top:3px}
-.brandbar{background:linear-gradient(120deg,var(--brand-1),var(--brand-2));border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.brandbar{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .lockup{display:flex;align-items:center;gap:8px;text-decoration:none}
-.lockup svg{height:34px;width:auto}
-.lockup b{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:800;font-size:30px;letter-spacing:-1px;color:#fff;line-height:1}
-.brandbar .sep{width:1px;height:26px;background:rgba(255,255,255,.35)}
-.brandbar .app{color:var(--brand-pale);font-size:14px;font-weight:500}
+.lockup .logo{height:40px;width:auto}.l1{stroke:var(--logo-1)}.l2{stroke:var(--logo-2)}.l3{stroke:var(--logo-3)}
+.lockup b{font-family:"Poppins","Plus Jakarta Sans",system-ui,sans-serif;font-weight:700;font-size:34px;letter-spacing:-1.2px;color:var(--logo-word);line-height:1;margin-bottom:4px}
+.brandbar .sep{width:1px;height:26px;background:var(--line)}
+.brandbar .app{color:var(--muted);font-size:14px;font-weight:500}
 .name{font-weight:600;font-size:15px;margin:0;overflow-wrap:anywhere}
 .meta{display:flex;flex-wrap:wrap;gap:4px 12px;color:var(--muted);font-size:12.5px;margin-top:2px}
 .facts{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
@@ -100,97 +103,273 @@ aside h2,.listhead h2{font-family:var(--font-display);font-size:15px;margin:0}
 .empty{padding:28px;text-align:center;color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:10px}
 .foot{font-size:12px;color:var(--muted);max-width:90ch}
 @media (prefers-reduced-motion:no-preference){.kb .tr i{transition:width .25s}}
+/* --- CRM additions --- */
+.tabs{display:flex;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:4px;width:max-content;max-width:100%;overflow-x:auto}
+.tab{border:0;background:transparent;border-radius:9px;padding:8px 14px;cursor:pointer;font-weight:500;color:var(--muted);white-space:nowrap}
+.tab[aria-selected=true]{background:linear-gradient(120deg,var(--brand-1),var(--brand-2));color:#fff}
+.tab .n{font-family:var(--font-mono);font-size:11px;margin-left:4px;opacity:.85}
+.stage{font-size:11.5px;font-weight:600;border-radius:999px;padding:2px 9px;white-space:nowrap}
+.sg-new{background:var(--bg);color:var(--muted);border:1px solid var(--line)}
+.sg-called{background:var(--accent-soft);color:var(--accent)}
+.sg-interested{background:#fff3d6;color:#8a5a00}
+.sg-demo{background:#e3e9ff;color:#2d45a0}
+.sg-proposal{background:#efe4ff;color:#5b3aa8}
+.sg-won{background:#dcf3e5;color:var(--ok)}
+.sg-lost{background:#f8e1e1;color:var(--bad)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sg-interested{background:#3a2e10;color:#f0c66b}
+ :root:not([data-theme="light"]) .sg-demo{background:#232d5e;color:#b9c8f3}:root:not([data-theme="light"]) .sg-proposal{background:#2f2350;color:#cbb6f5}
+ :root:not([data-theme="light"]) .sg-won{background:#163626;color:#7fd6a0}:root:not([data-theme="light"]) .sg-lost{background:#3b1d1d;color:#f0a0a0}}
+:root[data-theme="dark"] .sg-interested{background:#3a2e10;color:#f0c66b}:root[data-theme="dark"] .sg-demo{background:#232d5e;color:#b9c8f3}
+:root[data-theme="dark"] .sg-proposal{background:#2f2350;color:#cbb6f5}:root[data-theme="dark"] .sg-won{background:#163626;color:#7fd6a0}:root[data-theme="dark"] .sg-lost{background:#3b1d1d;color:#f0a0a0}
+.flag{font-size:11.5px;border-radius:5px;padding:2px 7px;border:1px dashed var(--bad);color:var(--bad)}
+.flag.appt{border-color:var(--warn);color:var(--warn)}
+.flag.next{border:1px solid var(--accent);color:var(--accent);border-style:solid}
+.lastact{font-size:12.5px;color:var(--ink);margin-top:6px;background:var(--bg);border-radius:6px;padding:6px 8px}
+.lastact small{color:var(--muted)}
+.crm .open{width:100%}
+.lead{grid-template-columns:54px minmax(0,1fr) 170px}
+/* drawer */
+.scrim{position:fixed;inset:0;background:rgba(10,14,40,.45);z-index:20}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(560px,100%);background:var(--bg);z-index:21;display:flex;flex-direction:column;box-shadow:-8px 0 30px rgba(10,14,40,.25)}
+.dhead{background:linear-gradient(120deg,var(--brand-1),var(--brand-2));color:#fff;padding:calc(env(safe-area-inset-top,0px) + 12px) 16px 12px;display:flex;gap:10px;align-items:flex-start}
+.dhead h3{margin:0;font-family:var(--font-display);font-size:18px;line-height:1.3}
+.dhead p{margin:2px 0 0;font-size:12.5px;color:var(--brand-pale)}
+.dhead a{color:#fff}
+.x{margin-left:auto;border:0;background:rgba(255,255,255,.15);color:#fff;border-radius:8px;width:34px;height:34px;font-size:18px;cursor:pointer;flex:none}
+.dbody{overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:14px 16px calc(env(safe-area-inset-bottom,0px) + 24px);display:grid;gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:grid;gap:10px}
+.card h4{margin:0;font-size:14px;font-family:var(--font-display)}
+.steps{display:flex;flex-wrap:wrap;gap:6px}
+.steps button{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:5px 10px;font-size:12.5px;cursor:pointer;color:var(--ink)}
+.steps button[aria-pressed=true]{background:var(--brand-1);border-color:var(--brand-1);color:#fff}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media (max-width:420px){.two{grid-template-columns:1fr}}
+.card input[type=text],.card input[type=date],.card input[type=time],.card select,.card textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px;font:inherit;color:var(--ink);min-width:0}
+.card textarea{min-height:70px;resize:vertical}
+.chk{display:flex;gap:8px;align-items:center;font-size:13.5px}
+.tl{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.tl li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px}
+.tl .ic{width:28px;height:28px;border-radius:8px;background:var(--accent-soft);display:grid;place-items:center;font-size:14px}
+.tl .t{font-size:13px}
+.tl .t b{font-weight:600}
+.tl .t small{display:block;color:var(--muted);font-size:11.5px}
+.tl .del,.ap .del{border:0;background:transparent;color:var(--muted);cursor:pointer;font-size:12px;padding:0 4px}
+.ap{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px;align-items:center;font-size:13px;border-top:1px solid var(--line);padding-top:8px}
+.ap.done{opacity:.55}
+.ap .when{font-family:var(--font-mono);font-size:12px;background:var(--accent-soft);color:var(--accent);border-radius:6px;padding:3px 6px;text-align:center;white-space:nowrap}
+.saved{font-size:11.5px;color:var(--ok)}
+#q{width:100%}
+@media (max-width:480px){.ap{grid-template-columns:auto minmax(0,1fr)}.ap>span:last-child{grid-column:1/-1;flex-direction:row!important;justify-content:space-between}}
+.why{margin:6px 0 0;padding-left:18px;font-size:12.5px;color:var(--ink);display:grid;gap:2px}
+.why li::marker{color:var(--brand-1)}
+.whybox{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.whybox summary{cursor:pointer;font-weight:600;font-family:var(--font-display)}
+.whybox p,.whybox li{font-size:13px;color:var(--ink);max-width:80ch}
+/* calendar */
+.cal{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:grid;gap:10px}
+.calhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.calhead h2{margin:0 auto 0 0;font-family:var(--font-display);font-size:17px}
+.grid7{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.dow{font-size:11px;color:var(--muted);text-align:center;padding:2px 0}
+.day{min-height:78px;border:1px solid var(--line);border-radius:8px;padding:4px;background:var(--bg);cursor:pointer;display:flex;flex-direction:column;gap:2px;text-align:left;font:inherit;color:var(--ink);min-width:0}
+.day.out{opacity:.4}
+.day.today{border-color:var(--brand-1);box-shadow:inset 0 0 0 1px var(--brand-1)}
+.day[aria-pressed=true]{background:var(--accent-soft)}
+.day .d{font-family:var(--font-mono);font-size:12px}
+.ev{font-size:10.5px;background:var(--brand-1);color:#fff;border-radius:4px;padding:1px 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ev.done{background:var(--muted)}
+.more{font-size:10px;color:var(--muted)}
+@media (max-width:640px){.day{min-height:50px}.ev{font-size:0;height:6px;padding:0;width:6px;border-radius:50%;display:inline-block}.evs{display:flex;gap:2px;flex-wrap:wrap}}
+.agenda{display:grid;gap:8px}
+.agenda .it{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;cursor:pointer}
+.agenda .it .when{font-family:var(--font-mono);font-size:12px;text-align:center;line-height:1.3}
+.agenda .it .when b{display:block;font-size:16px;color:var(--brand-1)}
+.agenda h3{margin:6px 0 0;font-size:14px;font-family:var(--font-display)}
 </style>
 
 <div class="wrap">
   <div class="brandbar">
-    <span class="lockup" aria-label="keys"><svg viewBox="0 0 64 80" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="10" aria-hidden="true"><path d="M8 38 L48 8" stroke="#9fb3e8"/><path d="M8 46 H24 L46 64" stroke="#c9d3f2"/><path d="M12 60 H22 L38 74" stroke="#ffffff"/></svg><b>keys</b></span>
-    <span class="sep" aria-hidden="true"></span><span class="app">Lead Finder</span>
+    <span class="lockup" aria-label="keys"><svg class="logo" viewBox="0 0 100 180" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="19" aria-hidden="true"><path class="l1" d="M12 80 L84 14"/><path class="l2" d="M12 96 H30 Q36 96 41 100 L86 142"/><path class="l3" d="M22 124 H32 Q38 124 43 128 L70 158"/></svg><b>keys</b></span>
+    <span class="sep" aria-hidden="true"></span><span class="app">Lead Finder · CRM</span>
   </div>
   <header>
     <div>
       <h1>โรงแรมที่ใช้ Cloudbeds · กรุงเทพฯ</h1>
-      <p class="sub">โรงแรมที่หน้าจองตรงอยู่บน hotels.cloudbeds.com แปลว่าใช้ Cloudbeds อยู่ กรองตามเขต ดาว รีวิว ราคา แล้วบันทึกสถานะการติดต่อได้ในหน้านี้</p>
+      <p class="sub">หาโรงแรมเป้าหมาย บันทึกการโทร โน้ต ขั้นตอนการขาย และนัดหมายของแต่ละราย</p>
     </div>
     <div class="kpis">
-      <div class="kpi"><b id="kTotal">0</b><span>ตรงเงื่อนไข</span></div>
-      <div class="kpi"><b id="kHot">0</b><span>คะแนน 70+</span></div>
-      <div class="kpi"><b id="kWork">0</b><span>กำลังคุย</span></div>
+      <div class="kpi"><b id="kNotCalled">0</b><span>ยังไม่โทร</span></div>
+      <div class="kpi"><b id="kNeedAppt">0</b><span>ต้องทำนัด</span></div>
+      <div class="kpi"><b id="kWeek">0</b><span>นัด 7 วันนี้</span></div>
       <div class="kpi"><b id="kWon">0</b><span>ปิดการขาย</span></div>
     </div>
   </header>
 
-  <section class="bar" aria-label="ตัวกรอง">
-    <div class="row">
-      <span style="font-size:12px;color:var(--muted)">เป้าหมายด่วน</span>
-      <div class="chips" id="presets">
-        <button class="chip preset" data-p="mid" aria-pressed="false">โรงแรม 3 ดาว+ ขนาดกลาง</button>
-        <button class="chip preset" data-p="boutique" aria-pressed="false">บูทีครีวิว 9+</button>
-        <button class="chip preset" data-p="volume" aria-pressed="false">รีวิวเยอะ (ลูกค้าเข้าเยอะ)</button>
-        <button class="chip preset" data-p="hostel" aria-pressed="false">โฮสเทล</button>
+  <details class="whybox" id="whyAll">
+    <summary>ทำไมถึงเสนอโรงแรมกลุ่มนี้</summary>
+    <ul>
+      <li><b>ใช้ Cloudbeds อยู่แล้วทุกแห่ง</b> เราเจอหน้าจองตรงของโรงแรมบน hotels.cloudbeds.com แปลว่าโรงแรมจ่ายค่าระบบออนไลน์อยู่ เปิดรับเทคโนโลยี และคุยเรื่องระบบได้ง่ายกว่าโรงแรมที่ยังใช้สมุดจด</li>
+      <li><b>เป็นโรงแรมอิสระ ขนาดเล็กถึงกลาง</b> ไม่ใช่เครือใหญ่ คนตัดสินใจคือเจ้าของหรือผู้จัดการ เข้าถึงได้ตรง ปิดการขายได้เร็ว</li>
+      <li><b>อยู่ย่านที่แขกเยอะและแข่งขันสูง</b> เช่น พระนคร (ข้าวสาร) วัฒนา (สุขุมวิท) บางรัก (สีลม) ปทุมวัน ราชเทวี จึงต้องการเครื่องมือช่วยเพิ่มยอดจองและลดงานหน้าบ้าน</li>
+      <li><b>มีช่องทางติดต่อ</b> 51 จาก 52 แห่งมีเบอร์โทร ส่วนใหญ่มีอีเมล</li>
+      <li><b>คะแนนความเหมาะ (FIT)</b> ใช้จัดลำดับว่าควรโทรหาใครก่อน ให้น้ำหนักโรงแรมมากกว่าโฮสเทล ห้องเยอะ รีวิวดี รีวิวเยอะ และราคาช่วง 800–2,500 ฿ แต่ละรายมีเหตุผลเฉพาะของตัวเองในการ์ด</li>
+    </ul>
+  </details>
+
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" id="tabLeads" aria-selected="true">ลูกค้า</button>
+    <button class="tab" role="tab" id="tabCal" aria-selected="false">ปฏิทินนัด<span class="n" id="nAppt"></span></button>
+  </div>
+  <div class="sync" id="sync">กำลังเชื่อมต่อที่เก็บข้อมูล…</div>
+
+  <section id="viewLeads" style="display:grid;gap:16px">
+    <section class="bar" aria-label="ตัวกรอง">
+      <div class="row">
+        <span style="font-size:12px;color:var(--muted)">งานวันนี้</span>
+        <div class="chips" id="todo">
+          <button class="chip preset" data-t="notCalled" aria-pressed="false">ยังไม่โทร</button>
+          <button class="chip preset" data-t="needAppt" aria-pressed="false">ต้องทำนัด</button>
+          <button class="chip preset" data-t="hasAppt" aria-pressed="false">มีนัดที่จะถึง</button>
+          <button class="chip preset" data-t="active" aria-pressed="false">กำลังคุย</button>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <label class="f">ค้นหาชื่อ/ที่อยู่<input type="search" id="q" placeholder="เช่น Silom, Sukhumvit"></label>
-      <label class="f">ประเภท
-        <select id="type">
-          <option value="">ทั้งหมด</option>
-          <option value="notHostel">โรงแรม + บูทีค + เซอร์วิส อพาร์ตเมนต์</option>
-          <option value="hotel">โรงแรม</option><option value="boutique">บูทีค</option>
-          <option value="apt">เซอร์วิส อพาร์ตเมนต์</option><option value="hostel">โฮสเทล/เกสต์เฮาส์</option>
-        </select></label>
-      <label class="f">ดาวขั้นต่ำ
-        <select id="stars"><option value="0">ไม่กำหนด</option><option value="2.5">2.5+</option><option value="3">3+</option><option value="3.5">3.5+</option><option value="4">4+</option></select></label>
-      <label class="f">รีวิวขั้นต่ำ (/10)
-        <select id="rv"><option value="0">ไม่กำหนด</option><option value="7">7+</option><option value="8">8+</option><option value="8.5">8.5+</option><option value="9">9+</option></select></label>
-      <label class="f">ราคาต่ำสุด ฿<input type="number" id="pmin" min="0" step="100" placeholder="0"></label>
-      <label class="f">ราคาสูงสุด ฿<input type="number" id="pmax" min="0" step="100" placeholder="ไม่จำกัด"></label>
-      <label class="f">สถานะ
-        <select id="fstatus"><option value="">ทั้งหมด</option></select></label>
-      <label class="f" style="flex-direction:row;align-items:center;gap:6px;font-size:12.5px;color:var(--ink)"><input type="checkbox" id="known"> เฉพาะที่มีข้อมูลราคา</label>
-      <label class="f" style="flex-direction:row;align-items:center;gap:6px;font-size:12.5px;color:var(--ink)"><input type="checkbox" id="hasPhone"> เฉพาะที่มีเบอร์โทร</label>
-      <button class="ghost" id="reset">ล้างตัวกรอง</button>
+      <div class="row">
+        <span style="font-size:12px;color:var(--muted)">เป้าหมายด่วน</span>
+        <div class="chips" id="presets">
+          <button class="chip preset" data-p="mid" aria-pressed="false">โรงแรม 3 ดาว+</button>
+          <button class="chip preset" data-p="boutique" aria-pressed="false">บูทีครีวิว 9+</button>
+          <button class="chip preset" data-p="volume" aria-pressed="false">รีวิวเยอะ</button>
+          <button class="chip preset" data-p="hostel" aria-pressed="false">โฮสเทล</button>
+        </div>
+      </div>
+      <label class="f">ค้นหาชื่อ/ที่อยู่/โน้ต/เบอร์<input type="search" id="q" placeholder="เช่น Silom, คุณเอ"></label>
+      <details id="moreF"><summary style="cursor:pointer;font-size:13px;color:var(--accent)">ตัวกรองเพิ่มเติม</summary>
+      <div class="row" style="margin-top:8px">
+        <label class="f">ขั้นตอน
+          <select id="fstage"><option value="">ทั้งหมด</option></select></label>
+        <label class="f">ประเภท
+          <select id="type">
+            <option value="">ทั้งหมด</option>
+            <option value="notHostel">โรงแรม + บูทีค + อพาร์ตเมนต์</option>
+            <option value="hotel">โรงแรม</option><option value="boutique">บูทีค</option>
+            <option value="apt">เซอร์วิส อพาร์ตเมนต์</option><option value="hostel">โฮสเทล/เกสต์เฮาส์</option>
+          </select></label>
+        <label class="f">ดาวขั้นต่ำ
+          <select id="stars"><option value="0">ไม่กำหนด</option><option value="2.5">2.5+</option><option value="3">3+</option><option value="3.5">3.5+</option><option value="4">4+</option></select></label>
+        <label class="f">รีวิวขั้นต่ำ
+          <select id="rv"><option value="0">ไม่กำหนด</option><option value="7">7+</option><option value="8">8+</option><option value="8.5">8.5+</option><option value="9">9+</option></select></label>
+        <label class="f">ราคาต่ำสุด ฿<input type="number" id="pmin" min="0" step="100" placeholder="0"></label>
+        <label class="f">ราคาสูงสุด ฿<input type="number" id="pmax" min="0" step="100" placeholder="ไม่จำกัด"></label>
+        <label class="f" style="flex-direction:row;align-items:center;gap:6px;font-size:12.5px;color:var(--ink)"><input type="checkbox" id="hasPhone"> มีเบอร์โทร</label>
+        <button class="ghost" id="reset">ล้างตัวกรอง</button>
+      </div>
+      </details>
+    </section>
+
+    <div class="grid">
+      <aside aria-label="แยกตามเขต">
+        <h2>แยกตามเขต</h2>
+        <div id="khet"></div>
+        <div class="legend">กดชื่อเขตเพื่อกรอง กดซ้ำเพื่อยกเลิก</div>
+      </aside>
+      <main style="display:grid;gap:10px;min-width:0">
+        <div class="listhead">
+          <h2 id="listTitle">รายชื่อ</h2>
+          <div class="row" style="gap:8px">
+            <label class="f" style="flex-direction:row;align-items:center;gap:6px">เรียง
+              <select id="sort">
+                <option value="score">คะแนนความเหมาะ</option><option value="recent">อัปเดตล่าสุด</option>
+                <option value="rv">รีวิวสูงสุด</option><option value="rc">จำนวนรีวิวมากสุด</option>
+                <option value="pAsc">ราคาต่ำ→สูง</option><option value="khet">เขต</option>
+              </select></label>
+            <button class="primary" id="export">ดาวน์โหลด CSV</button>
+          </div>
+        </div>
+        <div class="list" id="list"></div>
+      </main>
     </div>
   </section>
 
-  <div class="grid">
-    <aside aria-label="แยกตามเขต">
-      <h2>แยกตามเขต</h2>
-      <div id="khet"></div>
-      <div class="legend">กดชื่อเขตเพื่อกรอง กดซ้ำเพื่อยกเลิก ตัวเลขคือจำนวนที่ตรงกับตัวกรองอื่นตอนนี้</div>
-    </aside>
-    <main style="display:grid;gap:10px;min-width:0">
-      <div class="listhead">
-        <h2 id="listTitle">รายชื่อ</h2>
-        <div class="row" style="gap:8px">
-          <label class="f" style="flex-direction:row;align-items:center;gap:6px">เรียง
-            <select id="sort">
-              <option value="score">คะแนนความเหมาะ</option><option value="rv">รีวิวสูงสุด</option>
-              <option value="rc">จำนวนรีวิวมากสุด</option><option value="pAsc">ราคาต่ำ→สูง</option>
-              <option value="pDesc">ราคาสูง→ต่ำ</option><option value="khet">เขต</option>
-            </select></label>
-          <button class="primary" id="export" hidden>ดาวน์โหลด CSV</button>
-        </div>
+  <section id="viewCal" hidden style="display:grid;gap:14px">
+    <div class="cal">
+      <div class="calhead">
+        <h2 id="calTitle"></h2>
+        <button class="ghost" id="calPrev" aria-label="เดือนก่อน">‹</button>
+        <button class="ghost" id="calToday">วันนี้</button>
+        <button class="ghost" id="calNext" aria-label="เดือนถัดไป">›</button>
       </div>
-      <div class="sync" id="sync">กำลังเชื่อมต่อที่เก็บสถานะ…</div>
-      <div class="list" id="list"></div>
-    </main>
-  </div>
+      <div class="grid7" id="calGrid"></div>
+    </div>
+    <div class="agenda">
+      <h3 id="agTitle">นัดที่จะถึง</h3>
+      <div id="agenda"></div>
+    </div>
+    <div class="card">
+      <h4>เพิ่มนัดใหม่</h4>
+      <label class="f">โรงแรม<select id="naHotel"></select></label>
+      <div class="two">
+        <label class="f">วันที่<input type="date" id="naDate"></label>
+        <label class="f">เวลา<input type="time" id="naTime" value="10:00"></label>
+      </div>
+      <div class="two">
+        <label class="f">ประเภทนัด<select id="naType"></select></label>
+        <label class="f">นัดกับใคร<input type="text" id="naWith" placeholder="เช่น คุณเอ ผจก.ฝ่ายขาย"></label>
+      </div>
+      <label class="f">รายละเอียด<input type="text" id="naNote" placeholder="เช่น เดโมระบบ ที่ล็อบบี้"></label>
+      <button class="primary" id="naAdd">บันทึกนัด</button>
+    </div>
+  </section>
 
-  <p class="foot">คะแนนความเหมาะ (0–100) = ประเภทที่พัก 30 + จำนวนห้อง 25 + คะแนนรีวิว 20 + จำนวนรีวิว 15 + ราคาอยู่ช่วง 800–2,500 ฿ อีก 10 ค่าที่ไม่มีข้อมูลได้คะแนนกลาง ๆ · ราคาเป็นค่าประมาณจาก OTA ปี 2025–2026 (~33 ฿/USD) · พบผ่านลิงก์จองบน hotels.cloudbeds.com ควรเปิดเช็กลิงก์ก่อนติดต่อ · ข้อมูล ณ 9 ต.ค. 2569</p>
+  <p class="foot">คะแนนความเหมาะ (0–100) = ประเภทที่พัก 30 + จำนวนห้อง 25 + คะแนนรีวิว 20 + จำนวนรีวิว 15 + ราคา 800–2,500 ฿ อีก 10 · ราคาประมาณจาก OTA ปี 2025–2026 · เบอร์โทรส่วนใหญ่มาจากหน้าจอง Cloudbeds ควรเช็กก่อนโทร · ข้อมูล ณ 9 ต.ค. 2569</p>
 </div>
 
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-modal="true" role="dialog" aria-labelledby="dName">
+  <div class="dhead">
+    <div style="min-width:0">
+      <h3 id="dName"></h3>
+      <p id="dMeta"></p>
+    </div>
+    <button class="x" id="dClose" aria-label="ปิด">×</button>
+  </div>
+  <div class="dbody" id="dBody"></div>
+</aside>
+
 <script>
-const HOTELS = [{"id":"3uv4vx","n":"Siri Ratchadamnoen Bangkok Hotel","ken":"Phra Nakhon","kth":"พระนคร","t":"boutique","s":3.0,"rv":9.8,"rc":null,"src":"Expedia","p":1800.0,"rm":24.0,"a":"104 Soi Damnoen Klang Tai, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/reservation/3uv4vx","no":"ใกล้อนุสาวรีย์ประชาธิปไตย · เครือเดียวกับ Siri Grand","ph":"066-162-5955","ph2":null,"em":"siriratchadamnoenbkk@gmail.com","ln":null,"web":null},{"id":"H8FTGQ","n":"Siri Grand Bangkok Hotel","ken":"Phra Nakhon","kth":"พระนคร","t":"hotel","s":null,"rv":9.2,"rc":52.0,"src":"Trip.com","p":2400.0,"rm":null,"a":"98 Soi Damnoen Klang Tai, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/reservation/H8FTGQ","no":"มีสระ · เจ้าของเดียวกับ Siri Ratchadamnoen","ph":"065-384-4660","ph2":null,"em":"sirigrandbkk@gmail.com","ln":null,"web":null},{"id":"kSEVxf","n":"Peace Land Khaosan","ken":"Phra Nakhon","kth":"พระนคร","t":"hotel","s":3.5,"rv":8.6,"rc":48.0,"src":"Hotels.com","p":1200.0,"rm":null,"a":"105 Wisut Kasat Rd, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/reservation/kSEVxf","no":"มีสระ+ฟิตเนส","ph":"02-628-9090","ph2":null,"em":"rsvn.peacelandkhaosan@gmail.com","ln":null,"web":null},{"id":"zgiCVH","n":"Khao San Social Capsule Hostel","ken":"Phra Nakhon","kth":"พระนคร","t":"hostel","s":null,"rv":9.1,"rc":null,"src":"Booking","p":1100.0,"rm":null,"a":"147 Thanon Tani, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/reservation/zgiCVH","no":"แคปซูล · rooftop bar","ph":"091-027-8783","ph2":null,"em":"khaosansocial.reservation@gmail.com","ln":null,"web":null},{"id":"HGkMdX","n":"The Gravitique Hotel Khaosan","ken":"Phra Nakhon","kth":"พระนคร","t":"boutique","s":4.0,"rv":8.9,"rc":null,"src":"Booking","p":2000.0,"rm":null,"a":"19 Tani Rd, Talat Yot, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/reservation/HGkMdX","no":"ชื่อเดิม The Ember · ลิงก์จาก 2023 ควรเช็กว่ายังใช้","ph":"02-121-4415","ph2":null,"em":"rsvn@thegravitiquehotel.com","ln":null,"web":"https://thegravitiquehotel.com"},{"id":"RItaN7","n":"Suneta Hostel Khaosan","ken":"Phra Nakhon","kth":"พระนคร","t":"hostel","s":null,"rv":8.8,"rc":1140.0,"src":"Kayak","p":560.0,"rm":null,"a":"209-211 Kraisi Rd, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/en/reservation/RItaN7","no":"adults only · แคปซูล","ph":"061-101-6266","ph2":null,"em":"khaosan@suneta.net","ln":null,"web":null},{"id":"qPj3wK","n":"Revolution Khaosan (by The Bliss)","ken":"Phra Nakhon","kth":"พระนคร","t":"hostel","s":null,"rv":9.2,"rc":1592.0,"src":"Hostelworld","p":null,"rm":null,"a":"81 Trok Mayom, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/en/reservation/qPj3wK","no":"party hostel 18-35","ph":"096-856-5360","ph2":null,"em":null,"ln":null,"web":null},{"id":"kN89VP","n":"NapPark Hostel","ken":"Phra Nakhon","kth":"พระนคร","t":"hostel","s":null,"rv":9.3,"rc":9600.0,"src":"Hostelworld","p":360.0,"rm":null,"a":"5 Tani Rd, Banglamphu, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/reservation/kN89VP","no":"หอพักใหญ่ 22 เตียง","ph":"02-282-2324","ph2":null,"em":"contact@nappark.com","ln":null,"web":"https://nappark.com"},{"id":"AifE4v","n":"Ti Thong Hostel","ken":"Phra Nakhon","kth":"พระนคร","t":"hostel","s":null,"rv":8.5,"rc":639.0,"src":"ViaMichelin","p":1100.0,"rm":null,"a":"73/1-4 Ti Thong Rd, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/en/reservation/AifE4v","no":"ใกล้เสาชิงช้า","ph":"064-001-6721","ph2":null,"em":"tithonghostel@gmail.com","ln":null,"web":null},{"id":"fAz0pU","n":"OH Hostels - Bangkok","ken":"Phra Nakhon","kth":"พระนคร","t":"hostel","s":2.0,"rv":7.7,"rc":1817.0,"src":"Kayak","p":400.0,"rm":null,"a":"107 Samsen Soi 4, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/reservation/fAz0pU","no":"adults only","ph":"063-412-0779","ph2":"02-061-9974","em":"info@ohhostels.com","ln":null,"web":"https://ohhostels.com"},{"id":"K0i9sF","n":"Nanda Heritage Hotel","ken":"Phra Nakhon","kth":"พระนคร","t":"boutique","s":3.5,"rv":8.4,"rc":2108.0,"src":"Kayak","p":1100.0,"rm":55.0,"a":"632 Wisut Kasat Rd, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/reservation/K0i9sF","no":"มีสระ+ร้านอาหาร","ph":"02-282-2900","ph2":null,"em":"fo.nda@tichotels.com","ln":null,"web":"https://nandaheritage.com"},{"id":"MlkqNX","n":"Jam Hostel Bangkok","ken":"Phra Nakhon","kth":"พระนคร","t":"hostel","s":null,"rv":9.7,"rc":2778.0,"src":"Hostelworld","p":750.0,"rm":null,"a":"9 Phra Sumen Rd, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/reservation/MlkqNX","no":"rooftop bar","ph":"02-282-3932","ph2":null,"em":"info@jamhostelbangkok.com","ln":null,"web":"https://jamhostelbangkok.com"},{"id":"hu2DyZ","n":"Lost Inn BKK","ken":"Phra Nakhon","kth":"พระนคร","t":"hostel","s":null,"rv":8.4,"rc":971.0,"src":"Kayak","p":900.0,"rm":null,"a":"250/15 Samsen Rd, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/en/reservation/hu2DyZ","no":"ใกล้สะพานพระราม 8","ph":"02-126-7901","ph2":null,"em":"lostinnbkk@gmail.com","ln":null,"web":null},{"id":"REBSPs","n":"Here Hostel","ken":"Phra Nakhon","kth":"พระนคร","t":"hostel","s":null,"rv":8.4,"rc":2852.0,"src":"Kayak","p":880.0,"rm":null,"a":"196/3-14 Soi Damnoen Klang, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/reservation/REBSPs","no":"มีสระ · บจก. HERE THE WORLD","ph":"090-987-7438","ph2":null,"em":"herehostel@gmail.com","ln":null,"web":null},{"id":"sAIhvt","n":"Chern Bangkok","ken":"Phra Nakhon","kth":"พระนคร","t":"hostel","s":null,"rv":8.4,"rc":7235.0,"src":"Kayak","p":1250.0,"rm":null,"a":"17 Soi Ratchasak, Bamrung Muang Rd, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/reservation/sAIhvt","no":"มีห้องส่วนตัว+หอพัก","ph":"02-621-1133","ph2":"02-621-1134","em":"info@chernbangkok.com","ln":null,"web":"https://chernbangkok.com"},{"id":"HlTUl3","n":"Luk Hostel","ken":"Samphanthawong","kth":"สัมพันธวงศ์","t":"hostel","s":null,"rv":8.3,"rc":1774.0,"src":"HotelsCombined","p":880.0,"rm":null,"a":"382-386 Vanich 1 Rd, Samphanthawong, Bangkok 10100","u":"https://hotels.cloudbeds.com/reservation/HlTUl3","no":"เยาวราช · รับเงินสดเท่านั้น","ph":"092-280-3385","ph2":null,"em":"lukandrise@gmail.com","ln":null,"web":null},{"id":"hveMzn","n":"Tiny Taladnoi Hostel","ken":"Samphanthawong","kth":"สัมพันธวงศ์","t":"hostel","s":2.0,"rv":9.3,"rc":565.0,"src":"Trabber","p":600.0,"rm":null,"a":"80-82 Yotha Rd, Talat Noi, Samphanthawong, Bangkok 10100","u":"https://hotels.cloudbeds.com/reservation/hveMzn","no":"ใกล้ River City","ph":"02-048-8515","ph2":null,"em":"info.tinytaladnoi@gmail.com","ln":null,"web":null},{"id":"OkioyK","n":"SSIP Boutique Dhevej Bangkok","ken":"Dusit","kth":"ดุสิต","t":"boutique","s":3.0,"rv":9.5,"rc":617.0,"src":"Booking","p":1800.0,"rm":19.0,"a":"42 Phitsanulok Rd, Dusit, Bangkok 10300","u":"https://hotels.cloudbeds.com/reservation/OkioyK","no":"adults only · ใกล้ท่าเรือเทเวศร์","ph":"095-514-5151","ph2":null,"em":"info@ssiphotelthailand.com","ln":"N994545915","web":"https://ssiphotelthailand.com"},{"id":"Qaz2Zl","n":"KASAYAPI","ken":"Bangkok Yai","kth":"บางกอกใหญ่","t":"boutique","s":3.0,"rv":9.7,"rc":null,"src":"Booking","p":3900.0,"rm":3.0,"a":"102/1 Itsaraphap Rd Soi 32, Bangkok Yai, Bangkok 10600","u":"https://hotels.cloudbeds.com/reservation/Qaz2Zl","no":"ติด MRT อิสรภาพ · มีสระ · ห้องน้อยมาก","ph":"02-891-1191","ph2":null,"em":"kasayapi.reservation@gmail.com","ln":null,"web":null},{"id":"sxUqS0","n":"5Loft Anti-Hotel Bangkok","ken":"Bang Rak","kth":"บางรัก","t":"boutique","s":3.5,"rv":10.0,"rc":34.0,"src":"Expedia","p":2500.0,"rm":5.0,"a":"Silom, Bang Rak, Bangkok 10500","u":"https://hotels.cloudbeds.com/en/reservation/sxUqS0","no":"loft · pet-friendly","ph":"02-111-6311","ph2":null,"em":null,"ln":null,"web":null},{"id":"JXh4be","n":"Jasaen Stylish Boutique Hotel","ken":"Sathon","kth":"สาทร","t":"boutique","s":null,"rv":8.3,"rc":840.0,"src":"Kayak","p":null,"rm":32.0,"a":"168 Soi Charoen Krung 57, Yannawa, Sathon, Bangkok 10120","u":"https://hotels.cloudbeds.com/reservation/JXh4be","no":"ตึกแถวเก่า 7 คูหา · ใกล้ BTS สะพานตากสิน","ph":"02-675-9198","ph2":"094-482-0085","em":"baanpraya.booking@gmail.com","ln":null,"web":null},{"id":"3pn5ml","n":"W 21 Hotel Bangkok","ken":"Watthana","kth":"วัฒนา","t":"hotel","s":3.0,"rv":7.8,"rc":1548.0,"src":"Kayak","p":1020.0,"rm":null,"a":"4/56 Asok Montri Rd (Sukhumvit 21), Khlong Toei Nuea, Bangkok 10110","u":"https://hotels.cloudbeds.com/reservation/3pn5ml","no":"ชื่อเดิม Serene Asoke Suites","ph":"02-661-6200","ph2":null,"em":null,"ln":null,"web":null},{"id":"lseUw6","n":"Roompini","ken":"Pathum Wan","kth":"ปทุมวัน","t":"boutique","s":null,"rv":8.3,"rc":138.0,"src":"Booking","p":1500.0,"rm":9.0,"a":"Sarasin Rd, Lumphini, Bangkok 10330","u":"https://hotels.cloudbeds.com/reservation/lseUw6","no":"ตรงข้ามสวนลุมฯ","ph":"061-016-7878","ph2":null,"em":"roompini.bangkok@gmail.com","ln":null,"web":null},{"id":"1cHXGt","n":"Happy3 Hotel","ken":"Pathum Wan","kth":"ปทุมวัน","t":"hotel","s":null,"rv":8.6,"rc":3890.0,"src":"Kayak","p":1550.0,"rm":null,"a":"33 Soi Kasemsan 3, Wang Mai, Bangkok 10330","u":"https://hotels.cloudbeds.com/reservation/1cHXGt","no":"ใกล้ BTS สนามกีฬาฯ/สยาม","ph":"02-612-4799","ph2":"092-280-0234","em":"info@happy3.co.th","ln":null,"web":null},{"id":"519d0O","n":"Sakura Sky Residence","ken":"Watthana","kth":"วัฒนา","t":"hotel","s":3.0,"rv":7.6,"rc":412.0,"src":"Expedia","p":920.0,"rm":null,"a":"9/1 Sukhumvit 33, Khlong Tan Nuea, Bangkok 10110","u":"https://hotels.cloudbeds.com/reservation/519d0O","no":"เดิน 7 นาที BTS พร้อมพงษ์","ph":"02-259-5999","ph2":null,"em":null,"ln":null,"web":null},{"id":"tN3wfD","n":"Thonglor Suites Hotel","ken":"Watthana","kth":"วัฒนา","t":"hotel","s":2.5,"rv":6.4,"rc":73.0,"src":"Trip.com","p":920.0,"rm":null,"a":"2/7 Soi Sukhumvit 53, Khlong Tan Nuea, Bangkok 10110","u":"https://hotels.cloudbeds.com/reservation/tN3wfD","no":"ไม่มีลิฟต์ · 50 ม. BTS ทองหล่อ","ph":"02-001-2698","ph2":null,"em":"info@thonglorsuites.com","ln":null,"web":"https://thonglorsuites.com"},{"id":"EWugHt","n":"The Cube Hostel Silom","ken":"Bang Rak","kth":"บางรัก","t":"hostel","s":null,"rv":8.5,"rc":1785.0,"src":"Kayak","p":700.0,"rm":null,"a":"3/9 Saladaeng Rd, Silom, Bangkok 10500","u":"https://hotels.cloudbeds.com/reservation/EWugHt","no":"มีสระว่ายน้ำดาดฟ้า","ph":"096-314-1481","ph2":null,"em":"frontdesk@thecubehostel.com","ln":null,"web":null},{"id":"iGlZHg","n":"CLOUD on Saladaeng Hostel","ken":"Bang Rak","kth":"บางรัก","t":"hostel","s":null,"rv":9.0,"rc":null,"src":"Booking","p":1120.0,"rm":null,"a":"71/2 Soi Sala Daeng 1/1, Silom, Bangkok 10500","u":"https://hotels.cloudbeds.com/reservation/iGlZHg","no":"มีทั้งเตียงรวมและห้องส่วนตัว","ph":"02-029-9729","ph2":null,"em":"info@cloudonsaladaeng.com","ln":null,"web":null},{"id":"vhyeOS","n":"BRB Hostel Bangkok Silom","ken":"Bang Rak","kth":"บางรัก","t":"hostel","s":null,"rv":7.8,"rc":1420.0,"src":"Kayak","p":460.0,"rm":17.0,"a":"5/8-9 Soi Pipat (Silom Soi 3), Bangkok 10500","u":"https://hotels.cloudbeds.com/reservation/vhyeOS","no":"รีวิว Hostelworld ต่ำมาก (2.6)","ph":"061-515-9898","ph2":null,"em":"brbstaff1@gmail.com","ln":null,"web":null},{"id":"IyqM8b","n":"Arawana Regency Park Sukhumvit","ken":"Khlong Toei","kth":"คลองเตย","t":"hotel","s":4.0,"rv":8.0,"rc":261.0,"src":"Trip.com","p":1400.0,"rm":120.0,"a":"Soi Sainamthip, Sukhumvit 22, Khlong Tan, Bangkok 10110","u":"https://hotels.cloudbeds.com/reservation/IyqM8b","no":"ชื่อเดิม Aspira Grand Regency · ตึกเก่า · ดาวประกาศเอง","ph":"02-259-7420","ph2":null,"em":"fo_regencypark@arawanagroup.com","ln":null,"web":null},{"id":"LCLlYQ","n":"Sib Kao","ken":"Watthana","kth":"วัฒนา","t":"hotel","s":3.0,"rv":9.0,"rc":1082.0,"src":"Kayak","p":1190.0,"rm":null,"a":"19/27-28 Sukhumvit Soi 19, Khlong Toei Nuea, Bangkok 10110","u":"https://hotels.cloudbeds.com/reservation/LCLlYQ","no":"ใกล้ Terminal 21","ph":"02-254-3200","ph2":null,"em":"info@sibkao.com","ln":null,"web":null},{"id":"dBVH5M","n":"Lamurr Sukhumvit 41","ken":"Watthana","kth":"วัฒนา","t":"hostel","s":null,"rv":8.4,"rc":1129.0,"src":"Kayak","p":null,"rm":null,"a":"Sukhumvit Soi 41, Khlong Tan Nuea, Bangkok 10110","u":"https://hotels.cloudbeds.com/reservation/dBVH5M","no":"ใกล้ BTS พร้อมพงษ์","ph":"02-040-4653","ph2":"097-140-5544","em":"info@lamurr.com","ln":null,"web":"https://lamurr.com"},{"id":"jABe3g","n":"3Howw Hostel @ Sukhumvit 21","ken":"Watthana","kth":"วัฒนา","t":"hostel","s":null,"rv":7.7,"rc":2741.0,"src":"Kayak","p":null,"rm":null,"a":"32/9 Sukhumvit 21 Soi 1, Bangkok 10110","u":"https://hotels.cloudbeds.com/reservation/jABe3g","no":"เดิน 5 นาที BTS อโศก","ph":"099-909-6997","ph2":null,"em":"3howw.sukhumvit21@gmail.com","ln":null,"web":null},{"id":"mQ8KAh","n":"Narastay @ Phrom Phong","ken":"Watthana","kth":"วัฒนา","t":"apt","s":null,"rv":null,"rc":null,"src":"","p":null,"rm":null,"a":"51/4 Sukhumvit Soi 39, Bangkok 10110","u":"https://hotels.cloudbeds.com/reservation/mQ8KAh","no":"น่าจะเปิดใหม่ ยังไม่มีรีวิว","ph":"062-818-1865","ph2":null,"em":"booking@narastay.com","ln":null,"web":null},{"id":"z3rPaG","n":"StayAt Bedever Bangkok Hotel","ken":"Watthana","kth":"วัฒนา","t":"boutique","s":null,"rv":8.8,"rc":61.0,"src":"Expedia","p":730.0,"rm":21.0,"a":"1533/3-4 Sukhumvit Rd, Phra Khanong Nuea, Bangkok 10110","u":"https://us2.cloudbeds.com/reservation/z3rPaG","no":"ใช้ Cloudbeds โดเมน us2.cloudbeds.com","ph":null,"ph2":null,"em":null,"ln":null,"web":null},{"id":"kXbLpy","n":"Urbana Sathorn","ken":"Sathon","kth":"สาทร","t":"apt","s":5.0,"rv":8.0,"rc":4554.0,"src":"Kayak","p":1900.0,"rm":156.0,"a":"South Sathorn Rd, Bangkok","u":"https://hotels.cloudbeds.com/reservation/kXbLpy","no":"ดาวประกาศเองบนหน้าจอง ยังไม่ยืนยัน · ห้องมีครัว","ph":"02-227-9999","ph2":null,"em":"rsvn@urbanasathorn.com","ln":null,"web":null},{"id":"yqwDkx","n":"Sabai Sathorn Serviced Apartment","ken":"Bang Rak","kth":"บางรัก","t":"apt","s":null,"rv":8.4,"rc":2281.0,"src":"Kayak","p":1780.0,"rm":30.0,"a":"57 Sathorn Soi 10, Silom, Bangkok 10500","u":"https://hotels.cloudbeds.com/reservation/yqwDkx","no":"รีโนเวทปี 2024 · สระดาดฟ้า","ph":"02-267-3999","ph2":null,"em":null,"ln":null,"web":null},{"id":"DCUevV","n":"Pas Cher Hotel de Bangkok","ken":"Bang Rak","kth":"บางรัก","t":"hotel","s":null,"rv":8.3,"rc":2197.0,"src":"Kayak","p":890.0,"rm":72.0,"a":"28/5 Charoen Wiang Rd, Silom, Bangkok 10500","u":"https://hotels.cloudbeds.com/reservation/DCUevV","no":"มีสระว่ายน้ำ · ไม่มีอาหารเช้า","ph":"02-630-6401","ph2":null,"em":null,"ln":null,"web":null},{"id":"BJAq9T","n":"4M Pratunam Hotel","ken":"Ratchathewi","kth":"ราชเทวี","t":"hotel","s":3.0,"rv":8.0,"rc":1190.0,"src":"Kayak","p":760.0,"rm":25.0,"a":"45/6-7 Soi Phetchaburi 15, Bangkok 10400","u":"https://hotels.cloudbeds.com/reservation/BJAq9T","no":"อาหารเช้า 150 บาท","ph":"02-251-5545","ph2":"081-638-1551","em":"4mpratunamhotel@gmail.com","ln":null,"web":null},{"id":"m9POZF","n":"Spenza Hotel","ken":"Ratchathewi","kth":"ราชเทวี","t":"hotel","s":3.0,"rv":8.6,"rc":1926.0,"src":"Kayak","p":910.0,"rm":94.0,"a":"88 Soi Phetchaburi 15, Bangkok 10400","u":"https://hotels.cloudbeds.com/reservation/m9POZF","no":"ใกล้ประตูน้ำ/แพลทินัม","ph":"02-251-5251","ph2":null,"em":null,"ln":null,"web":null},{"id":"HVuqFl","n":"Natee Hostel","ken":"Ratchathewi","kth":"ราชเทวี","t":"hostel","s":null,"rv":8.8,"rc":null,"src":"Expedia","p":null,"rm":null,"a":"39/11-12 Soi Phetchaburi 15, Bangkok 10400","u":"https://hotels.cloudbeds.com/reservation/HVuqFl","no":"รวมอาหารเช้า","ph":"084-347-9920","ph2":null,"em":null,"ln":null,"web":null},{"id":"fikDq8","n":"Happy Station Bangkok","ken":"Pathum Wan","kth":"ปทุมวัน","t":"hostel","s":null,"rv":9.3,"rc":601.0,"src":"Trabber","p":null,"rm":null,"a":"477 Rama IV Rd, Rong Muang, Bangkok 10330","u":"https://hotels.cloudbeds.com/reservation/fikDq8","no":"ใกล้หัวลำโพง","ph":"064-545-2262","ph2":null,"em":"reservation@happystationbangkok.com","ln":null,"web":"https://www.happystationbangkok.com"},{"id":"9zztFS","n":"House of Papa Bangkok Siam","ken":"Pathum Wan","kth":"ปทุมวัน","t":"hostel","s":null,"rv":8.3,"rc":935.0,"src":"Kayak","p":1150.0,"rm":null,"a":"188/44 Soi Chula 16, Wang Mai, Bangkok 10330","u":"https://hotels.cloudbeds.com/reservation/9zztFS","no":"~1 กม. MBK","ph":"092-428-8264","ph2":null,"em":"hotelpapabangkok@gmail.com","ln":null,"web":"https://house-of-papa-bangkok-siam.business.site"},{"id":"IgoyOJ","n":"Tamni","ken":"Pathum Wan","kth":"ปทุมวัน","t":"hostel","s":null,"rv":9.4,"rc":2442.0,"src":"Booking","p":880.0,"rm":null,"a":"476/7 Soi Phraya Singhaseni, Rong Muang, Bangkok 10330","u":"https://hotels.cloudbeds.com/reservation/IgoyOJ","no":"design hostel ใกล้ MRT หัวลำโพง","ph":"063-932-2905","ph2":null,"em":null,"ln":null,"web":null},{"id":"NQyDH9","n":"Bangkok City Rama 9 Hotel","ken":"Din Daeng","kth":"ดินแดง","t":"hotel","s":2.5,"rv":9.0,"rc":10.0,"src":"Hotels.com (sample เล็ก)","p":1600.0,"rm":388.0,"a":"499 Asok-Din Daeng Rd, Din Daeng, Bangkok 10400","u":"https://hotels.cloudbeds.com/reservation/NQyDH9","no":"เครือ StayBangkok · ใกล้ MRT · ไม่รวมอาหารเช้า","ph":"02-083-9499","ph2":null,"em":"rama9_reservation@staybangkokhotels.com","ln":null,"web":null},{"id":"0TyYnZ","n":"The Mini R Ratchada Hotel","ken":"Din Daeng","kth":"ดินแดง","t":"hotel","s":3.0,"rv":7.7,"rc":390.0,"src":"Kayak","p":1250.0,"rm":29.0,"a":"161 Ratchadaphisek Rd, Din Daeng, Bangkok 10400","u":"https://hotels.cloudbeds.com/en/reservation/0TyYnZ","no":"เดิน ~10 นาที MRT ห้วยขวาง","ph":"02-689-5173","ph2":null,"em":null,"ln":null,"web":null},{"id":"13e7WW","n":"Bed to Bangkok","ken":"Chatuchak","kth":"จตุจักร","t":"hostel","s":null,"rv":7.9,"rc":226.0,"src":"Hostelworld","p":null,"rm":10.0,"a":"Soi Choei Phuang, Chom Phon, Chatuchak, Bangkok 10900","u":"https://hotels.cloudbeds.com/reservation/13e7WW","no":"เปิดปี 2022 · ใกล้ BTS หมอชิต","ph":"082-210-0268","ph2":"02-121-7478","em":"bedtobangkok@yahoo.com","ln":null,"web":"https://bedtobangkok.com"},{"id":"je81zl","n":"Sweetloft Hotel Don Muang","ken":"Don Mueang","kth":"ดอนเมือง","t":"hotel","s":3.0,"rv":7.6,"rc":null,"src":"Expedia/Hotels.com","p":650.0,"rm":60.0,"a":"40 Soi Song Prapha 30, Don Mueang, Bangkok 10210","u":"https://hotels.cloudbeds.com/reservation/je81zl","no":"ใกล้สนามบินดอนเมือง · มีร้านอาหาร","ph":"080-060-7877","ph2":null,"em":null,"ln":null,"web":null},{"id":"zGqPFy","n":"Sloth Hostel DonMueang Airport","ken":"Don Mueang","kth":"ดอนเมือง","t":"hostel","s":null,"rv":9.0,"rc":689.0,"src":"Trip.com","p":null,"rm":null,"a":"Soi Choet Wutthakat 9, Si Kan, Don Mueang, Bangkok 10210","u":"https://hotels.cloudbeds.com/reservation/zGqPFy","no":"~1.1 กม. จากสนามบิน DMK","ph":"082-251-7889","ph2":"087-111-1893","em":"slothhostel.dmk@gmail.com","ln":null,"web":null},{"id":"zMkAEo","n":"Yello Rooms Hotel Victory Monument","ken":"Ratchathewi","kth":"ราชเทวี","t":"hotel","s":3.0,"rv":8.7,"rc":906.0,"src":"Kayak","p":1500.0,"rm":null,"a":"12 Soi Ratchawithi 9/11, Phaya Thai Rd, Ratchathewi, Bangkok 10400","u":"https://hotels.cloudbeds.com/reservation/zMkAEo","no":"ย่านอนุสาวรีย์ชัยฯ","ph":"02-002-9428","ph2":null,"em":"info.yellorooms@gmail.com","ln":null,"web":null},{"id":"QFq9Zv","n":"The Victory View (adults only)","ken":"Ratchathewi","kth":"ราชเทวี","t":"hostel","s":null,"rv":8.6,"rc":619.0,"src":"Trip.com","p":700.0,"rm":null,"a":"34/2-3 Soi Ratchawithi 9, Ratchathewi, Bangkok 10400","u":"https://hotels.cloudbeds.com/en/reservation/QFq9Zv","no":"~570 ม. BTS อนุสาวรีย์ชัยฯ","ph":"093-860-5914","ph2":"064-742-4561","em":"thevictory.hostel@gmail.com","ln":null,"web":null},{"id":"1GcujK","n":"Monument Stay","ken":"Ratchathewi","kth":"ราชเทวี","t":"hostel","s":null,"rv":8.8,"rc":null,"src":"Travelocity","p":null,"rm":null,"a":"Soi Ratchawithi 9, Ratchathewi, Bangkok 10400","u":"https://hotels.cloudbeds.com/en/reservation/1GcujK","no":"เดิน 3 นาทีอนุสาวรีย์ชัยฯ","ph":"064-742-4561","ph2":null,"em":"monumentstay@gmail.com","ln":null,"web":"https://www.monumentstay.com"}];
-const STATUS = [
-  ["new","ยังไม่ติดต่อ"],["contacted","ติดต่อแล้ว"],["interested","สนใจ"],
-  ["demo","นัดเดโม/นัดคุย"],["won","ปิดการขาย"],["lost","ไม่สนใจ"]
+const HOTELS = [{"id":"3uv4vx","n":"Siri Ratchadamnoen Bangkok Hotel","ken":"Phra Nakhon","kth":"พระนคร","t":"boutique","s":3.0,"rv":9.8,"rc":null,"src":"Expedia","p":1800.0,"rm":24.0,"a":"104 Soi Damnoen Klang Tai, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/reservation/3uv4vx","no":"ใกล้อนุสาวรีย์ประชาธิปไตย · เครือเดียวกับ Siri Grand","ph":"066-162-5955","ph2":null,"em":"siriratchadamnoenbkk@gmail.com","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","มีหลายสาขาหรือมีโรงแรมพี่น้อง คุยครั้งเดียวมีโอกาสได้หลายแห่ง","ขนาดกลาง 24 ห้อง กำลังโต","คะแนนรีวิว 9.8 ดีเยี่ยม ใส่ใจคุณภาพ พร้อมลงทุนต่อ","ราคา ~1,800 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (พระนคร) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"H8FTGQ","n":"Siri Grand Bangkok Hotel","ken":"Phra Nakhon","kth":"พระนคร","t":"hotel","s":null,"rv":9.2,"rc":52.0,"src":"Trip.com","p":2400.0,"rm":null,"a":"98 Soi Damnoen Klang Tai, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/reservation/H8FTGQ","no":"มีสระ · เจ้าของเดียวกับ Siri Ratchadamnoen","ph":"065-384-4660","ph2":null,"em":"sirigrandbkk@gmail.com","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","คะแนนรีวิว 9.2 ดีเยี่ยม ใส่ใจคุณภาพ พร้อมลงทุนต่อ","ราคา ~2,400 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (พระนคร) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"kSEVxf","n":"Peace Land Khaosan","ken":"Phra Nakhon","kth":"พระนคร","t":"hotel","s":3.5,"rv":8.6,"rc":48.0,"src":"Hotels.com","p":1200.0,"rm":null,"a":"105 Wisut Kasat Rd, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/reservation/kSEVxf","no":"มีสระ+ฟิตเนส","ph":"02-628-9090","ph2":null,"em":"rsvn.peacelandkhaosan@gmail.com","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","ราคา ~1,200 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (พระนคร) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"zgiCVH","n":"Khao San Social Capsule Hostel","ken":"Phra Nakhon","kth":"พระนคร","t":"hostel","s":null,"rv":9.1,"rc":null,"src":"Booking","p":1100.0,"rm":null,"a":"147 Thanon Tani, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/reservation/zgiCVH","no":"แคปซูล · rooftop bar","ph":"091-027-8783","ph2":null,"em":"khaosansocial.reservation@gmail.com","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","คะแนนรีวิว 9.1 ดีเยี่ยม ใส่ใจคุณภาพ พร้อมลงทุนต่อ","ราคา ~1,100 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (พระนคร) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"HGkMdX","n":"The Gravitique Hotel Khaosan","ken":"Phra Nakhon","kth":"พระนคร","t":"boutique","s":4.0,"rv":8.9,"rc":null,"src":"Booking","p":2000.0,"rm":null,"a":"19 Tani Rd, Talat Yot, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/reservation/HGkMdX","no":"ชื่อเดิม The Ember · ลิงก์จาก 2023 ควรเช็กว่ายังใช้","ph":"02-121-4415","ph2":null,"em":"rsvn@thegravitiquehotel.com","ln":null,"web":"https://thegravitiquehotel.com","why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","ระดับ 4 ดาว มีงบลงทุนระบบ","ราคา ~2,000 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (พระนคร) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีเว็บไซต์ของตัวเอง ให้ความสำคัญกับการจองตรง","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"RItaN7","n":"Suneta Hostel Khaosan","ken":"Phra Nakhon","kth":"พระนคร","t":"hostel","s":null,"rv":8.8,"rc":1140.0,"src":"Kayak","p":560.0,"rm":null,"a":"209-211 Kraisi Rd, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/en/reservation/RItaN7","no":"adults only · แคปซูล","ph":"061-101-6266","ph2":null,"em":"khaosan@suneta.net","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","รีวิว 1,140 รายการ แขกเข้าพักต่อเนื่อง ธุรกิจมีรายได้สม่ำเสมอ","อยู่ย่านท่องเที่ยวหลัก (พระนคร) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"qPj3wK","n":"Revolution Khaosan (by The Bliss)","ken":"Phra Nakhon","kth":"พระนคร","t":"hostel","s":null,"rv":9.2,"rc":1592.0,"src":"Hostelworld","p":null,"rm":null,"a":"81 Trok Mayom, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/en/reservation/qPj3wK","no":"party hostel 18-35","ph":"096-856-5360","ph2":null,"em":null,"ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","รีวิว 1,592 รายการ แขกเข้าพักต่อเนื่อง ธุรกิจมีรายได้สม่ำเสมอ","คะแนนรีวิว 9.2 ดีเยี่ยม ใส่ใจคุณภาพ พร้อมลงทุนต่อ","อยู่ย่านท่องเที่ยวหลัก (พระนคร) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีเบอร์โทร ติดต่อได้ทันที"]},{"id":"kN89VP","n":"NapPark Hostel","ken":"Phra Nakhon","kth":"พระนคร","t":"hostel","s":null,"rv":9.3,"rc":9600.0,"src":"Hostelworld","p":360.0,"rm":null,"a":"5 Tani Rd, Banglamphu, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/reservation/kN89VP","no":"หอพักใหญ่ 22 เตียง","ph":"02-282-2324","ph2":null,"em":"contact@nappark.com","ln":null,"web":"https://nappark.com","why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","รีวิว 9,600 รายการ แขกเข้าพักต่อเนื่อง ธุรกิจมีรายได้สม่ำเสมอ","คะแนนรีวิว 9.3 ดีเยี่ยม ใส่ใจคุณภาพ พร้อมลงทุนต่อ","อยู่ย่านท่องเที่ยวหลัก (พระนคร) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีเว็บไซต์ของตัวเอง ให้ความสำคัญกับการจองตรง","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"AifE4v","n":"Ti Thong Hostel","ken":"Phra Nakhon","kth":"พระนคร","t":"hostel","s":null,"rv":8.5,"rc":639.0,"src":"ViaMichelin","p":1100.0,"rm":null,"a":"73/1-4 Ti Thong Rd, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/en/reservation/AifE4v","no":"ใกล้เสาชิงช้า","ph":"064-001-6721","ph2":null,"em":"tithonghostel@gmail.com","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","ราคา ~1,100 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (พระนคร) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"fAz0pU","n":"OH Hostels - Bangkok","ken":"Phra Nakhon","kth":"พระนคร","t":"hostel","s":2.0,"rv":7.7,"rc":1817.0,"src":"Kayak","p":400.0,"rm":null,"a":"107 Samsen Soi 4, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/reservation/fAz0pU","no":"adults only","ph":"063-412-0779","ph2":"02-061-9974","em":"info@ohhostels.com","ln":null,"web":"https://ohhostels.com","why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","รีวิว 1,817 รายการ แขกเข้าพักต่อเนื่อง ธุรกิจมีรายได้สม่ำเสมอ","อยู่ย่านท่องเที่ยวหลัก (พระนคร) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีเว็บไซต์ของตัวเอง ให้ความสำคัญกับการจองตรง","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"K0i9sF","n":"Nanda Heritage Hotel","ken":"Phra Nakhon","kth":"พระนคร","t":"boutique","s":3.5,"rv":8.4,"rc":2108.0,"src":"Kayak","p":1100.0,"rm":55.0,"a":"632 Wisut Kasat Rd, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/reservation/K0i9sF","no":"มีสระ+ร้านอาหาร","ph":"02-282-2900","ph2":null,"em":"fo.nda@tichotels.com","ln":null,"web":"https://nandaheritage.com","why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","ขนาดใหญ่ 55 ห้อง งานหน้าบ้านและการจองเยอะ","รีวิว 2,108 รายการ แขกเข้าพักต่อเนื่อง ธุรกิจมีรายได้สม่ำเสมอ","ราคา ~1,100 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (พระนคร) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีเว็บไซต์ของตัวเอง ให้ความสำคัญกับการจองตรง","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"MlkqNX","n":"Jam Hostel Bangkok","ken":"Phra Nakhon","kth":"พระนคร","t":"hostel","s":null,"rv":9.7,"rc":2778.0,"src":"Hostelworld","p":750.0,"rm":null,"a":"9 Phra Sumen Rd, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/reservation/MlkqNX","no":"rooftop bar","ph":"02-282-3932","ph2":null,"em":"info@jamhostelbangkok.com","ln":null,"web":"https://jamhostelbangkok.com","why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","รีวิว 2,778 รายการ แขกเข้าพักต่อเนื่อง ธุรกิจมีรายได้สม่ำเสมอ","คะแนนรีวิว 9.7 ดีเยี่ยม ใส่ใจคุณภาพ พร้อมลงทุนต่อ","อยู่ย่านท่องเที่ยวหลัก (พระนคร) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีเว็บไซต์ของตัวเอง ให้ความสำคัญกับการจองตรง","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"hu2DyZ","n":"Lost Inn BKK","ken":"Phra Nakhon","kth":"พระนคร","t":"hostel","s":null,"rv":8.4,"rc":971.0,"src":"Kayak","p":900.0,"rm":null,"a":"250/15 Samsen Rd, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/en/reservation/hu2DyZ","no":"ใกล้สะพานพระราม 8","ph":"02-126-7901","ph2":null,"em":"lostinnbkk@gmail.com","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","ราคา ~900 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (พระนคร) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"REBSPs","n":"Here Hostel","ken":"Phra Nakhon","kth":"พระนคร","t":"hostel","s":null,"rv":8.4,"rc":2852.0,"src":"Kayak","p":880.0,"rm":null,"a":"196/3-14 Soi Damnoen Klang, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/reservation/REBSPs","no":"มีสระ · บจก. HERE THE WORLD","ph":"090-987-7438","ph2":null,"em":"herehostel@gmail.com","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","รีวิว 2,852 รายการ แขกเข้าพักต่อเนื่อง ธุรกิจมีรายได้สม่ำเสมอ","ราคา ~880 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (พระนคร) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"sAIhvt","n":"Chern Bangkok","ken":"Phra Nakhon","kth":"พระนคร","t":"hostel","s":null,"rv":8.4,"rc":7235.0,"src":"Kayak","p":1250.0,"rm":null,"a":"17 Soi Ratchasak, Bamrung Muang Rd, Phra Nakhon, Bangkok 10200","u":"https://hotels.cloudbeds.com/reservation/sAIhvt","no":"มีห้องส่วนตัว+หอพัก","ph":"02-621-1133","ph2":"02-621-1134","em":"info@chernbangkok.com","ln":null,"web":"https://chernbangkok.com","why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","รีวิว 7,235 รายการ แขกเข้าพักต่อเนื่อง ธุรกิจมีรายได้สม่ำเสมอ","ราคา ~1,250 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (พระนคร) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีเว็บไซต์ของตัวเอง ให้ความสำคัญกับการจองตรง","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"HlTUl3","n":"Luk Hostel","ken":"Samphanthawong","kth":"สัมพันธวงศ์","t":"hostel","s":null,"rv":8.3,"rc":1774.0,"src":"HotelsCombined","p":880.0,"rm":null,"a":"382-386 Vanich 1 Rd, Samphanthawong, Bangkok 10100","u":"https://hotels.cloudbeds.com/reservation/HlTUl3","no":"เยาวราช · รับเงินสดเท่านั้น","ph":"092-280-3385","ph2":null,"em":"lukandrise@gmail.com","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","รีวิว 1,774 รายการ แขกเข้าพักต่อเนื่อง ธุรกิจมีรายได้สม่ำเสมอ","ราคา ~880 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (สัมพันธวงศ์) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"hveMzn","n":"Tiny Taladnoi Hostel","ken":"Samphanthawong","kth":"สัมพันธวงศ์","t":"hostel","s":2.0,"rv":9.3,"rc":565.0,"src":"Trabber","p":600.0,"rm":null,"a":"80-82 Yotha Rd, Talat Noi, Samphanthawong, Bangkok 10100","u":"https://hotels.cloudbeds.com/reservation/hveMzn","no":"ใกล้ River City","ph":"02-048-8515","ph2":null,"em":"info.tinytaladnoi@gmail.com","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","คะแนนรีวิว 9.3 ดีเยี่ยม ใส่ใจคุณภาพ พร้อมลงทุนต่อ","อยู่ย่านท่องเที่ยวหลัก (สัมพันธวงศ์) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"OkioyK","n":"SSIP Boutique Dhevej Bangkok","ken":"Dusit","kth":"ดุสิต","t":"boutique","s":3.0,"rv":9.5,"rc":617.0,"src":"Booking","p":1800.0,"rm":19.0,"a":"42 Phitsanulok Rd, Dusit, Bangkok 10300","u":"https://hotels.cloudbeds.com/reservation/OkioyK","no":"adults only · ใกล้ท่าเรือเทเวศร์","ph":"095-514-5151","ph2":null,"em":"info@ssiphotelthailand.com","ln":"N994545915","web":"https://ssiphotelthailand.com","why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","ขนาดเล็ก 19 ห้อง คุยกับเจ้าของได้ตรง ตัดสินใจเร็ว","คะแนนรีวิว 9.5 ดีเยี่ยม ใส่ใจคุณภาพ พร้อมลงทุนต่อ","ราคา ~1,800 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","มีเว็บไซต์ของตัวเอง ให้ความสำคัญกับการจองตรง","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"Qaz2Zl","n":"KASAYAPI","ken":"Bangkok Yai","kth":"บางกอกใหญ่","t":"boutique","s":3.0,"rv":9.7,"rc":null,"src":"Booking","p":3900.0,"rm":3.0,"a":"102/1 Itsaraphap Rd Soi 32, Bangkok Yai, Bangkok 10600","u":"https://hotels.cloudbeds.com/reservation/Qaz2Zl","no":"ติด MRT อิสรภาพ · มีสระ · ห้องน้อยมาก","ph":"02-891-1191","ph2":null,"em":"kasayapi.reservation@gmail.com","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","ขนาดเล็ก 3 ห้อง คุยกับเจ้าของได้ตรง ตัดสินใจเร็ว","คะแนนรีวิว 9.7 ดีเยี่ยม ใส่ใจคุณภาพ พร้อมลงทุนต่อ","ราคา ~3,900 ฿/คืน กลุ่มพรีเมียม รายได้ต่อห้องสูง","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"sxUqS0","n":"5Loft Anti-Hotel Bangkok","ken":"Bang Rak","kth":"บางรัก","t":"boutique","s":3.5,"rv":10.0,"rc":34.0,"src":"Expedia","p":2500.0,"rm":5.0,"a":"Silom, Bang Rak, Bangkok 10500","u":"https://hotels.cloudbeds.com/en/reservation/sxUqS0","no":"loft · pet-friendly","ph":"02-111-6311","ph2":null,"em":null,"ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","ขนาดเล็ก 5 ห้อง คุยกับเจ้าของได้ตรง ตัดสินใจเร็ว","คะแนนรีวิว 10.0 ดีเยี่ยม ใส่ใจคุณภาพ พร้อมลงทุนต่อ","ราคา ~2,500 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (บางรัก) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีเบอร์โทร ติดต่อได้ทันที"]},{"id":"JXh4be","n":"Jasaen Stylish Boutique Hotel","ken":"Sathon","kth":"สาทร","t":"boutique","s":null,"rv":8.3,"rc":840.0,"src":"Kayak","p":null,"rm":32.0,"a":"168 Soi Charoen Krung 57, Yannawa, Sathon, Bangkok 10120","u":"https://hotels.cloudbeds.com/reservation/JXh4be","no":"ตึกแถวเก่า 7 คูหา · ใกล้ BTS สะพานตากสิน","ph":"02-675-9198","ph2":"094-482-0085","em":"baanpraya.booking@gmail.com","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","ขนาดกลาง 32 ห้อง กำลังโต","อยู่ย่านท่องเที่ยวหลัก (สาทร) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"3pn5ml","n":"W 21 Hotel Bangkok","ken":"Watthana","kth":"วัฒนา","t":"hotel","s":3.0,"rv":7.8,"rc":1548.0,"src":"Kayak","p":1020.0,"rm":null,"a":"4/56 Asok Montri Rd (Sukhumvit 21), Khlong Toei Nuea, Bangkok 10110","u":"https://hotels.cloudbeds.com/reservation/3pn5ml","no":"ชื่อเดิม Serene Asoke Suites","ph":"02-661-6200","ph2":null,"em":null,"ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","รีวิว 1,548 รายการ แขกเข้าพักต่อเนื่อง ธุรกิจมีรายได้สม่ำเสมอ","ราคา ~1,020 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (วัฒนา) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีเบอร์โทร ติดต่อได้ทันที"]},{"id":"lseUw6","n":"Roompini","ken":"Pathum Wan","kth":"ปทุมวัน","t":"boutique","s":null,"rv":8.3,"rc":138.0,"src":"Booking","p":1500.0,"rm":9.0,"a":"Sarasin Rd, Lumphini, Bangkok 10330","u":"https://hotels.cloudbeds.com/reservation/lseUw6","no":"ตรงข้ามสวนลุมฯ","ph":"061-016-7878","ph2":null,"em":"roompini.bangkok@gmail.com","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","ขนาดเล็ก 9 ห้อง คุยกับเจ้าของได้ตรง ตัดสินใจเร็ว","ราคา ~1,500 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (ปทุมวัน) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"1cHXGt","n":"Happy3 Hotel","ken":"Pathum Wan","kth":"ปทุมวัน","t":"hotel","s":null,"rv":8.6,"rc":3890.0,"src":"Kayak","p":1550.0,"rm":null,"a":"33 Soi Kasemsan 3, Wang Mai, Bangkok 10330","u":"https://hotels.cloudbeds.com/reservation/1cHXGt","no":"ใกล้ BTS สนามกีฬาฯ/สยาม","ph":"02-612-4799","ph2":"092-280-0234","em":"info@happy3.co.th","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","รีวิว 3,890 รายการ แขกเข้าพักต่อเนื่อง ธุรกิจมีรายได้สม่ำเสมอ","ราคา ~1,550 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (ปทุมวัน) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"519d0O","n":"Sakura Sky Residence","ken":"Watthana","kth":"วัฒนา","t":"hotel","s":3.0,"rv":7.6,"rc":412.0,"src":"Expedia","p":920.0,"rm":null,"a":"9/1 Sukhumvit 33, Khlong Tan Nuea, Bangkok 10110","u":"https://hotels.cloudbeds.com/reservation/519d0O","no":"เดิน 7 นาที BTS พร้อมพงษ์","ph":"02-259-5999","ph2":null,"em":null,"ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","ราคา ~920 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (วัฒนา) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีเบอร์โทร ติดต่อได้ทันที"]},{"id":"tN3wfD","n":"Thonglor Suites Hotel","ken":"Watthana","kth":"วัฒนา","t":"hotel","s":2.5,"rv":6.4,"rc":73.0,"src":"Trip.com","p":920.0,"rm":null,"a":"2/7 Soi Sukhumvit 53, Khlong Tan Nuea, Bangkok 10110","u":"https://hotels.cloudbeds.com/reservation/tN3wfD","no":"ไม่มีลิฟต์ · 50 ม. BTS ทองหล่อ","ph":"02-001-2698","ph2":null,"em":"info@thonglorsuites.com","ln":null,"web":"https://thonglorsuites.com","why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","คะแนนรีวิว 6.4 ค่อนข้างต่ำ มีจุดให้ช่วยปรับปรุงบริการ","ราคา ~920 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (วัฒนา) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีเว็บไซต์ของตัวเอง ให้ความสำคัญกับการจองตรง","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"EWugHt","n":"The Cube Hostel Silom","ken":"Bang Rak","kth":"บางรัก","t":"hostel","s":null,"rv":8.5,"rc":1785.0,"src":"Kayak","p":700.0,"rm":null,"a":"3/9 Saladaeng Rd, Silom, Bangkok 10500","u":"https://hotels.cloudbeds.com/reservation/EWugHt","no":"มีสระว่ายน้ำดาดฟ้า","ph":"096-314-1481","ph2":null,"em":"frontdesk@thecubehostel.com","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","รีวิว 1,785 รายการ แขกเข้าพักต่อเนื่อง ธุรกิจมีรายได้สม่ำเสมอ","อยู่ย่านท่องเที่ยวหลัก (บางรัก) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"iGlZHg","n":"CLOUD on Saladaeng Hostel","ken":"Bang Rak","kth":"บางรัก","t":"hostel","s":null,"rv":9.0,"rc":null,"src":"Booking","p":1120.0,"rm":null,"a":"71/2 Soi Sala Daeng 1/1, Silom, Bangkok 10500","u":"https://hotels.cloudbeds.com/reservation/iGlZHg","no":"มีทั้งเตียงรวมและห้องส่วนตัว","ph":"02-029-9729","ph2":null,"em":"info@cloudonsaladaeng.com","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","คะแนนรีวิว 9.0 ดีเยี่ยม ใส่ใจคุณภาพ พร้อมลงทุนต่อ","ราคา ~1,120 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (บางรัก) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"vhyeOS","n":"BRB Hostel Bangkok Silom","ken":"Bang Rak","kth":"บางรัก","t":"hostel","s":null,"rv":7.8,"rc":1420.0,"src":"Kayak","p":460.0,"rm":17.0,"a":"5/8-9 Soi Pipat (Silom Soi 3), Bangkok 10500","u":"https://hotels.cloudbeds.com/reservation/vhyeOS","no":"รีวิว Hostelworld ต่ำมาก (2.6)","ph":"061-515-9898","ph2":null,"em":"brbstaff1@gmail.com","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","ขนาดเล็ก 17 ห้อง คุยกับเจ้าของได้ตรง ตัดสินใจเร็ว","รีวิว 1,420 รายการ แขกเข้าพักต่อเนื่อง ธุรกิจมีรายได้สม่ำเสมอ","อยู่ย่านท่องเที่ยวหลัก (บางรัก) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"IyqM8b","n":"Arawana Regency Park Sukhumvit","ken":"Khlong Toei","kth":"คลองเตย","t":"hotel","s":4.0,"rv":8.0,"rc":261.0,"src":"Trip.com","p":1400.0,"rm":120.0,"a":"Soi Sainamthip, Sukhumvit 22, Khlong Tan, Bangkok 10110","u":"https://hotels.cloudbeds.com/reservation/IyqM8b","no":"ชื่อเดิม Aspira Grand Regency · ตึกเก่า · ดาวประกาศเอง","ph":"02-259-7420","ph2":null,"em":"fo_regencypark@arawanagroup.com","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","ขนาดใหญ่ 120 ห้อง งานหน้าบ้านและการจองเยอะ","ระดับ 4 ดาว มีงบลงทุนระบบ","ราคา ~1,400 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (คลองเตย) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"LCLlYQ","n":"Sib Kao","ken":"Watthana","kth":"วัฒนา","t":"hotel","s":3.0,"rv":9.0,"rc":1082.0,"src":"Kayak","p":1190.0,"rm":null,"a":"19/27-28 Sukhumvit Soi 19, Khlong Toei Nuea, Bangkok 10110","u":"https://hotels.cloudbeds.com/reservation/LCLlYQ","no":"ใกล้ Terminal 21","ph":"02-254-3200","ph2":null,"em":"info@sibkao.com","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","รีวิว 1,082 รายการ แขกเข้าพักต่อเนื่อง ธุรกิจมีรายได้สม่ำเสมอ","คะแนนรีวิว 9.0 ดีเยี่ยม ใส่ใจคุณภาพ พร้อมลงทุนต่อ","ราคา ~1,190 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (วัฒนา) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"dBVH5M","n":"Lamurr Sukhumvit 41","ken":"Watthana","kth":"วัฒนา","t":"hostel","s":null,"rv":8.4,"rc":1129.0,"src":"Kayak","p":null,"rm":null,"a":"Sukhumvit Soi 41, Khlong Tan Nuea, Bangkok 10110","u":"https://hotels.cloudbeds.com/reservation/dBVH5M","no":"ใกล้ BTS พร้อมพงษ์","ph":"02-040-4653","ph2":"097-140-5544","em":"info@lamurr.com","ln":null,"web":"https://lamurr.com","why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","รีวิว 1,129 รายการ แขกเข้าพักต่อเนื่อง ธุรกิจมีรายได้สม่ำเสมอ","อยู่ย่านท่องเที่ยวหลัก (วัฒนา) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีเว็บไซต์ของตัวเอง ให้ความสำคัญกับการจองตรง","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"jABe3g","n":"3Howw Hostel @ Sukhumvit 21","ken":"Watthana","kth":"วัฒนา","t":"hostel","s":null,"rv":7.7,"rc":2741.0,"src":"Kayak","p":null,"rm":null,"a":"32/9 Sukhumvit 21 Soi 1, Bangkok 10110","u":"https://hotels.cloudbeds.com/reservation/jABe3g","no":"เดิน 5 นาที BTS อโศก","ph":"099-909-6997","ph2":null,"em":"3howw.sukhumvit21@gmail.com","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","รีวิว 2,741 รายการ แขกเข้าพักต่อเนื่อง ธุรกิจมีรายได้สม่ำเสมอ","อยู่ย่านท่องเที่ยวหลัก (วัฒนา) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"mQ8KAh","n":"Narastay @ Phrom Phong","ken":"Watthana","kth":"วัฒนา","t":"apt","s":null,"rv":null,"rc":null,"src":"","p":null,"rm":null,"a":"51/4 Sukhumvit Soi 39, Bangkok 10110","u":"https://hotels.cloudbeds.com/reservation/mQ8KAh","no":"น่าจะเปิดใหม่ ยังไม่มีรีวิว","ph":"062-818-1865","ph2":null,"em":"booking@narastay.com","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","อยู่ย่านท่องเที่ยวหลัก (วัฒนา) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"z3rPaG","n":"StayAt Bedever Bangkok Hotel","ken":"Watthana","kth":"วัฒนา","t":"boutique","s":null,"rv":8.8,"rc":61.0,"src":"Expedia","p":730.0,"rm":21.0,"a":"1533/3-4 Sukhumvit Rd, Phra Khanong Nuea, Bangkok 10110","u":"https://us2.cloudbeds.com/reservation/z3rPaG","no":"ใช้ Cloudbeds โดเมน us2.cloudbeds.com","ph":null,"ph2":null,"em":null,"ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","ขนาดกลาง 21 ห้อง กำลังโต","อยู่ย่านท่องเที่ยวหลัก (วัฒนา) แข่งขันสูง ต้องการเครื่องมือช่วยขาย"]},{"id":"kXbLpy","n":"Urbana Sathorn","ken":"Sathon","kth":"สาทร","t":"apt","s":5.0,"rv":8.0,"rc":4554.0,"src":"Kayak","p":1900.0,"rm":156.0,"a":"South Sathorn Rd, Bangkok","u":"https://hotels.cloudbeds.com/reservation/kXbLpy","no":"ดาวประกาศเองบนหน้าจอง ยังไม่ยืนยัน · ห้องมีครัว","ph":"02-227-9999","ph2":null,"em":"rsvn@urbanasathorn.com","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","ขนาดใหญ่ 156 ห้อง งานหน้าบ้านและการจองเยอะ","ระดับ 5 ดาว มีงบลงทุนระบบ","รีวิว 4,554 รายการ แขกเข้าพักต่อเนื่อง ธุรกิจมีรายได้สม่ำเสมอ","ราคา ~1,900 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (สาทร) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"yqwDkx","n":"Sabai Sathorn Serviced Apartment","ken":"Bang Rak","kth":"บางรัก","t":"apt","s":null,"rv":8.4,"rc":2281.0,"src":"Kayak","p":1780.0,"rm":30.0,"a":"57 Sathorn Soi 10, Silom, Bangkok 10500","u":"https://hotels.cloudbeds.com/reservation/yqwDkx","no":"รีโนเวทปี 2024 · สระดาดฟ้า","ph":"02-267-3999","ph2":null,"em":null,"ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","ขนาดกลาง 30 ห้อง กำลังโต","รีวิว 2,281 รายการ แขกเข้าพักต่อเนื่อง ธุรกิจมีรายได้สม่ำเสมอ","ราคา ~1,780 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (บางรัก) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีเบอร์โทร ติดต่อได้ทันที"]},{"id":"DCUevV","n":"Pas Cher Hotel de Bangkok","ken":"Bang Rak","kth":"บางรัก","t":"hotel","s":null,"rv":8.3,"rc":2197.0,"src":"Kayak","p":890.0,"rm":72.0,"a":"28/5 Charoen Wiang Rd, Silom, Bangkok 10500","u":"https://hotels.cloudbeds.com/reservation/DCUevV","no":"มีสระว่ายน้ำ · ไม่มีอาหารเช้า","ph":"02-630-6401","ph2":null,"em":null,"ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","ขนาดใหญ่ 72 ห้อง งานหน้าบ้านและการจองเยอะ","รีวิว 2,197 รายการ แขกเข้าพักต่อเนื่อง ธุรกิจมีรายได้สม่ำเสมอ","ราคา ~890 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (บางรัก) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีเบอร์โทร ติดต่อได้ทันที"]},{"id":"BJAq9T","n":"4M Pratunam Hotel","ken":"Ratchathewi","kth":"ราชเทวี","t":"hotel","s":3.0,"rv":8.0,"rc":1190.0,"src":"Kayak","p":760.0,"rm":25.0,"a":"45/6-7 Soi Phetchaburi 15, Bangkok 10400","u":"https://hotels.cloudbeds.com/reservation/BJAq9T","no":"อาหารเช้า 150 บาท","ph":"02-251-5545","ph2":"081-638-1551","em":"4mpratunamhotel@gmail.com","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","ขนาดกลาง 25 ห้อง กำลังโต","รีวิว 1,190 รายการ แขกเข้าพักต่อเนื่อง ธุรกิจมีรายได้สม่ำเสมอ","อยู่ย่านท่องเที่ยวหลัก (ราชเทวี) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"m9POZF","n":"Spenza Hotel","ken":"Ratchathewi","kth":"ราชเทวี","t":"hotel","s":3.0,"rv":8.6,"rc":1926.0,"src":"Kayak","p":910.0,"rm":94.0,"a":"88 Soi Phetchaburi 15, Bangkok 10400","u":"https://hotels.cloudbeds.com/reservation/m9POZF","no":"ใกล้ประตูน้ำ/แพลทินัม","ph":"02-251-5251","ph2":null,"em":null,"ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","ขนาดใหญ่ 94 ห้อง งานหน้าบ้านและการจองเยอะ","รีวิว 1,926 รายการ แขกเข้าพักต่อเนื่อง ธุรกิจมีรายได้สม่ำเสมอ","ราคา ~910 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (ราชเทวี) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีเบอร์โทร ติดต่อได้ทันที"]},{"id":"HVuqFl","n":"Natee Hostel","ken":"Ratchathewi","kth":"ราชเทวี","t":"hostel","s":null,"rv":8.8,"rc":null,"src":"Expedia","p":null,"rm":null,"a":"39/11-12 Soi Phetchaburi 15, Bangkok 10400","u":"https://hotels.cloudbeds.com/reservation/HVuqFl","no":"รวมอาหารเช้า","ph":"084-347-9920","ph2":null,"em":null,"ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","อยู่ย่านท่องเที่ยวหลัก (ราชเทวี) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีเบอร์โทร ติดต่อได้ทันที"]},{"id":"fikDq8","n":"Happy Station Bangkok","ken":"Pathum Wan","kth":"ปทุมวัน","t":"hostel","s":null,"rv":9.3,"rc":601.0,"src":"Trabber","p":null,"rm":null,"a":"477 Rama IV Rd, Rong Muang, Bangkok 10330","u":"https://hotels.cloudbeds.com/reservation/fikDq8","no":"ใกล้หัวลำโพง","ph":"064-545-2262","ph2":null,"em":"reservation@happystationbangkok.com","ln":null,"web":"https://www.happystationbangkok.com","why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","คะแนนรีวิว 9.3 ดีเยี่ยม ใส่ใจคุณภาพ พร้อมลงทุนต่อ","อยู่ย่านท่องเที่ยวหลัก (ปทุมวัน) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีเว็บไซต์ของตัวเอง ให้ความสำคัญกับการจองตรง","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"9zztFS","n":"House of Papa Bangkok Siam","ken":"Pathum Wan","kth":"ปทุมวัน","t":"hostel","s":null,"rv":8.3,"rc":935.0,"src":"Kayak","p":1150.0,"rm":null,"a":"188/44 Soi Chula 16, Wang Mai, Bangkok 10330","u":"https://hotels.cloudbeds.com/reservation/9zztFS","no":"~1 กม. MBK","ph":"092-428-8264","ph2":null,"em":"hotelpapabangkok@gmail.com","ln":null,"web":"https://house-of-papa-bangkok-siam.business.site","why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","ราคา ~1,150 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (ปทุมวัน) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีเว็บไซต์ของตัวเอง ให้ความสำคัญกับการจองตรง","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"IgoyOJ","n":"Tamni","ken":"Pathum Wan","kth":"ปทุมวัน","t":"hostel","s":null,"rv":9.4,"rc":2442.0,"src":"Booking","p":880.0,"rm":null,"a":"476/7 Soi Phraya Singhaseni, Rong Muang, Bangkok 10330","u":"https://hotels.cloudbeds.com/reservation/IgoyOJ","no":"design hostel ใกล้ MRT หัวลำโพง","ph":"063-932-2905","ph2":null,"em":null,"ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","รีวิว 2,442 รายการ แขกเข้าพักต่อเนื่อง ธุรกิจมีรายได้สม่ำเสมอ","คะแนนรีวิว 9.4 ดีเยี่ยม ใส่ใจคุณภาพ พร้อมลงทุนต่อ","ราคา ~880 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (ปทุมวัน) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีเบอร์โทร ติดต่อได้ทันที"]},{"id":"NQyDH9","n":"Bangkok City Rama 9 Hotel","ken":"Din Daeng","kth":"ดินแดง","t":"hotel","s":2.5,"rv":9.0,"rc":10.0,"src":"Hotels.com (sample เล็ก)","p":1600.0,"rm":388.0,"a":"499 Asok-Din Daeng Rd, Din Daeng, Bangkok 10400","u":"https://hotels.cloudbeds.com/reservation/NQyDH9","no":"เครือ StayBangkok · ใกล้ MRT · ไม่รวมอาหารเช้า","ph":"02-083-9499","ph2":null,"em":"rama9_reservation@staybangkokhotels.com","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","มีหลายสาขาหรือมีโรงแรมพี่น้อง คุยครั้งเดียวมีโอกาสได้หลายแห่ง","ขนาดใหญ่ 388 ห้อง งานหน้าบ้านและการจองเยอะ","คะแนนรีวิว 9.0 ดีเยี่ยม ใส่ใจคุณภาพ พร้อมลงทุนต่อ","ราคา ~1,600 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"0TyYnZ","n":"The Mini R Ratchada Hotel","ken":"Din Daeng","kth":"ดินแดง","t":"hotel","s":3.0,"rv":7.7,"rc":390.0,"src":"Kayak","p":1250.0,"rm":29.0,"a":"161 Ratchadaphisek Rd, Din Daeng, Bangkok 10400","u":"https://hotels.cloudbeds.com/en/reservation/0TyYnZ","no":"เดิน ~10 นาที MRT ห้วยขวาง","ph":"02-689-5173","ph2":null,"em":null,"ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","ขนาดกลาง 29 ห้อง กำลังโต","ราคา ~1,250 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","มีเบอร์โทร ติดต่อได้ทันที"]},{"id":"13e7WW","n":"Bed to Bangkok","ken":"Chatuchak","kth":"จตุจักร","t":"hostel","s":null,"rv":7.9,"rc":226.0,"src":"Hostelworld","p":null,"rm":10.0,"a":"Soi Choei Phuang, Chom Phon, Chatuchak, Bangkok 10900","u":"https://hotels.cloudbeds.com/reservation/13e7WW","no":"เปิดปี 2022 · ใกล้ BTS หมอชิต","ph":"082-210-0268","ph2":"02-121-7478","em":"bedtobangkok@yahoo.com","ln":null,"web":"https://bedtobangkok.com","why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","ขนาดเล็ก 10 ห้อง คุยกับเจ้าของได้ตรง ตัดสินใจเร็ว","มีเว็บไซต์ของตัวเอง ให้ความสำคัญกับการจองตรง","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"je81zl","n":"Sweetloft Hotel Don Muang","ken":"Don Mueang","kth":"ดอนเมือง","t":"hotel","s":3.0,"rv":7.6,"rc":null,"src":"Expedia/Hotels.com","p":650.0,"rm":60.0,"a":"40 Soi Song Prapha 30, Don Mueang, Bangkok 10210","u":"https://hotels.cloudbeds.com/reservation/je81zl","no":"ใกล้สนามบินดอนเมือง · มีร้านอาหาร","ph":"080-060-7877","ph2":null,"em":null,"ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","ขนาดใหญ่ 60 ห้อง งานหน้าบ้านและการจองเยอะ","ใกล้สนามบินดอนเมือง แขกเข้าออกเร็ว ต้องจัดการห้องไว","มีเบอร์โทร ติดต่อได้ทันที"]},{"id":"zGqPFy","n":"Sloth Hostel DonMueang Airport","ken":"Don Mueang","kth":"ดอนเมือง","t":"hostel","s":null,"rv":9.0,"rc":689.0,"src":"Trip.com","p":null,"rm":null,"a":"Soi Choet Wutthakat 9, Si Kan, Don Mueang, Bangkok 10210","u":"https://hotels.cloudbeds.com/reservation/zGqPFy","no":"~1.1 กม. จากสนามบิน DMK","ph":"082-251-7889","ph2":"087-111-1893","em":"slothhostel.dmk@gmail.com","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","คะแนนรีวิว 9.0 ดีเยี่ยม ใส่ใจคุณภาพ พร้อมลงทุนต่อ","ใกล้สนามบินดอนเมือง แขกเข้าออกเร็ว ต้องจัดการห้องไว","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"zMkAEo","n":"Yello Rooms Hotel Victory Monument","ken":"Ratchathewi","kth":"ราชเทวี","t":"hotel","s":3.0,"rv":8.7,"rc":906.0,"src":"Kayak","p":1500.0,"rm":null,"a":"12 Soi Ratchawithi 9/11, Phaya Thai Rd, Ratchathewi, Bangkok 10400","u":"https://hotels.cloudbeds.com/reservation/zMkAEo","no":"ย่านอนุสาวรีย์ชัยฯ","ph":"02-002-9428","ph2":null,"em":"info.yellorooms@gmail.com","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","ราคา ~1,500 ฿/คืน กลุ่มราคากลาง ตรงกลุ่มเป้าหมาย","อยู่ย่านท่องเที่ยวหลัก (ราชเทวี) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"QFq9Zv","n":"The Victory View (adults only)","ken":"Ratchathewi","kth":"ราชเทวี","t":"hostel","s":null,"rv":8.6,"rc":619.0,"src":"Trip.com","p":700.0,"rm":null,"a":"34/2-3 Soi Ratchawithi 9, Ratchathewi, Bangkok 10400","u":"https://hotels.cloudbeds.com/en/reservation/QFq9Zv","no":"~570 ม. BTS อนุสาวรีย์ชัยฯ","ph":"093-860-5914","ph2":"064-742-4561","em":"thevictory.hostel@gmail.com","ln":null,"web":null,"why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","อยู่ย่านท่องเที่ยวหลัก (ราชเทวี) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]},{"id":"1GcujK","n":"Monument Stay","ken":"Ratchathewi","kth":"ราชเทวี","t":"hostel","s":null,"rv":8.8,"rc":null,"src":"Travelocity","p":null,"rm":null,"a":"Soi Ratchawithi 9, Ratchathewi, Bangkok 10400","u":"https://hotels.cloudbeds.com/en/reservation/1GcujK","no":"เดิน 3 นาทีอนุสาวรีย์ชัยฯ","ph":"064-742-4561","ph2":null,"em":"monumentstay@gmail.com","ln":null,"web":"https://www.monumentstay.com","why":["ใช้ Cloudbeds อยู่แล้ว (เจอหน้าจองตรงบน Cloudbeds) เปิดรับระบบออนไลน์และจ่ายค่าซอฟต์แวร์อยู่","อยู่ย่านท่องเที่ยวหลัก (ราชเทวี) แข่งขันสูง ต้องการเครื่องมือช่วยขาย","มีเว็บไซต์ของตัวเอง ให้ความสำคัญกับการจองตรง","มีทั้งเบอร์โทรและอีเมล ติดต่อได้ทันที"]}];
+const BY_ID = Object.fromEntries(HOTELS.map(h=>[h.id,h]));
+const STAGES = [
+  ["new","ยังไม่ติดต่อ"],["called","โทรแล้ว"],["interested","สนใจ"],
+  ["demo","นัดเดโม/นัดคุย"],["proposal","ส่งใบเสนอราคา"],["won","ปิดการขาย"],["lost","ไม่สนใจ"]
 ];
-const STATUS_LABEL = Object.fromEntries(STATUS);
+const STAGE_LABEL = Object.fromEntries(STAGES);
+const ACT_TYPES = [["call","📞","โทร"],["line","💬","LINE"],["email","✉️","อีเมล"],["visit","🤝","เข้าพบ"],["note","📝","โน้ต"]];
+const ACT = Object.fromEntries(ACT_TYPES.map(([k,i,l])=>[k,{i,l}]));
+const OUTCOMES = ["คุยได้","ไม่รับสาย","ให้โทรกลับ","ขอข้อมูลเพิ่ม","สนใจ นัดคุยต่อ","ยังไม่สนใจ","ผิดเบอร์"];
+const APPT_TYPES = ["โทรติดตาม","นัดคุย/เข้าพบ","เดโมระบบ","ส่งใบเสนอราคา","อื่น ๆ"];
 const TYPE_LABEL = {hotel:"โรงแรม",boutique:"บูทีค",apt:"เซอร์วิส อพาร์ตเมนต์",hostel:"โฮสเทล/เกสต์เฮาส์"};
 const $ = s => document.querySelector(s);
-const crm = {};           // id -> {status, note}
-let db = null, khetSel = null, preset = null;
+const esc = s => String(s??"").replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt = n => n==null ? "—" : n.toLocaleString("th-TH");
+const uid = () => Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const pad = n => String(n).padStart(2,"0");
+const ymd = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const TODAY = ymd(new Date());
+const thDate = (s, opt={day:"numeric",month:"short"}) => { if(!s) return ""; const [y,m,d]=s.split("-").map(Number); return new Date(y,m-1,d).toLocaleDateString("th-TH",opt); };
+const thStamp = iso => { const d=new Date(iso); return d.toLocaleDateString("th-TH",{day:"numeric",month:"short"})+" "+pad(d.getHours())+":"+pad(d.getMinutes()); };
+
+const crm = {};   // id -> {stage, contact, needAppt, next, note, acts:[], appts:[], updatedAt}
+let store = null; // "db" namespace | "local" | null
+let khetSel = null, preset = null, todo = null, openId = null;
+let calMonth = new Date(); calMonth.setDate(1); let calSel = null;
+let staff = ""; try { staff = localStorage.getItem("keys-staff")||""; } catch {}
+
+const lead = id => crm[id] || {};
+const stageOf = id => { const s = lead(id).stage || lead(id).status || "new"; return s==="contacted" ? "called" : STAGE_LABEL[s] ? s : "new"; };
+const actsOf = id => (lead(id).acts||[]).slice().sort((a,b)=>b.at.localeCompare(a.at));
+const apptsOf = id => (lead(id).appts||[]).slice().sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));
+const called = id => (lead(id).acts||[]).some(a=>a.type==="call") || !["new"].includes(stageOf(id));
+const upcoming = id => apptsOf(id).filter(a=>!a.done && a.date>=TODAY);
 
 function score(h){
   let s = h.t==="hostel" ? 10 : 30;
@@ -202,172 +381,369 @@ function score(h){
 }
 HOTELS.forEach(h => h.sc = score(h));
 
-$("#fstatus").insertAdjacentHTML("beforeend", STATUS.map(([v,l])=>`<option value="${v}">${l}</option>`).join(""));
-
-const PRESETS = {
-  mid:     {type:"notHostel", stars:"3", rv:"0", pmin:"", pmax:""},
-  boutique:{type:"boutique",  stars:"0", rv:"9", pmin:"", pmax:""},
-  volume:  {type:"",          stars:"0", rv:"8", pmin:"", pmax:"", sort:"rc"},
-  hostel:  {type:"hostel",    stars:"0", rv:"0", pmin:"", pmax:""}
-};
-function setPreset(p){
-  preset = preset===p ? null : p;
-  document.querySelectorAll("#presets .chip").forEach(b=>b.setAttribute("aria-pressed", b.dataset.p===preset));
-  const v = preset ? PRESETS[preset] : {type:"",stars:"0",rv:"0",pmin:"",pmax:""};
-  for (const k of ["type","stars","rv","pmin","pmax"]) $("#"+k).value = v[k];
-  $("#sort").value = v.sort || "score";
-  render();
+// ---------- storage
+const LS_KEY = "cloudbeds-leads-crm";
+async function save(id){
+  const body = {...lead(id), updatedAt:new Date().toISOString()};
+  delete body.status; body.stage = stageOf(id);
+  crm[id] = body;
+  if (store === "local"){
+    try { localStorage.setItem(LS_KEY, JSON.stringify(crm)); flash("บันทึกในเครื่องนี้แล้ว"); } catch { flash("เบราว์เซอร์นี้บันทึกไม่ได้"); }
+  } else if (store){
+    try { await store.collection("leads").doc(id).set(body); flash("บันทึกแล้ว"); }
+    catch(e){ flash(e?.code==="permission_denied"||e?.code==="not_granted" ? "คุณมีสิทธิ์ดูอย่างเดียว บันทึกไม่ได้" : "บันทึกไม่สำเร็จ ลองใหม่อีกครั้ง"); }
+  }
+  renderAll();
 }
-document.querySelectorAll("#presets .chip").forEach(b=>b.addEventListener("click",()=>setPreset(b.dataset.p)));
+function flash(t){ const el=$("#dSaved"); if(el){ el.textContent=t; setTimeout(()=>{ if(el.textContent===t) el.textContent=""; },2000);} }
+function patch(id, fields){ crm[id] = {...lead(id), ...fields}; return save(id); }
+
+// ---------- filters
+$("#fstage").insertAdjacentHTML("beforeend", STAGES.map(([v,l])=>`<option value="${v}">${l}</option>`).join(""));
+const PRESETS = {
+  mid:{type:"notHostel",stars:"3",rv:"0"}, boutique:{type:"boutique",stars:"0",rv:"9"},
+  volume:{type:"",stars:"0",rv:"8",sort:"rc"}, hostel:{type:"hostel",stars:"0",rv:"0"}
+};
+document.querySelectorAll("#presets .chip").forEach(b=>b.addEventListener("click",()=>{
+  preset = preset===b.dataset.p ? null : b.dataset.p;
+  document.querySelectorAll("#presets .chip").forEach(x=>x.setAttribute("aria-pressed", x.dataset.p===preset));
+  const v = preset ? PRESETS[preset] : {type:"",stars:"0",rv:"0"};
+  for (const k of ["type","stars","rv"]) $("#"+k).value = v[k];
+  $("#sort").value = v.sort || "score"; renderList();
+}));
+document.querySelectorAll("#todo .chip").forEach(b=>b.addEventListener("click",()=>{
+  todo = todo===b.dataset.t ? null : b.dataset.t;
+  document.querySelectorAll("#todo .chip").forEach(x=>x.setAttribute("aria-pressed", x.dataset.t===todo));
+  renderList();
+}));
 
 function passes(h, ignoreKhet){
+  const c = lead(h.id);
   const q = $("#q").value.trim().toLowerCase();
-  if (q && !(h.n+" "+h.a+" "+h.ken+" "+h.kth).toLowerCase().includes(q)) return false;
+  if (q && !(h.n+" "+h.a+" "+h.ken+" "+h.kth+" "+(c.note||"")+" "+(c.contact||"")+" "+(h.ph||"")).toLowerCase().includes(q)) return false;
   const t = $("#type").value;
   if (t==="notHostel" ? h.t==="hostel" : (t && h.t!==t)) return false;
   const st = +$("#stars").value; if (st && !(h.s>=st)) return false;
-  const rv = +$("#rv").value;    if (rv && !(h.rv>=rv)) return false;
+  const rv = +$("#rv").value; if (rv && !(h.rv>=rv)) return false;
   const pmin = +$("#pmin").value, pmax = +$("#pmax").value;
-  if ($("#known").checked && h.p==null) return false;
-  if ($("#hasPhone").checked && !h.ph) return false;
   if (pmin && h.p!=null && h.p<pmin) return false;
   if (pmax && h.p!=null && h.p>pmax) return false;
-  if ((pmin||pmax) && h.p==null && $("#known").checked) return false;
-  const fs = $("#fstatus").value; if (fs && (crm[h.id]?.status||"new")!==fs) return false;
+  if ($("#hasPhone").checked && !h.ph) return false;
+  const fs = $("#fstage").value; if (fs && stageOf(h.id)!==fs) return false;
+  if (todo==="notCalled" && called(h.id)) return false;
+  if (todo==="needAppt" && !(c.needAppt && !upcoming(h.id).length)) return false;
+  if (todo==="hasAppt" && !upcoming(h.id).length) return false;
+  if (todo==="active" && !["called","interested","demo","proposal"].includes(stageOf(h.id))) return false;
   if (!ignoreKhet && khetSel && h.ken!==khetSel) return false;
   return true;
 }
-const fmt = n => n==null ? "—" : n.toLocaleString("th-TH");
-const esc = s => String(s??"").replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
-function render(){
-  // district bars (ignore district filter so they stay a legend)
+// ---------- list view
+function renderList(){
   const base = HOTELS.filter(h=>passes(h,true));
   const by = {};
-  base.forEach(h => (by[h.ken] ??= {th:h.kth,n:0}).n++);
   HOTELS.forEach(h => by[h.ken] ??= {th:h.kth,n:0});
+  base.forEach(h => by[h.ken].n++);
   const max = Math.max(1,...Object.values(by).map(x=>x.n));
   $("#khet").innerHTML = Object.entries(by).sort((a,b)=>b[1].n-a[1].n||a[0].localeCompare(b[0])).map(([k,v])=>
     `<button class="kb" data-k="${esc(k)}" aria-pressed="${khetSel===k}"><span class="nm">${esc(v.th)} <span style="color:var(--muted)">${esc(k)}</span></span><span class="ct">${v.n}</span><span class="tr"><i style="width:${v.n/max*100}%"></i></span></button>`).join("");
 
   const rows = base.filter(h=>!khetSel || h.ken===khetSel);
-  const s = $("#sort").value;
   const nz = (v,d) => v==null ? d : v;
   rows.sort({
     score:(a,b)=>b.sc-a.sc||nz(b.rc,0)-nz(a.rc,0),
+    recent:(a,b)=>(lead(b.id).updatedAt||"").localeCompare(lead(a.id).updatedAt||"")||b.sc-a.sc,
     rv:(a,b)=>nz(b.rv,0)-nz(a.rv,0), rc:(a,b)=>nz(b.rc,0)-nz(a.rc,0),
-    pAsc:(a,b)=>nz(a.p,1e9)-nz(b.p,1e9), pDesc:(a,b)=>nz(b.p,-1)-nz(a.p,-1),
-    khet:(a,b)=>a.kth.localeCompare(b.kth,"th")||b.sc-a.sc
-  }[s]);
+    pAsc:(a,b)=>nz(a.p,1e9)-nz(b.p,1e9), khet:(a,b)=>a.kth.localeCompare(b.kth,"th")||b.sc-a.sc
+  }[$("#sort").value]);
+  $("#listTitle").textContent = `รายชื่อ${khetSel ? " · "+(by[khetSel]?.th||khetSel) : ""} (${rows.length})`;
 
-  $("#kTotal").textContent = rows.length;
-  $("#kHot").textContent = rows.filter(h=>h.sc>=70).length;
-  const sts = HOTELS.map(h=>crm[h.id]?.status||"new");
-  $("#kWork").textContent = sts.filter(x=>["contacted","interested","demo"].includes(x)).length;
-  $("#kWon").textContent = sts.filter(x=>x==="won").length;
-  $("#listTitle").textContent = khetSel ? `รายชื่อ · ${by[khetSel]?.th||khetSel}` : "รายชื่อ";
-
-  if (!rows.length){ $("#list").innerHTML = `<div class="empty">ไม่มีโรงแรมที่ตรงเงื่อนไขนี้ ลองลดรีวิวขั้นต่ำหรือกด "ล้างตัวกรอง"</div>`; return; }
+  if (!rows.length){ $("#list").innerHTML = `<div class="empty">ไม่มีโรงแรมที่ตรงเงื่อนไขนี้ กด "ล้างตัวกรอง" เพื่อดูทั้งหมด</div>`; return; }
   $("#list").innerHTML = rows.map(h=>{
-    const c = crm[h.id] || {}; const st = c.status || "new";
+    const c = lead(h.id), st = stageOf(h.id), la = actsOf(h.id)[0], up = upcoming(h.id)[0];
     const rvCls = h.rv==null ? "" : h.rv>=8.5 ? "good" : h.rv<7 ? "low" : "";
-    const maps = "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(h.n+" Bangkok");
-    return `<article class="lead st st-${st}" data-id="${h.id}">
+    return `<article class="lead st st-${st==="called"?"contacted":st}" data-id="${h.id}">
       <div class="tag" title="คะแนนความเหมาะ"><b>${h.sc}</b><span>FIT</span></div>
       <div style="min-width:0">
-        <p class="name">${esc(h.n)}</p>
-        <div class="meta"><span>เขต${esc(h.kth)}</span><span>${esc(h.a)}</span></div>
-        <div class="facts">
-          <span class="pill t-${h.t}">${TYPE_LABEL[h.t]}</span>
-          <span class="pill">${h.s!=null ? "★ "+h.s : "ดาว —"}</span>
-          <span class="pill ${rvCls}">รีวิว ${h.rv!=null ? h.rv.toFixed(1) : "—"}${h.rc!=null ? " · "+fmt(h.rc)+" รีวิว" : ""}${h.src ? " · "+esc(h.src) : ""}</span>
-          <span class="pill">${h.p!=null ? "~"+fmt(h.p)+" ฿/คืน" : "ราคา —"}</span>
-          <span class="pill">${h.rm!=null ? fmt(h.rm)+" ห้อง" : "ห้อง —"}</span>
-        </div>
+        <div class="row" style="gap:6px 8px"><p class="name">${esc(h.n)}</p><span class="stage sg-${st}">${STAGE_LABEL[st]}</span></div>
+        <div class="meta"><span>เขต${esc(h.kth)}</span><span>${TYPE_LABEL[h.t]}</span><span>${h.s!=null?"★ "+h.s:""}</span><span class="${rvCls}">รีวิว ${h.rv!=null?h.rv.toFixed(1):"—"}${h.rc!=null?" ("+fmt(h.rc)+")":""}</span><span>${h.p!=null?"~"+fmt(h.p)+" ฿":""}</span></div>
         <div class="contact">${h.ph
           ? [h.ph,h.ph2].filter(Boolean).map(p=>`<a class="tel" href="tel:${p.replace(/[^0-9+]/g,"")}">☎ ${esc(p)}</a><button class="copy" data-copy="${esc(p)}">คัดลอก</button>`).join("")
           : `<span class="nophone">ยังไม่มีเบอร์</span>`}
-          ${h.ln ? `<span class="pill">LINE ${esc(h.ln)}</span>` : ""}${h.em ? `<span class="pill">${esc(h.em)}</span>` : ""}</div>
-        ${h.no ? `<div class="note">${esc(h.no)}</div>` : ""}
-        <div class="links"><a href="${esc(h.u)}" target="_blank" rel="noopener">หน้าจอง Cloudbeds ↗</a>${h.web ? `<a href="${esc(h.web)}" target="_blank" rel="noopener">เว็บโรงแรม ↗</a>` : ""}<a href="${maps}" target="_blank" rel="noopener">Google Maps / เบอร์โทร ↗</a></div>
+          ${!called(h.id) ? `<span class="flag">ยังไม่โทร</span>` : ""}
+          ${c.needAppt && !up ? `<span class="flag appt">ต้องทำนัด</span>` : ""}
+          ${up ? `<span class="flag next">นัด ${thDate(up.date)} ${esc(up.time||"")} · ${esc(up.type)}</span>` : ""}</div>
+        ${la ? `<div class="lastact">${ACT[la.type]?.i||"•"} <b>${ACT[la.type]?.l||""}</b>${la.who?" คุยกับ "+esc(la.who):""}${la.outcome?" · "+esc(la.outcome):""}${la.text?" — "+esc(la.text):""} <small>· ${thStamp(la.at)}${la.by?" โดย "+esc(la.by):""}</small></div>` : ""}
+        ${h.why?.length ? `<ul class="why">${h.why.slice(0,3).map(w=>`<li>${esc(w)}</li>`).join("")}</ul>` : ""}
+        ${c.note ? `<div class="note">📝 ${esc(c.note)}</div>` : ""}
       </div>
       <div class="crm">
-        <label class="f">สถานะ
-          <select id="st-${h.id}" data-act="status" ${db?"":"disabled"}>${STATUS.map(([v,l])=>`<option value="${v}"${v===st?" selected":""}>${l}</option>`).join("")}</select></label>
-        <label class="f">โน้ต / ผู้ติดต่อ
-          <input id="nt-${h.id}" data-act="note" value="${esc(c.note)}" placeholder="ชื่อ เบอร์ วันนัด" ${db?"":"disabled"}></label>
+        <button class="primary open" data-open="${h.id}">อัปเดต / ดูประวัติ</button>
+        ${h.ph ? `<button class="ghost" data-quickcall="${h.id}">บันทึกว่าโทรแล้ว</button>` : ""}
       </div>
     </article>`;
   }).join("");
 }
 
-$("#khet").addEventListener("click", e=>{
-  const b = e.target.closest(".kb"); if (!b) return;
-  khetSel = khetSel===b.dataset.k ? null : b.dataset.k; render();
-});
-["q","type","stars","rv","pmin","pmax","fstatus","known","sort"].forEach(id=>$("#"+id).addEventListener("input",render));
-$("#reset").addEventListener("click",()=>{ preset=null; khetSel=null;
-  document.querySelectorAll("#presets .chip").forEach(b=>b.setAttribute("aria-pressed","false"));
-  $("#q").value=""; $("#type").value=""; $("#stars").value="0"; $("#rv").value="0"; $("#pmin").value=""; $("#pmax").value="";
-  $("#fstatus").value=""; $("#known").checked=false; $("#sort").value="score"; render(); });
-
-const LS_KEY = "cloudbeds-leads-crm";
-async function save(id, patch){
-  if (!db) return;
-  const body = {...(crm[id]||{}), ...patch, updatedAt:new Date().toISOString()};
-  crm[id] = body;
-  if (db === "local"){
-    try { localStorage.setItem(LS_KEY, JSON.stringify(crm)); $("#sync").textContent = "บันทึกในเบราว์เซอร์นี้แล้ว (เครื่องอื่นจะไม่เห็น)"; }
-    catch { $("#sync").textContent = "เบราว์เซอร์นี้ไม่ยอมให้บันทึก"; }
-    return;
-  }
-  try { await db.collection("leads").doc(id).set(body); $("#sync").textContent = "บันทึกแล้ว · ทุกคนที่เปิดหน้านี้เห็นสถานะเดียวกัน"; }
-  catch(e){ $("#sync").textContent = e?.code==="permission_denied" || e?.code==="not_granted" ? "คุณมีสิทธิ์ดูอย่างเดียว บันทึกสถานะไม่ได้" : "บันทึกไม่สำเร็จ ลองใหม่อีกครั้ง"; }
+function renderKpis(){
+  const ids = HOTELS.map(h=>h.id);
+  $("#kNotCalled").textContent = ids.filter(id=>!called(id)).length;
+  $("#kNeedAppt").textContent = ids.filter(id=>lead(id).needAppt && !upcoming(id).length).length;
+  const wk = ymd(new Date(Date.now()+7*864e5));
+  const all = allAppts().filter(a=>!a.done && a.date>=TODAY);
+  $("#kWeek").textContent = all.filter(a=>a.date<=wk).length;
+  $("#kWon").textContent = ids.filter(id=>stageOf(id)==="won").length;
+  $("#nAppt").textContent = all.length ? all.length : "";
 }
+
+// ---------- drawer (per-customer detail)
+function openDrawer(id){
+  openId = id; const h = BY_ID[id];
+  $("#dName").textContent = h.n;
+  $("#dMeta").innerHTML = `เขต${esc(h.kth)} · ${TYPE_LABEL[h.t]}${h.ph?` · <a href="tel:${h.ph.replace(/[^0-9+]/g,"")}">☎ ${esc(h.ph)}</a>`:""}${h.em?` · ${esc(h.em)}`:""}`;
+  $("#scrim").hidden = false; $("#drawer").hidden = false;
+  renderDrawer(); draftLoad(); document.body.style.overflow = "hidden";
+  try { sessionStorage.setItem("keys-open", id); } catch {}
+  setTimeout(()=>$("#dClose").focus(), 0);
+}
+function closeDrawer(){ try { sessionStorage.removeItem("keys-open"); } catch {} draftClear(); openId = null; $("#scrim").hidden = true; $("#drawer").hidden = true; document.body.style.overflow = ""; }
+$("#dClose").addEventListener("click", closeDrawer);
+$("#scrim").addEventListener("click", closeDrawer);
+document.addEventListener("keydown", e=>{ if (e.key==="Escape" && openId) closeDrawer(); });
+
+function renderDrawer(){
+  if (!openId) return;
+  const id = openId, h = BY_ID[id], c = lead(id), st = stageOf(id);
+  const acts = actsOf(id), appts = apptsOf(id);
+  $("#dBody").innerHTML = `
+    ${h.why?.length ? `<div class="card"><h4>ทำไมถึงเสนอรายนี้</h4><ul class="why" style="margin:0">${h.why.map(w=>`<li>${esc(w)}</li>`).join("")}</ul><div class="links" style="margin:0"><a href="${esc(h.u)}" target="_blank" rel="noopener">หน้าจอง Cloudbeds ↗</a>${h.web?`<a href="${esc(h.web)}" target="_blank" rel="noopener">เว็บโรงแรม ↗</a>`:""}<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(h.n+" Bangkok")}" target="_blank" rel="noopener">Google Maps ↗</a></div></div>` : ""}
+    <div class="card">
+      <div class="row" style="justify-content:space-between"><h4>ขั้นตอนการขาย</h4><span class="saved" id="dSaved"></span></div>
+      <div class="steps">${STAGES.map(([v,l])=>`<button data-stage="${v}" aria-pressed="${v===st}">${l}</button>`).join("")}</div>
+      <label class="chk"><input type="checkbox" id="dNeed" ${c.needAppt?"checked":""}> ต้องทำนัด</label>
+      <div class="two">
+        <label class="f">ผู้ติดต่อฝั่งโรงแรม<input type="text" id="dContact" value="${esc(c.contact)}" placeholder="ชื่อ / ตำแหน่ง / เบอร์ตรง"></label>
+        <label class="f">ขั้นต่อไปที่ต้องทำ<input type="text" id="dNext" value="${esc(c.next)}" placeholder="เช่น ส่งโบรชัวร์ทาง LINE"></label>
+      </div>
+      <label class="f">โน้ต<textarea id="dNote" placeholder="ข้อมูลสำคัญของลูกค้ารายนี้">${esc(c.note)}</textarea></label>
+    </div>
+
+    <div class="card">
+      <h4>บันทึกการติดต่อ / อัปเดต</h4>
+      <div class="steps" id="aType">${ACT_TYPES.map(([k,i,l],n)=>`<button data-atype="${k}" aria-pressed="${n===0}">${i} ${l}</button>`).join("")}</div>
+      <div class="two">
+        <label class="f">คุยกับใคร<input type="text" id="aWho" list="whoList" value="${esc(c.contact)}" placeholder="เช่น คุณเอ ฝ่ายขาย"></label>
+        <label class="f">ผลลัพธ์<select id="aOut"><option value="">—</option>${OUTCOMES.map(o=>`<option>${o}</option>`).join("")}</select></label>
+      </div>
+      <label class="f">รายละเอียด<input type="text" id="aText" placeholder="คุยอะไรไปบ้าง"></label>
+      <div class="two">
+        <label class="f">ผู้บันทึก (ทีมเรา)<input type="text" id="aBy" value="${esc(staff)}" placeholder="ชื่อคุณ"></label>
+        <div style="display:flex;align-items:flex-end"><button class="primary" id="aAdd" style="width:100%">เพิ่มบันทึก</button></div>
+      </div>
+      <datalist id="whoList">${[...new Set(acts.map(a=>a.who).filter(Boolean))].map(w=>`<option value="${esc(w)}">`).join("")}</datalist>
+      ${acts.length ? `<ul class="tl">${acts.map(a=>`<li><span class="ic">${ACT[a.type]?.i||"•"}</span><div class="t"><b>${ACT[a.type]?.l||""}</b>${a.who?" · คุยกับ "+esc(a.who):""}${a.outcome?" · "+esc(a.outcome):""}${a.text?`<br>${esc(a.text)}`:""}<small>${thStamp(a.at)}${a.by?" · โดย "+esc(a.by):""} <button class="del" data-delact="${a.id}">ลบ</button></small></div></li>`).join("")}</ul>`
+        : `<p class="note" style="margin:0">ยังไม่มีบันทึก กด "เพิ่มบันทึก" หลังโทรหรือคุยกับลูกค้า</p>`}
+    </div>
+
+    <div class="card">
+      <h4>นัดหมาย</h4>
+      <div class="two">
+        <label class="f">วันที่<input type="date" id="pDate" value="${TODAY}"></label>
+        <label class="f">เวลา<input type="time" id="pTime" value="10:00"></label>
+      </div>
+      <div class="two">
+        <label class="f">ประเภทนัด<select id="pType">${APPT_TYPES.map(t=>`<option>${t}</option>`).join("")}</select></label>
+        <label class="f">นัดกับใคร<input type="text" id="pWith" value="${esc(c.contact)}"></label>
+      </div>
+      <label class="f">รายละเอียด<input type="text" id="pNote" placeholder="สถานที่ / สิ่งที่ต้องเตรียม"></label>
+      <button class="primary" id="pAdd">เพิ่มนัด</button>
+      ${appts.length ? appts.map(a=>apptRow(id,a)).join("") : `<p class="note" style="margin:0">ยังไม่มีนัด</p>`}
+    </div>`;
+}
+const _rd = renderDrawer; renderDrawer = function(){ const keep = {}; for (const k of ["pDate","pTime","pType","aBy"]) if ($("#"+k)) keep[k] = $("#"+k).value; _rd(); for (const k in keep) if ($("#"+k)) $("#"+k).value = keep[k]; draftLoad(); };
+function apptRow(id,a){
+  return `<div class="ap ${a.done?"done":""}"><span class="when">${thDate(a.date)}<br>${esc(a.time||"")}</span>
+    <span style="min-width:0"><b>${esc(a.type)}</b>${a.with?" · "+esc(a.with):""}${a.note?`<br><span style="color:var(--muted)">${esc(a.note)}</span>`:""}</span>
+    <span style="display:flex;flex-direction:column;gap:4px;align-items:flex-end">
+      <label class="chk" style="font-size:12px"><input type="checkbox" data-done="${id}|${a.id}" ${a.done?"checked":""}> เสร็จแล้ว</label>
+      <span><button class="del" data-ics="${id}|${a.id}">ลงปฏิทินมือถือ</button><button class="del" data-delappt="${id}|${a.id}">ลบ</button></span>
+    </span></div>`;
+}
+
+$("#dBody").addEventListener("click", e=>{
+  const id = openId; if (!id) return;
+  const t = e.target;
+  if (t.dataset.stage){ const s=t.dataset.stage; const p={stage:s}; if (s==="demo") p.needAppt = !upcoming(id).length || lead(id).needAppt; patch(id,p).then(renderDrawer); return; }
+  if (t.dataset.atype){ document.querySelectorAll("#aType button").forEach(b=>b.setAttribute("aria-pressed", b===t)); return; }
+  if (t.id==="aAdd"){
+    const type = document.querySelector('#aType button[aria-pressed="true"]')?.dataset.atype || "note";
+    const a = {id:uid(), at:new Date().toISOString(), type, who:$("#aWho").value.trim(), outcome:$("#aOut").value, text:$("#aText").value.trim().slice(0,500), by:$("#aBy").value.trim()};
+    if (!a.who && !a.outcome && !a.text && type==="note") { $("#aText").focus(); return; }
+    staff = a.by; try { localStorage.setItem("keys-staff", staff); } catch {}
+    const p = {acts:[...(lead(id).acts||[]), a]};
+    if (type==="call" && stageOf(id)==="new") p.stage = "called";
+    if (a.outcome==="สนใจ นัดคุยต่อ"){ p.needAppt = true; if (["new","called"].includes(stageOf(id))) p.stage = "interested"; }
+    if (a.outcome==="ยังไม่สนใจ" && ["new","called"].includes(stageOf(id))) p.stage = "lost";
+    if (a.who && !lead(id).contact) p.contact = a.who;
+    draftClear(); patch(id,p).then(renderDrawer); return;
+  }
+  if (t.dataset.delact){ patch(id,{acts:(lead(id).acts||[]).filter(a=>a.id!==t.dataset.delact)}).then(renderDrawer); return; }
+  if (t.id==="pAdd"){
+    if (!$("#pDate").value) return;
+    const a = {id:uid(), date:$("#pDate").value, time:$("#pTime").value, type:$("#pType").value, with:$("#pWith").value.trim(), note:$("#pNote").value.trim().slice(0,300), done:false};
+    const p = {appts:[...(lead(id).appts||[]), a], needAppt:false};
+    if (["new","called","interested"].includes(stageOf(id)) && a.type!=="โทรติดตาม") p.stage = "demo";
+    draftClear(); patch(id,p).then(renderDrawer); return;
+  }
+  if (t.dataset.delappt){ const [hid,aid]=t.dataset.delappt.split("|"); patch(hid,{appts:(lead(hid).appts||[]).filter(a=>a.id!==aid)}).then(renderDrawer); return; }
+  if (t.dataset.ics){ const [hid,aid]=t.dataset.ics.split("|"); saveIcs(hid,(lead(hid).appts||[]).find(a=>a.id===aid)); return; }
+});
+let typeTimer = null;
+$("#dBody").addEventListener("input", e=>{
+  const id = openId, t = e.target; if (!id) return;
+  const f = {dContact:"contact", dNext:"next", dNote:"note"}[t.id];
+  if (f){ clearTimeout(typeTimer); typeTimer = setTimeout(()=>patch(id,{[f]: f==="note" ? t.value.slice(0,2000) : t.value.slice(0,200)}), 700); }
+  if (["aText","aWho","pNote","pWith"].includes(t.id)) draftSave();
+});
+function draftSave(){ try { sessionStorage.setItem("keys-draft", JSON.stringify({id:openId, aText:$("#aText")?.value, aWho:$("#aWho")?.value, pNote:$("#pNote")?.value, pWith:$("#pWith")?.value})); } catch {} }
+function draftLoad(){ try { const d = JSON.parse(sessionStorage.getItem("keys-draft")||"null"); if (d && d.id===openId) for (const k of ["aText","aWho","pNote","pWith"]) if (d[k] && $("#"+k)) $("#"+k).value = d[k]; } catch {} }
+function draftClear(){ try { sessionStorage.removeItem("keys-draft"); } catch {} }
+$("#dBody").addEventListener("change", e=>{
+  const id = openId, t = e.target; if (!id) return;
+  if (t.id==="dNeed") patch(id,{needAppt:t.checked});
+  if (t.id==="dContact") patch(id,{contact:t.value.trim().slice(0,200)});
+  if (t.id==="dNext") patch(id,{next:t.value.trim().slice(0,200)});
+  if (t.id==="dNote") patch(id,{note:t.value.slice(0,2000)});
+  if (t.dataset.done){ const [hid,aid]=t.dataset.done.split("|"); patch(hid,{appts:(lead(hid).appts||[]).map(a=>a.id===aid?{...a,done:t.checked}:a)}).then(renderDrawer); }
+});
+
+// ---------- calendar
+function allAppts(){
+  const out = [];
+  for (const h of HOTELS) for (const a of (lead(h.id).appts||[])) out.push({...a, hid:h.id, hn:h.n});
+  return out.sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));
+}
+const DOW = ["อา","จ","อ","พ","พฤ","ศ","ส"];
+function renderCal(){
+  const y = calMonth.getFullYear(), m = calMonth.getMonth();
+  $("#calTitle").textContent = calMonth.toLocaleDateString("th-TH",{month:"long",year:"numeric"});
+  const first = new Date(y,m,1), start = new Date(y,m,1-first.getDay());
+  const byDay = {}; for (const a of allAppts()) (byDay[a.date] ??= []).push(a);
+  let html = DOW.map(d=>`<div class="dow">${d}</div>`).join("");
+  for (let i=0;i<42;i++){
+    const d = new Date(start); d.setDate(start.getDate()+i); const k = ymd(d);
+    if (i>=35 && d.getMonth()!==m) break;
+    const evs = byDay[k]||[];
+    html += `<button class="day ${d.getMonth()!==m?"out":""} ${k===TODAY?"today":""}" data-day="${k}" aria-pressed="${calSel===k}">
+      <span class="d">${d.getDate()}</span><span class="evs">${evs.slice(0,3).map(a=>`<span class="ev ${a.done?"done":""}">${esc(a.time||"")} ${esc(a.hn)}</span>`).join("")}</span>${evs.length>3?`<span class="more">+${evs.length-3}</span>`:""}</button>`;
+  }
+  $("#calGrid").innerHTML = html;
+  const list = calSel ? (byDay[calSel]||[]) : allAppts().filter(a=>!a.done && a.date>=TODAY);
+  $("#agTitle").textContent = calSel ? `นัดวันที่ ${thDate(calSel,{weekday:"long",day:"numeric",month:"long"})}` : "นัดที่จะถึง";
+  $("#agenda").innerHTML = list.length ? list.map(a=>`<div class="it" data-open="${a.hid}">
+      <span class="when"><b>${thDate(a.date,{day:"numeric"})}</b>${thDate(a.date,{month:"short"})}<br>${esc(a.time||"")}</span>
+      <span style="min-width:0"><b>${esc(a.hn)}</b><br><span style="color:var(--muted);font-size:12.5px">${esc(a.type)}${a.with?" · "+esc(a.with):""}${a.note?" · "+esc(a.note):""}</span></span>
+      <span class="stage ${a.done?"sg-won":"sg-demo"}">${a.done?"เสร็จแล้ว":"รอ"}</span></div>`).join("")
+    : `<div class="empty">${calSel ? "ไม่มีนัดวันนี้ เพิ่มนัดได้จากฟอร์มด้านบน" : "ยังไม่มีนัดที่จะถึง เพิ่มนัดจากฟอร์มด้านบน หรือในหน้าของลูกค้าแต่ละราย"}</div>`;
+}
+$("#calGrid").addEventListener("click", e=>{ const b=e.target.closest(".day"); if(!b) return; calSel = calSel===b.dataset.day ? null : b.dataset.day; if (calSel) $("#naDate").value = calSel; renderCal(); });
+$("#calPrev").addEventListener("click",()=>{ calMonth.setMonth(calMonth.getMonth()-1); renderCal(); });
+$("#calNext").addEventListener("click",()=>{ calMonth.setMonth(calMonth.getMonth()+1); renderCal(); });
+$("#calToday").addEventListener("click",()=>{ calMonth = new Date(); calMonth.setDate(1); calSel = TODAY; renderCal(); });
+$("#agenda").addEventListener("click", e=>{ const it=e.target.closest("[data-open]"); if (it) openDrawer(it.dataset.open); });
+$("#naHotel").innerHTML = HOTELS.slice().sort((a,b)=>a.n.localeCompare(b.n)).map(h=>`<option value="${h.id}">${esc(h.n)}</option>`).join("");
+$("#naType").innerHTML = APPT_TYPES.map(t=>`<option>${t}</option>`).join("");
+$("#naDate").value = TODAY;
+$("#naHotel").addEventListener("change",()=>{ $("#naWith").value = lead($("#naHotel").value).contact || ""; });
+$("#naAdd").addEventListener("click",()=>{
+  const id = $("#naHotel").value; if (!id || !$("#naDate").value) return;
+  const a = {id:uid(), date:$("#naDate").value, time:$("#naTime").value, type:$("#naType").value, with:$("#naWith").value.trim(), note:$("#naNote").value.trim().slice(0,300), done:false};
+  const p = {appts:[...(lead(id).appts||[]), a], needAppt:false};
+  if (["new","called","interested"].includes(stageOf(id)) && a.type!=="โทรติดตาม") p.stage = "demo";
+  $("#naNote").value = ""; calSel = a.date; const [yy,mm] = a.date.split("-").map(Number); calMonth = new Date(yy,mm-1,1);
+  patch(id,p);
+});
+
+// ---------- .ics for the phone's calendar
+async function saveIcs(hid, a){
+  if (!a) return; const h = BY_ID[hid];
+  const [y,mo,d] = a.date.split("-"); const [hh,mi] = (a.time||"10:00").split(":");
+  const st = `${y}${mo}${d}T${hh}${mi}00`;
+  const endD = new Date(+y,+mo-1,+d,+hh+1,+mi); const en = `${endD.getFullYear()}${pad(endD.getMonth()+1)}${pad(endD.getDate())}T${pad(endD.getHours())}${pad(endD.getMinutes())}00`;
+  const tx = s => String(s||"").replace(/[\\,;]/g,m=>"\\"+m).replace(/\n/g,"\\n");
+  const ics = ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//keys//Lead Finder//TH","BEGIN:VEVENT",`UID:${a.id}@keys-lead-finder`,
+    `DTSTAMP:${new Date().toISOString().replace(/[-:]/g,"").slice(0,15)}Z`,`DTSTART;TZID=Asia/Bangkok:${st}`,`DTEND;TZID=Asia/Bangkok:${en}`,
+    `SUMMARY:${tx(a.type+" · "+h.n)}`,`LOCATION:${tx(h.a)}`,`DESCRIPTION:${tx([a.with&&"นัดกับ "+a.with,a.note,h.ph&&"โทร "+h.ph].filter(Boolean).join("\n"))}`,
+    "BEGIN:VALARM","TRIGGER:-PT30M","ACTION:DISPLAY","DESCRIPTION:นัดหมาย","END:VALARM","END:VEVENT","END:VCALENDAR"].join("\r\n");
+  await saveFile(`นัด-${a.date}.ics`, ics, "text/calendar");
+}
+let dl = null;
+async function saveFile(name, data, type){
+  if (dl){ try { await dl.save({filename:name, data:new Blob([data],{type})}); } catch {} return; }
+  const url = URL.createObjectURL(new Blob([data],{type}));
+  const a = document.createElement("a"); a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url), 4000);
+}
+
+// ---------- shared wiring
 $("#list").addEventListener("click", async e=>{
+  const o = e.target.closest("[data-open]"); if (o){ openDrawer(o.dataset.open); return; }
+  const qc = e.target.closest("[data-quickcall]");
+  if (qc){ const id = qc.dataset.quickcall;
+    const p = {acts:[...(lead(id).acts||[]), {id:uid(), at:new Date().toISOString(), type:"call", who:lead(id).contact||"", outcome:"", text:"", by:staff}]};
+    if (stageOf(id)==="new") p.stage = "called"; patch(id,p); return; }
   const b = e.target.closest(".copy"); if (!b) return;
   try { await navigator.clipboard.writeText(b.dataset.copy); b.textContent = "คัดลอกแล้ว"; }
-  catch { const r = document.createRange(); r.selectNodeContents(b.previousElementSibling); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "เลือกแล้ว กดคัดลอก"; }
+  catch { const r = document.createRange(); r.selectNodeContents(b.previousElementSibling); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "เลือกแล้ว"; }
   setTimeout(()=>{ b.textContent = "คัดลอก"; }, 1500);
 });
-$("#list").addEventListener("change", e=>{
-  const el = e.target, art = el.closest(".lead"); if (!art) return;
-  if (el.dataset.act==="status"){ save(art.dataset.id,{status:el.value}); render(); }
-  if (el.dataset.act==="note") save(art.dataset.id,{note:el.value.slice(0,300)});
+$("#khet").addEventListener("click", e=>{ const b = e.target.closest(".kb"); if (!b) return; khetSel = khetSel===b.dataset.k ? null : b.dataset.k; renderList(); });
+["q","type","stars","rv","pmin","pmax","fstage","hasPhone","sort"].forEach(id=>$("#"+id).addEventListener("input",renderList));
+$("#reset").addEventListener("click",()=>{ preset=null; todo=null; khetSel=null;
+  document.querySelectorAll("#presets .chip,#todo .chip").forEach(b=>b.setAttribute("aria-pressed","false"));
+  $("#q").value=""; $("#type").value=""; $("#stars").value="0"; $("#rv").value="0"; $("#pmin").value=""; $("#pmax").value="";
+  $("#fstage").value=""; $("#hasPhone").checked=false; $("#sort").value="score"; renderList(); });
+function setTab(cal){
+  $("#tabLeads").setAttribute("aria-selected", !cal); $("#tabCal").setAttribute("aria-selected", cal);
+  $("#viewLeads").hidden = cal; $("#viewCal").hidden = !cal;
+  try { localStorage.setItem("keys-tab", cal?"cal":"leads"); } catch {}
+  if (cal) renderCal();
+}
+$("#tabLeads").addEventListener("click",()=>setTab(false));
+$("#tabCal").addEventListener("click",()=>setTab(true));
+$("#export").addEventListener("click",()=>{
+  const rows = HOTELS.filter(h=>passes(h,false));
+  const head = ["เขต","ชื่อ","ประเภท","เบอร์โทร","อีเมล","ขั้นตอน","ผู้ติดต่อ","ต้องทำนัด","นัดถัดไป","ติดต่อล่าสุด","โน้ต","ดาว","รีวิว","ราคา฿","คะแนน","ลิงก์ Cloudbeds"];
+  const q = v => `"${String(v??"").replace(/"/g,'""')}"`;
+  const csv = "﻿"+[head, ...rows.map(h=>{ const c=lead(h.id), la=actsOf(h.id)[0], up=upcoming(h.id)[0];
+    return [h.kth,h.n,TYPE_LABEL[h.t],h.ph,h.em,STAGE_LABEL[stageOf(h.id)],c.contact,c.needAppt?"ใช่":"",up?`${up.date} ${up.time} ${up.type}`:"",
+      la?`${la.at.slice(0,10)} ${ACT[la.type]?.l} ${la.who||""} ${la.outcome||""} ${la.text||""}`:"",c.note,h.s,h.rv,h.p,h.sc,h.u]; })].map(r=>r.map(q).join(",")).join("\n");
+  saveFile("keys-leads.csv", csv, "text/csv");
 });
+function renderAll(){ renderKpis(); renderList(); if (!$("#viewCal").hidden) renderCal(); renderDrawer(); }
 
-render();
+try { if (matchMedia("(min-width:821px)").matches) $("#moreF").open = true; } catch {}
+let startTab = "leads"; try { startTab = localStorage.getItem("keys-tab")||"leads"; } catch {}
+renderAll(); if (startTab==="cal") setTab(true);
+try { const o = sessionStorage.getItem("keys-open"); if (o && BY_ID[o]) openDrawer(o); } catch {}
 
 (async()=>{
-  try { db = await window.claude?.use?.("db"); } catch { db = null; }
+  let db = null; try { db = await window.claude?.use?.("db"); } catch {}
   if (!db){
-    // Outside claude.ai (e.g. GitHub Pages): keep statuses in this browser only
-    try { Object.assign(crm, JSON.parse(localStorage.getItem(LS_KEY)||"{}")); db = "local"; } catch { db = null; }
-    $("#sync").textContent = db ? "สถานะและโน้ตบันทึกไว้ในเบราว์เซอร์นี้เท่านั้น" : "ดูได้อย่างเดียว เบราว์เซอร์นี้บันทึกสถานะไม่ได้";
-    render(); return;
+    try { Object.assign(crm, JSON.parse(localStorage.getItem(LS_KEY)||"{}")); store = "local"; } catch { store = null; }
+    $("#sync").textContent = store ? "ข้อมูลลูกค้าบันทึกไว้ในเครื่องนี้ (ใช้เครื่องเดิมเปิดทุกครั้ง)" : "เบราว์เซอร์นี้บันทึกข้อมูลไม่ได้";
+    renderAll(); return;
   }
-  $("#sync").textContent = "เชื่อมแล้ว · เปลี่ยนสถานะ/โน้ตแล้วจะบันทึกอัตโนมัติ";
+  store = db;
+  $("#sync").textContent = "เชื่อมแล้ว · ทุกคนในทีมเห็นข้อมูลเดียวกัน";
   db.collection("leads").onSnapshot(snap=>{
+    for (const k in crm) delete crm[k];
     snap.docs.forEach(d=>{ if (d.exists) crm[d.id] = d.data(); });
-    snap.docChanges().forEach(ch=>{ if (ch.type==="removed") delete crm[ch.doc.id]; });
-    const a = document.activeElement; if (a && a.dataset?.act==="note") return; // don't clobber typing
-    render();
+    const a = document.activeElement; if (a && /^(INPUT|TEXTAREA)$/.test(a.tagName) && a.closest("#drawer")) { renderKpis(); renderList(); return; }
+    renderAll();
   }, ()=>{ $("#sync").textContent = "การเชื่อมต่อขาดช่วง กำลังลองใหม่…"; });
-  render();
 })();
-
-(async()=>{
-  let dl = null; try { dl = await window.claude?.use?.("downloads"); } catch {}
-  if (!dl) return;
-  $("#export").hidden = false;
-  $("#export").addEventListener("click", async()=>{
-    const rows = HOTELS.filter(h=>passes(h,false));
-    const head = ["เขต","ชื่อ","ประเภท","ดาว","รีวิว","จำนวนรีวิว","ราคา฿","ห้อง","คะแนน","สถานะ","โน้ต","ที่อยู่","ลิงก์ Cloudbeds"];
-    const q = v => `"${String(v??"").replace(/"/g,'""')}"`;
-    const csv = "﻿"+[head, ...rows.map(h=>[h.kth,h.n,TYPE_LABEL[h.t],h.s,h.rv,h.rc,h.p,h.rm,h.sc,STATUS_LABEL[crm[h.id]?.status||"new"],crm[h.id]?.note,h.a,h.u])].map(r=>r.map(q).join(",")).join("\n");
-    try { await dl.save({filename:"cloudbeds-leads-bangkok.csv", data:new Blob([csv],{type:"text/csv"})}); } catch {}
-  });
-})();
+(async()=>{ try { dl = await window.claude?.use?.("downloads"); } catch {} })();
 </script>
 
 </body></html>
