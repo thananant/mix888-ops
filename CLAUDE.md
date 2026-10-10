@@ -11,15 +11,7 @@
 
 ## ข้อควรระวัง
 - repo นี้เป็น **Public** ทุกไฟล์ใน repo ใครก็เปิดดูได้ ห้ามใส่ key, password, token หรือข้อมูลลับลง repo
-- `hotel-leads/` เป็นงานของ **keys** (ระบบสำหรับโรงแรมที่ใช้ Cloudbeds) **ไม่เกี่ยวกับ Mix888 หรือจริงใจหมูกระทะ** ห้ามใช้ Supabase/LINE ของ Mix888 กับงานนี้
-  - กำลังจะย้ายไป repo `thananant/keys-leads` (รอผู้ใช้สร้าง repo ตาม `hotel-leads/SETUP.md`)
-- Backend ของ keys: Supabase project **cloudbeds-rm** (`vauqbfjgkdhgrtycqhnd`)
-  - edge function `keys-crm` และตาราง `crm_*`
-  - รหัสทีมกับ cron key อยู่ใน `crm_settings` เท่านั้น ห้ามใส่ลง repo
-  - รายละเอียดอยู่ใน `hotel-leads/SETUP.md`
+- งานของ **keys** (หาลูกค้าโรงแรม Cloudbeds) ย้ายไป repo `thananant/keys-leads` แล้ว ไม่เกี่ยวกับ Mix888 ห้ามใส่กลับมาใน repo นี้
 
 ## งานใน repo
-- `hotel-leads/` — Cloudbeds Lead Finder: โรงแรมในกรุงเทพฯ ที่ใช้ Cloudbeds (52 แห่ง) แยกตามเขต ดาว รีวิว ราคา
-  - หน้าเว็บ: https://thananant.github.io/mix888-ops/hotel-leads/
-  - แก้ข้อมูลหรือหน้าตา: แก้ `lead-finder.template.html` (มี `__DATA__` เป็นตัวแทนข้อมูล) แล้ว build ออกมาเป็น `index.html` (มี doctype สำหรับ Pages) และ `lead-finder.html` (สำหรับ claude.ai artifact)
-  - เวอร์ชัน claude.ai (สถานะลูกค้าเห็นตรงกันทุกคน): https://claude.ai/artifact/PkrMvU3M6VFaSYinbcSyXx
+- `hotel-leads/index.html` เหลือแค่หน้าพาไป https://thananant.github.io/keys-leads/ (สำหรับลิงก์เก่า)
